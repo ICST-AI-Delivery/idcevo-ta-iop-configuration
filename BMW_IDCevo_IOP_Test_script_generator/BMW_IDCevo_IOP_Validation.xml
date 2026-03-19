@@ -1,0 +1,2342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TestCases variant="ECE Google Pixel 9 Pro XL" generated_from="BMW_IDCEvo_IoP_21.08.2025.csv">
+  <TestCase id="1" source_row="128">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172962</Test_Case_Item_ID>
+    <Test_Case_Name>OS</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Description>Write down the OS in the Description field</Test_Case_Description>
+    <Test_Case_Expected_Result>eg. Android</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="2" source_row="289">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172963</Test_Case_Item_ID>
+    <Test_Case_Name>OS Version</Test_Case_Name>
+    <Test_Result/>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Description>Write down the OS version in the Description field</Test_Case_Description>
+    <Test_Case_Expected_Result>eg. 7.1</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="3" source_row="450">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172964</Test_Case_Item_ID>
+    <Test_Case_Name>Firmware</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Description>Write down the firmware version in the Description field</Test_Case_Description>
+    <Test_Case_Expected_Result>eg. Base: M9615A-CEFWTAZM_4.0.111006
+Kernel: 3.4.0
+Build: L05E10d</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="4" source_row="611">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172966</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-2: Pairing Mobile Device 1</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-16869; IDCEVODEV-78116; IDCEVODEV-89250</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device 1 isn't paired with HU.</Test_Case_Precondition>
+    <Test_Case_Description>1 Activate Bluetooth on Mobile Device.
+In order to be visible for other Bluetooth devices you have to enter the Bluetooth settings menu of your mobile device.
+
+On HU press COM button on ZBE or go to Communication -&gt; Manage mobile devices -&gt; scroll down to Manage mobile devices -&gt; select Connect new device. -&gt; Select function Telephone.
+2 On Mobile Device 1 select HU.
+3 Confirm pairing request and all other requests that show up.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 HU can be found while Mobile Device 1 is searching for devices.
+2 Bluetooth pairing request screen shows up on Mobile Device 1 and HU.
+PIN code shown on both sides are the same.
+3 Mobile Device 1 is successfully paired as Hands-Free Device 1 and as Bluetooth-Audio Device.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="5" source_row="772">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172967</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-3: Pairing Mobile Device 2</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device 1 (Test Device) is allready paired.
+Mobile Device 2 (other Device) isn't paired with HU.</Test_Case_Precondition>
+    <Test_Case_Description>1 Activate Bluetooth on Mobile Device.
+In order to be visible for other Bluetooth devices you have to enter the Bluetooth settings menu of your mobile device.
+
+On HU press COM button on ZBE or go to Communication -&gt; Manage mobile devices -&gt; scroll down to Manage mobile devices -&gt; select Connect new device. -&gt; Select function Telephone.
+2 On Mobile Device 2 select HU.
+3 Confirm pairing request and all othe requests that show up.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 HU can be found while Mobile Device 2 is searching for devices.
+2 Bluetooth pairing request screen shows up on Mobile Device 2 and HU.
+PIN code shown on both sides are the same.
+3 Mobile Device 2 is successfully paired as Hands-Free Device 2.
+
+Mobile Device 1 is still paired as Hands-Free Device 1 and as Bluetooth-Audio Device.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="6" source_row="933">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172968</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-4: Pairing Denied HU</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device 1 isn't paired with HU.</Test_Case_Precondition>
+    <Test_Case_Description>1 Activate Bluetooth on Mobile Device.
+In order to be visible for other Bluetooth devices you have to enter the Bluetooth settings menu of your mobile device.
+
+On HU press COM button on ZBE or go to Communication -&gt; Manage mobile devices -&gt; scroll down to Manage mobile devices -&gt; select Connect new device. -&gt; Select function Telephone.
+2 On Mobile Device 1 select HU.
+3 Deny pairing on HU.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 HU can be found while Mobile Device 1 is searching for devices.
+2 Bluetooth pairing request screen shows up on Mobile Device 1 and HU.
+PIN code shown on both sides are the same.
+HU remains stable.
+3 Pairing process is terminated.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="7" source_row="1094">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172969</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-5: Pairing Denied Mobile Device</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device 1 isn't paired with HU.</Test_Case_Precondition>
+    <Test_Case_Description>1 Activate Bluetooth on Mobile Device.
+In order to be visible for other Bluetooth devices you have to enter the Bluetooth settings menu of your mobile device.
+
+On HU press COM button on ZBE or go to Communication -&gt; Manage mobile devices -&gt; scroll down to Manage mobile devices -&gt; select Connect new device. -&gt; Select function Telephone.
+2 On Mobile Device 1 select HU.
+3 Deny pairing on Mobile Device 1.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 HU can be found while Mobile Device 1 is searching for devices.
+2 Bluetooth pairing request screen shows up on Mobile Device 1 and HU.
+PIN code shown on both sides are the same.
+HU remains stable.
+3 Pairing process is terminated.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="8" source_row="1255">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172970</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-6: Pairing Timeout</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device 1 isn't paired with HU
+Info: If Mobile Device and HU have been paired before, then delete Mobile Device on HU and HU on Mobile Device.</Test_Case_Precondition>
+    <Test_Case_Description>1 Activate Bluetooth on Mobile Device.
+In order to be visible for other Bluetooth devices you have to enter the Bluetooth settings menu of your mobile device.
+
+On HU press COM button on ZBE or go to Communication -&gt; Manage mobile devices -&gt; scroll down to Manage mobile devices -&gt; select Connect new device. -&gt; Select function Telephone.
+2 On Mobile Device 1 select HU.
+3 Wait for pairing timeout.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 HU can be found while Mobile Device 1 is searching for devices.
+2 Bluetooth pairing request screen shows up on Mobile Device 1 and HU.
+PIN code shown on both sides are the same.
+HU remains stable.
+3 Pairing process is terminated.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="9" source_row="1416">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172971</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-7: On Tap - MD should connect or disconnect</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-110781</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.</Test_Case_Precondition>
+    <Test_Case_Description>1. CliIDCEvo on MD in HMI in order to connect or disconnect it</Test_Case_Description>
+    <Test_Case_Expected_Result>1. MD disconnects or connects to the bench</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="10" source_row="1577">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172972</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-8: Delete Mobile Device on HU</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-69731; IDCEVODEV-89250</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.</Test_Case_Precondition>
+    <Test_Case_Description>1 On HU press COM button on ZBE or go to Communication -&gt; Manage mobile devices -&gt; scroll down to Manage mobile devices.
+2 Select connected device and press center button of ZBE.
+Delete connected device.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Bluetooth connection is released.
+Mobile Device 1 is not listed in HU anymore.
+3. Undo snaIDCEvobar should be displayer after cliIDCEvoing on remove option</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="11" source_row="1738">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172973</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-9: Mobile Device Reconnect after Power Off</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.</Test_Case_Precondition>
+    <Test_Case_Description>1 Power Off Mobile Device while Bluetooth is ON.
+2 Power On Mobile Device.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Bluetooth connection is released.
+2 IDCEvo does not reconnect automatically.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="12" source_row="1899">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172974</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-10: Mobile Device reconnect after Bluetooth Off</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.</Test_Case_Precondition>
+    <Test_Case_Description>1 Switch off Bluetooth on Mobile Device.
+2 Switch on Bluetooth on Mobile Device.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Bluetooth connection is released.
+2 IDCEvo does not reconnect automatically.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="13" source_row="2060">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172975</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-11: HU reconnect after Power Off</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.</Test_Case_Precondition>
+    <Test_Case_Description>1 Power Off HU while Bluetooth is ON.
+For TestraIDCEvos and Testcases set mode Parken: &quot;Parken_BN_IO&quot;.
+2 Power on HU.
+For TestraIDCEvos and Testcases set mode Fahren: &quot;Pruefen_Analyse_Diagnose&quot;.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Bluetooth connection is released.
+2 Bluetooth connection is re-established.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="14" source_row="2221">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172976</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-12: HU reconnect after Bluetooth Off</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to Communication -&gt; Select Manage mobile devices.
+or
+Press COM button on ZBE.
+2 Scroll down to Settings and press ZBE.
+3 Go to Bluetooth and uncheIDCEvo the cheIDCEvobox.
+4 Wait 10 seconds.
+5 CheIDCEvo the cheIDCEvobox Bluetooth.</Test_Case_Description>
+    <Test_Case_Expected_Result>3 Bluetooth connection is released.
+
+5 Bluetooth connection is re-established. 
+Mobil Device 1 is reconnected as Hands-Free Device 1, Audio and Apps (in case device was paired with apps and supports app-feature)</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="15" source_row="2382">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172977</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-13: Mobile Device out of range</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.</Test_Case_Precondition>
+    <Test_Case_Description>1 Put Mobile Device in shielding bag or shielding chamber or go out of range to simulate a linkloss
+2 Get Mobile Device out of shielding bag or shielding chamber or go in range.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Bluetooth connection is released.
+2 Bluetooth connection is re-established.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="16" source_row="2543">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172978</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-18: Connection stability</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.</Test_Case_Precondition>
+    <Test_Case_Description>1 Observe connection stability during whole testing session.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 No link losses observed (except for linklosses that occured during regular test steps e.g. simulated link losses).</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="17" source_row="2704">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172980</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-19: Phonebook download</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download has started and is not finished.
+In case the download of the phonebook is already finished, then delete Mobile Device on HU</Test_Case_Precondition>
+    <Test_Case_Description>1 Go to Communication.
+2 Wait until synchronisation is finished (Synch animation cant be seen anymore).</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Phonebook download is started after pairing indicated by synchronisation animation.
+2 All contacts from Mobile Device can be seen on HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="18" source_row="2865">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172981</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-20: Incoming call during phonebook download</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-78116</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download has started and is not finished.
+In case the download of the phonebook is already finished, then delete Mobile Device on HU</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate call from Mobile Device 3 to Mobile Device 1.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Incoming call does not interrupt phonebook download.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="19" source_row="3026">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172982</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-21: Outgoing call during phonebook download</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download has started and is not finished.
+In case the download of the phonebook is already finished, then delete Mobile Device on HU</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate call from Mobile Device 1 (paired Mobile Device) to Mobile Device 3 during phonebook download.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Outgoing call does not interrupt phonebook download.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="20" source_row="3187">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172983</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-22: Linkloss during phonebook download</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download has started and is not finished.
+In case the download of the phonebook is already finished, then delete Mobile Device on HU</Test_Case_Precondition>
+    <Test_Case_Description>1 Phonebook download is initiated and still running. Use a shielding bag or shielding chamber or go out of range to simulate a linkloss</Test_Case_Description>
+    <Test_Case_Expected_Result>1 After linkloss HU and Mobile Device cancel import and return to previous states.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="21" source_row="3348">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172984</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-23: Audio playback during phonebook download</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download has started and is not finished.
+In case the download of the phonebook is already finished, then delete Mobile Device on HU</Test_Case_Precondition>
+    <Test_Case_Description>1 While phonebook is downloading start audio playbaIDCEvo from Mobile Device.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo does not interrupt phonebook download.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="22" source_row="3509">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172985</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-24: Contact picture</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download is finished.
+Sync animation can't be seen anymore.
+Contactbook has contacs with picture.</Test_Case_Precondition>
+    <Test_Case_Description>1 Go to Communication --&gt; Contacts
+2 CheIDCEvo if pictures are displayed correctly.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Contact picture of contacts are displayed correctly.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="23" source_row="3670">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172986</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-25: Special characters</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download is finished.
+Phonebook has contacts with special characters (e.g.: &amp;, $,%, §, ä, ü, ö)</Test_Case_Precondition>
+    <Test_Case_Description>1 On IDCEvo go to Communication --&gt; Contacts
+2 Go to any contact with special characters in name or other fields.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 All special characters displayed correctly.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="24" source_row="3831">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172987</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-26: Blanks in contact details</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download is finished.
+A contact with blanks (some spaces between charakters) in contact details is stored in Phonebook.</Test_Case_Precondition>
+    <Test_Case_Description>1 Go to Communications --&gt; Contacts
+2 Go to a contact that has blanks in its contact details.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Blanks are displayed correctly.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="25" source_row="3992">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172988</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-27: Postal address</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-108408</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 On HUgo to Communication --&gt; Contacts
+2 Go to a random address. CheIDCEvo all adress elements.
+3 Start navigation to selected address.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Address elements (Street, street number, postal code, company) are displayed correctly.
+3 Navigation to selected address is started.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="26" source_row="4153">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172989</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-28: Email address</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download is finished.
+Phonebook has a contact with E-Mailaddress stored.</Test_Case_Precondition>
+    <Test_Case_Description>1 On HU go to Communication --&gt; Contacts.
+2 PiIDCEvo a contact and scroll down until the E-Mailadress is visible.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 E-Mail address is displayed correcly.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="27" source_row="4314">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172990</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-29: Web address</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download is finished.
+Phonebook has a contact with Web address stored.</Test_Case_Precondition>
+    <Test_Case_Description>1 On HU go to Communication --&gt; Contacts.
+2 PiIDCEvo a contact and scroll to down to web address. CheIDCEvo web address.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Web address is displayed correcly.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="28" source_row="4475">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172991</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-30: SIM contacts</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download is finished.
+Mobile Device supports access to contacts that are stored on SIM card.</Test_Case_Precondition>
+    <Test_Case_Description>1 On HU go to Communication --&gt; Contacts.
+2 CheIDCEvo if contacts that are stored on SIM card are visible.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 SIM contacts are visible.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="29" source_row="4636">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172992</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-31: Merge same name</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download is finished.
+2 contacts with same name and last name but 2 different telephone numbers.</Test_Case_Precondition>
+    <Test_Case_Description>1 On HU go to Communication --&gt; Contacts.
+2 Scroll to contact with same name and last name. CheIDCEvo if the 2 different phone numbers are merged into one contact.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Contacts with the same name are merged.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="30" source_row="4797">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172993</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-32: Hide fax number</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download is finished.
+A contact with fax number.</Test_Case_Precondition>
+    <Test_Case_Description>1 On HU go to Communication --&gt; Contacts.
+2 Select contact with fax number. CheIDCEvo if fax numbers are hidden.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Fax numbers are hidden.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="31" source_row="4958">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172994</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-33: Search for contact</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-108402</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Phonebook download is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1. Simple search for contact</Test_Case_Description>
+    <Test_Case_Expected_Result>1. Contact searched is displayed in HMI</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="32" source_row="5119">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172995</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-34: Received calls</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-78116</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.
+Some received calls are allready in call list.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to Communication --&gt; Recent calls.
+2 Scroll to Incoming. CheIDCEvo if all incoming calls are shown.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Received Calls are displayed correctly on HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="33" source_row="5280">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172996</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-35: Dialed calls</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.
+Some dialed calls are allready in call list.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to Communication -&gt; Recent calls.
+2 Scroll to Outgoing. CheIDCEvo if all outgoing calls are shown.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 All outgoing calls are displayed.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="34" source_row="5441">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172997</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-36: Missed calls</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.
+Some missed calls are allready in call list.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to Communication -&gt; Recent calls.
+2 Scroll to Missed calls. CheIDCEvo if all missed calls are shown.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Missed Calls are displayed correctly on HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="35" source_row="5602">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172998</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-37: Combined call history</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.
+Some dialed, missed and received calls are allready in call list.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to Communication -&gt; Recent calls
+2 Scroll to Calls: All.  CheIDCEvo if the combined call history is correct.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Combined Call History is displayed correctly on HU</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="36" source_row="5763">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>172999</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-38: Time stamps</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.
+Some calls are listed in call list.</Test_Case_Precondition>
+    <Test_Case_Description>1 CheIDCEvo if timestamps on Mobile Device and HU for call history are the same.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Timestamps are correct.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="37" source_row="5924">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173001</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-15: HFP (re) conn.</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are paired.
+Mobile Device is connected as hands-free device (network indicator can be seen in the display of the HU).
+To simulate the linkloss a shielding bag or shielding chamber is recommended.</Test_Case_Precondition>
+    <Test_Case_Description>1 Put Mobile Device in shielding bag or shielding chamber.
+2 Get Mobile Device out of shielding bag or shielding chamber. Wait a few seconds.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Bluetooth connection is released.
+2 Bluetooth connection is re-established. Phone icon on display of HU is visible.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="38" source_row="6085">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173002</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-39: Outgoing call</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-56708</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an outgoing call from Mobile Device 1(paired device) to Mobile Device 3.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 HU and Mobile Device 1 indicate outgoing call. Correct number or contact is displayed on HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="39" source_row="6246">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173003</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-40: Terminate outgoing call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an outgoing call from Mobile Device 1 to Mobile Device 3.
+2 While call is setting up terminate the outgoing call.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 HU indicates set up of outgoing and hangup.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="40" source_row="6407">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173004</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-41: Accept outgoing call</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-56708</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an outgoing call from Mobile Device 1 to Mobile Device 3.
+2 Accept call on Mobile Device 3.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Call is active on Mobile Device and HU. Audio is transmitted in both directions.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="41" source_row="6568">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173005</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-42: Terminate active call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an outgoing call from Mobile Device 1 to Mobile Device 3.
+2 Accept call on Mobile Device 3.
+3 Terminate call on HU.</Test_Case_Description>
+    <Test_Case_Expected_Result>3 Call is terminated on Mobile Device and HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="42" source_row="6729">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173006</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-43: Power off HU during outgoing call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an outgoing call from Mobile Device 1 to Mobile Device 3.
+2 Accept call on Mobile Device 3.
+3 During an active outgoing call power off HU.
+For TestraIDCEvos and Testcases set mode Parken: &quot;Parken_BN_IO&quot;.</Test_Case_Description>
+    <Test_Case_Expected_Result>3 Bluetooth connection released. Audio is still audible on Mobile Device (some implementations might hang up).</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="43" source_row="6890">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173007</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-44: Power on HU during outgoing call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are paired and not connected.
+HU is switched off (For TestraIDCEvos and Testcases set mode Parken: &quot;Parken_BN_IO&quot;).</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an outgoing call from Mobile Device 1 to Mobile Device 3.
+2 Accept call on Mobile Device 3.
+3 During an active outgoing call power on HU.
+For TestraIDCEvos and Testcases set mode Fahren: &quot;Pruefen_Analyse_Diagnose&quot; (power on).</Test_Case_Description>
+    <Test_Case_Expected_Result>3 Bluetooth connection reestablished between HU to Mobile Device 1. Audio ist audible on HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="44" source_row="7051">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173008</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-45: Incoming calls</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-78116</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an incoming call from Mobile Device 3 to Mobile Device 1 (connected device).</Test_Case_Description>
+    <Test_Case_Expected_Result>1 HU and Mobile Device 1 indicate incoming call. Correct number or contact displayed. HU-Ringtone audible on HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="45" source_row="7212">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173009</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-46: Power off HU during incoming call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an incoming call from Mobile Device 3 to Mobile Device 1.
+2 During an incoming call power off HU.
+For TestraIDCEvos and Testcases set mode Parken: &quot;Parken_BN_IO&quot;.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Bluetooth connection released. Incoming call is indicated on Mobile Device.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="46" source_row="7373">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173010</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-199: Power on HU during incoming call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are paired and not connected.
+HU is switched off (For TestraIDCEvos and Testcases set mode Parken: &quot;Parken_BN_IO&quot;).</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an incoming call from Mobile Device 3 to Mobile Device 1.
+2 During an incoming call power on HU.
+For TestraIDCEvos and Testcases set mode Fahren: &quot;Pruefen_Analyse_Diagnose&quot; (power on).</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Bluetooth connection is established. Call is transfered to HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="47" source_row="7534">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173011</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-47: Reject incoming call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an incoming call from MD3 to MD1
+2 Reject incoming call on IDCEvo</Test_Case_Description>
+    <Test_Case_Expected_Result>2 IDCEvo and MD indicate the rejected call</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="48" source_row="7695">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173012</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-48: Accept incoming call</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-78116</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an incoming call from MD3 to MD1
+2 Accept incoming call on IDCEvo</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Call is active on MD and IDCEvo. Audio is audible and transmitted in both directions</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="49" source_row="7856">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173013</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-200: Power off HU during active call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an incoming call from Mobile Device 3 to Mobile Device 1.
+2 Power off HU during active call.
+For TestraIDCEvos and Testcases set mode Parken: &quot;Parken_BN_IO&quot;.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Bluetooth connection is released. Call is transfered to Mobile Device 1. Audio and voice are audible on Mobile Device 1 and Mobile Device 3.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="50" source_row="8017">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173014</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-49: DTMF Tone</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an outgoing call from Mobile Device 1 to Mobile Device 3.
+2 Accept call on Mobile Device 3.
+3 During an active call navigate on HU to Keypad dialing and dial several numbers.</Test_Case_Description>
+    <Test_Case_Expected_Result>3 CheIDCEvo if DTMF-Tone is audible on Mobile Device 3.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="51" source_row="8178">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173015</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-50: Mobile Device mute microphone</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an incoming call from Mobile Device 3 to Mobile Device 1.
+2 Accept call on HU.
+3 During an active call mute microphone on Mobile Device 3.</Test_Case_Description>
+    <Test_Case_Expected_Result>3 No audio is transmitted from Mobile Device 3 to HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="52" source_row="8339">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173016</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-51: Mobile Device unmute microphone</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an incoming call from Mobile Device 3 to Mobile Device 1.
+2 Accept call on HU.
+3 During an active call unmute microphone of Mobile Device 3.</Test_Case_Description>
+    <Test_Case_Expected_Result>Audio is transmitted from Mobile Device 3 to HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="53" source_row="8500">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173017</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-52: Mobile Device transfer audio to HU</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an incoming call from Mobile Device 3 to Mobile Device 1.
+2 Accept call on HU..
+3 On Mobile Device 1 (connected device)  navigate to change speaker and transfer audio to Mobile Device speaker.
+4 On Mobile Device 1 (connected device)  navigate to change speaker and transfer audio to HU.</Test_Case_Description>
+    <Test_Case_Expected_Result>3 Audio is only audible on Mobile Device 1.
+4 Audio is only audible on HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="54" source_row="8661">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173018</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-53: HU transfer audio to Mobile Device</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an incoming call from Mobile Device 3 to Mobile Device 1.
+2 Accept call on HU.
+3 On HU Menue in active call transfer audio to Mobile device 1.</Test_Case_Description>
+    <Test_Case_Expected_Result>3 Audio is only audible on Mobile Device 1.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="55" source_row="8822">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173019</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-287: Mobile Device transfer call to HU in new Lifecycle</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are paired.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Power off HU.
+For TestraIDCEvos and Testcases set mode Parken: &quot;Parken_BN_IO&quot;.
+2 Wait until Head Unit sleeps.
+3 Initiate call from Mobile Device 3 to Mobile Device 1.
+4 With ongoing call power on HU.
+For TestraIDCEvos and Testcases set mode Fahren: &quot;Pruefen_Analyse_Diagnose&quot;.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Head Unit sleeps.
+3 Call audio is audible on Mobile Device 1.
+4 After a couple of seconds call audio should be transfered to HU.
+Audio should be audible on both sides.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="56" source_row="8983">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173020</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-54: End call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate an incoming call from Mobile Device 3 to Mobile Device 1.
+2 Accept call on HU.
+3 End call on  HU.</Test_Case_Description>
+    <Test_Case_Expected_Result>3 Call is terminated on HU and Mobile Device 1.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="57" source_row="9144">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173021</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-56: Call waiting</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.
+It is possible that the call waiting option is disabled for some SIM-cards. It is recommended to cheIDCEvo if this option is enabled. The status can be cheIDCEvoed by dialing the MMI code *#43#.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate a call from Mobile Device 3 to Mobile Device 1.
+2 Accept call on HU.
+3 Initiate a call from Mobile Device 4 to Mobile Device 1.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 1st call from Mobile Device 3 is active. 
+3 2nd call from Mobile Device 4 is incoming and Number is displayed.
+Call waiting tone is hearable and Accept/Reject is possible.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="58" source_row="9305">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173022</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-57: Multiparty call switching</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate a call from Mobile Device 3 to Mobile Device 1.
+2 Accept call from Mobile Device 3 on HU.
+3 Initiate a call from Mobile Device 4 to Mobile Device 1.
+4 Accept call from Mobile Device 4 on HU.
+5 Switch between both calls a few times.</Test_Case_Description>
+    <Test_Case_Expected_Result>4 1st call from Mobile Device 3 is on hold. 2nd call from Mobile Device 4 active. 
+5 1st call from Mobile Device 3 is active. 2nd call from Mobile Device 4 is on hold.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="59" source_row="9466">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173023</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-58: Conference call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device 1 and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate a call from Mobile Device 3 to Mobile Device 1.
+2 Accept call from Mobile Device 3 on HU.
+3 Initiate a call from Mobile Device 4 to Mobile Device 1.
+4 Accept call from Mobile Device 4 on HU.
+IDCEvo:
+5 Navigate to Conference Call and establish conference call.
+MGU22:
+5 Press Conference Call from Mobile Device 1 to establish conference call.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 1st call from Mobile Device 3 is on hold. 2nd call from Mobile Device 4 active. 
+2 After the merge conference call is active, both incoming calls from Mobile Device 3 and Mobile Device 4 are audible on HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="60" source_row="9627">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173024</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-59: Signal strength indicator</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 CheIDCEvo the signal strength indicator in the upper right corner of the display of HU. 
+Compare with strength shown on Mobile Device.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Correct fieldstrength is shown on HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="61" source_row="9788">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173025</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-60: Roaming indication</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.
+This test can only be done with foreign SIM-cards or when testing abroad with a foreign SIM-card. In case this testcase cant be tested, set status to &quot;NTB&quot;.</Test_Case_Precondition>
+    <Test_Case_Description>1 CheIDCEvo if the roaming indicator in the upper right corner of the display of HU is visible.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 HU indicates roaming.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="62" source_row="9949">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173027</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-16: A2DP (re) conn.</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device is connected as audio device (audio icon can be seen in the display of the HU).
+To simulate the linkloss a shielding bag or shielding chamber is recommended.</Test_Case_Precondition>
+    <Test_Case_Description>1 Put Mobile Device in shielding bag or shielding chamber.
+2 Get Mobile Device out of shielding bag or shielding chamber. Wait a few seconds.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Bluetooth connection is released.
+2 Bluetooth connection is re-established. Audio icon is visible on the display of the HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="63" source_row="10110">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173028</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-63: Internal memory</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.
+Music is stored on internal memory of the device.</Test_Case_Precondition>
+    <Test_Case_Description>1 Play music from internal memory of Mobile Device 1 (connected device)</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Music is transmitted to HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="64" source_row="10271">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173029</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-64: External memory</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.
+Mobile Device supports SD-Card.
+Music is stored on SD-Card.
+In case the tested Mobile Device does not support SD-Cards set this testcase to status &quot;NTB&quot;.</Test_Case_Precondition>
+    <Test_Case_Description>1 Play music from external memory (SD-Card) of Mobile Device 1 (paired device).</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Music is transmitted to HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="65" source_row="10432">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173030</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-65: Reconnect as active source</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+To simulate the linkloss a shielding bag or shielding chamber is recommended.</Test_Case_Precondition>
+    <Test_Case_Description>1 Play music on Mobile Device 1.
+2 Put Mobile Device in shielding bag or shielding chamber.
+3 Wait 15 seconds and then get Mobile Device out of shielding bag or shielding chamber. Wait a few seconds.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Bluetooth connection is released.
+3 Bluetooth connection is re-established. Audio is playing.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="66" source_row="10593">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173031</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-66: Reconnect as inactive audio source</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+To simulate the linkloss a shielding bag or shielding chamber is recommended.</Test_Case_Precondition>
+    <Test_Case_Description>1 Play music on Mobile Device 1.
+2 On HU switch from audio playbaIDCEvo to Radio. 
+3 Put Mobile Device in shielding bag or shielding chamber.
+4 Wait 15 seconds and then get Mobile Device out of shielding bag or shielding chamber. Wait a few seconds.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Radio is playing.
+3 Bluetooth connection is released.
+4 Bluetooth connection is re-established. Radio is playing and audio playbaIDCEvo is inactive source.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="67" source_row="10754">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173032</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-67: Start player during active call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Initiate call from HU to Mobile Device 3.
+2 Accept call on Mobile Device 3.
+3 Start audio playbaIDCEvo on HU during an active call.</Test_Case_Description>
+    <Test_Case_Expected_Result>3 Ongoing call is not interrupted. Play status does not change to &quot;playing&quot;. A2DP audio is still muted on Mobile Device 1. Audio playbaIDCEvo resumes correctly after ending the call.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="68" source_row="10915">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173034</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-68: Playback on Mobile Device</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on Mobile Device 1.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="69" source_row="11076">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173035</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-69: Pause on Mobile Device</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on Mobile Device 1.
+2 Pause audio playbaIDCEvo on Mobile Device 1.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on Mobile Device 1.
+2 Audio playbaIDCEvo is paused in HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="70" source_row="11237">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173036</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-70: Skip on Mobile Device</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on Mobile Device 1.
+2 Skip audio playbaIDCEvo forward on Mobile Device 1.
+3 Skip audio playbaIDCEvo baIDCEvowards on Mobile Device 1.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on HU.
+2 HU skips to next song. 
+3 HU skips to previous song (or beginning of current song).</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="71" source_row="11398">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173037</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-71: FFW/FRW on Mobile Device</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on Mobile Device 1.
+2 Press fast forward on Mobile Device 1.
+3 Press fast baIDCEvowards on Mobile Device 1.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on HU.
+2 HU winds forwards.
+3 HU rewinds.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="72" source_row="11559">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173038</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-72: Playback on HU</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on HU.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on HU.
+HU displays current playing position.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="73" source_row="11720">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173039</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-73: Pause on HU</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on HU.
+2 Pause audio playbaIDCEvo on HU.
+
+Note: For MGU22 in order to pause you need to press the Volume Icon in the top right corner.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on HU.
+2 Audio playbaIDCEvo is paused on Mobile Device 1.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="74" source_row="11881">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173040</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-74: Skip on HU</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on HU.
+2 Skip audio playbaIDCEvo forward on HU.
+3 Skip audio playbaIDCEvo baIDCEvowards on HU.</Test_Case_Description>
+    <Test_Case_Expected_Result>1. Audio playbaIDCEvo is initiated on HU.
+2. Mobile Device 1 skips to next song. 
+3. Mobile Device 1 skips to previous song (or beginning of current song).</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="75" source_row="12042">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173041</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-75: FFW/FRW on HU</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on Mobile Device 1.
+IDCEvo:
+2 Press fast forward on HU.
+3 Press fast baIDCEvowards on HU.
+MGU22:
+On PlaybaIDCEvo bar in right side a square should be present.
+2 Drag square to the right to fast forward on HU.
+3 Drag square to the left to fast baIDCEvowards on HU.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on HU.
+2 Mobile Device 1 winds forwards.
+3 Mobile Device 1 rewinds.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="76" source_row="12203">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173042</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-76: Title</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on Mobile Device 1.
+2 CheIDCEvo if name of the current traIDCEvo is shown.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on HU.
+2 HU displays correct song title.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="77" source_row="12364">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173043</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-78: Album</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on Mobile Device 1.
+2 CheIDCEvo if name of the current album is shown.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on HU.
+2 HU displays correct album name.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="78" source_row="12525">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173044</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-79: Artist</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on Mobile Device 1.
+2 CheIDCEvo if name of the current artist is shown.</Test_Case_Description>
+    <Test_Case_Expected_Result>Audio playbaIDCEvo is initiated on HU. 
+HU displays correct artist name.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="79" source_row="12686">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173045</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-80: Total/Elapsed time</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on Mobile Device 1.
+2 On the lower right of the display the status bar should be visible.
+In there on the left side the elapsed time should be seen. On the right side the remaining playtime should be seen.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on HU.
+2 HU displays correct playing time.
+
+Note:
+For MGU22:
+If an Carplay device is connected both elapsed and remaining time will be displayed.
+If an Android device is connected only elapsed time will be displayed.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="80" source_row="12847">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173046</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-81: Resume during/after call</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start playing music on Mobile Device.
+2 Initiate an incoming call from Mobile Device 3 to Mobile Device 1.
+3 End call.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on HU.
+2 Audio playbaIDCEvo is paused and/or song is muted.
+3 Audio playbaIDCEvo resumes.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="81" source_row="13008">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173047</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-82: Cover Art</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device (only for iOS supported) and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start playing music on Mobile Device from an album with cover art.
+2 CheIDCEvo if the cover art is dislayed correctly.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo is initiated on HU.
+2 HU displays cover art.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="82" source_row="13169">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173048</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-83: Music search</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to music search.
+2 Enter the name of a traIDCEvo or artist in the search field.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Searching troughout Title, Artist, Genre and Albums is possible.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="83" source_row="13330">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173049</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-84: Title list</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to media search.
+2 Go to Titles.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 All traIDCEvo titles should be listed and can be searched.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="84" source_row="13491">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173050</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-85: Artist list</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to media search.
+2 Go to Artists.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 All artists should be listed and can be searched.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="85" source_row="13652">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173051</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-86: Genres list</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to media search.
+2 Go to Genres.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 All genres should be listed and can be searched.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="86" source_row="13813">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173052</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-87: Albums list</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to media search.
+2 Go to Albums.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 All albums should be listed and can be searched.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="87" source_row="13974">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173053</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-88: Playlists list</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to media search.
+2 Go to Playlists.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 All playlists should be listed and can be searched.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="88" source_row="14135">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173054</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-89: Shuffle on Mobile Device</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on Mobile Device 1.
+2 Activate shuffle mode on Mobile Device 1.
+3 Skip to next traIDCEvo.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Correct shuffle mode.
+3 TraIDCEvos are played in random order.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="89" source_row="14296">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173055</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-90: Shuffle on HU</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo on Mobile Device 1.
+2 Navigate to Shuffle and activate shuffle mode.
+3 Skip to next traIDCEvo.</Test_Case_Description>
+    <Test_Case_Expected_Result>3 TraIDCEvos are played in random order.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="90" source_row="14457">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173069</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-14: Message menu</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.
+It is possible that the SMS option is disabled for some SIM-cards. It is recommended to cheIDCEvo if this option is enabled. The status can be cheIDCEvoed by dialing the MMI code *221#.</Test_Case_Precondition>
+    <Test_Case_Description>1 Go to Communication. CheIDCEvo if Message menu item is visible.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Message menu item is visible.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="91" source_row="14618">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173070</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-99: SMS download</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to Communication -&gt; Messaging</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Received SMS are shown on the HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="92" source_row="14779">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173071</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-100: SMS reception</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Send a SMS from Mobile Device 3 to Mobile Device 1 (connected device).</Test_Case_Description>
+    <Test_Case_Expected_Result>1 SMS can be received and is visible in the display of HU. Indicator for new Message shows up.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="93" source_row="14940">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173072</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-101: SMS timestamp</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to  Communication -&gt; Messaging.
+2 CheIDCEvo if timestamps of downloaded messages that are shown on the HU and on Mobile Device 1 are the same.</Test_Case_Description>
+    <Test_Case_Expected_Result>2 Timestamp is correct.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="94" source_row="15101">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173073</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-102: SMS delete</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to Communication -&gt; Messaging.
+2 Open a SMS.
+3 Navigate to Delete SMS.
+4 Delete the selected SMS.</Test_Case_Description>
+    <Test_Case_Expected_Result>4 The SMS is deleted on HU and on Mobile Device 1.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="95" source_row="15262">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173074</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-103: SMS forward</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.</Test_Case_Precondition>
+    <Test_Case_Description>1 Navigate to Communication -&gt; Messaging.
+2 Open an SMS.
+3 Navigate to Forward SMS.
+4 Forward the selected SMS to Mobile Device 3.</Test_Case_Description>
+    <Test_Case_Expected_Result>4 SMS is forwarded to Mobile Device 3 and visible on Mobile Device 3.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="96" source_row="15423">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173076</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-116: Interaction with voice assistant</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-135336</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Mobile Device and HU are connected.
+Synchronisation is finished.
+Mobile Device has voice assistant (Siri, Bixby, Google Now etc.) installed.</Test_Case_Precondition>
+    <Test_Case_Description>1 Activate assistant by long pressing the voice button on the MFL (Multifunktionslenkrad/multifunction steering wheel)
+2 Ask assistant any question.
+3 Deactivate assistant by pressing the voice button on the MFL (Multifunktionslenkrad/multifunction steering wheel).</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Assistant can be activated while Mobile Device 1 is connected.
+Voice assistant dialogue can be seen.
+2 Voice assistant is reacting on the voice command.
+3 Voice dialogue screen is terminated.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="97" source_row="15584">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173078</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-106: Connection via passphrase</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>HU can provide a WIFI-Hotspot. If the HU doesnt support this feature set status to &quot;NTB&quot;.</Test_Case_Precondition>
+    <Test_Case_Description>1 On HU navigate to Commuication -&gt; Manage mobile device -&gt; Connect new device -&gt; WIFI.
+2 Turn on WIFI on Mobile Device 1.
+3 Connect to hotspot provided by HU.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 WIFI Hotspot and passphrase is provided.
+2 Possible WIFI-Connections on Mobile Device 1 are shown.
+3 Mobile Device 1 can be connected to HU WIFI-Hotspot.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="98" source_row="15745">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173079</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-107: Reconnect</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Connection via WIFI is established.</Test_Case_Precondition>
+    <Test_Case_Description>1 Turn off WIFI on Mobile Device 1.
+2 Wait 15 seconds.
+3 Turn on WIFI on Mobile Device 1.
+4 Turn off WIFI-Hotspot on HU.
+5 Wait 15 seconds.
+6 Turn on WIFI-Hotspot on HU.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Connection via WIFI is lost.
+2
+3 Mobile Device 1 reconnects with WIFI-Hotspot.
+4 Connection via WIFI is lost.
+5
+6 Mobile Device 1 reconnects with WIFI-Hotspot.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="99" source_row="15906">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173081</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-150: Connection</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-87818</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>CarPlay is supported by Mobile Device (Apple only).</Test_Case_Precondition>
+    <Test_Case_Description>1 Activate Bluetooth and WIFI on Mobile Device 1.
+2 On HU navigate to Communication -&gt; Manage mobile devices.
+3 Choose Mobile Device 1 and connect Apple CarPlay.
+Follow instructions shown on Mobile Device 1 and HU.</Test_Case_Description>
+    <Test_Case_Expected_Result>3 CarPlay connects with HU.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="100" source_row="16067">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173082</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-151: Playback after interruption (Traffic Anouncement)</Test_Case_Name>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>CarPlay is supported by Mobile Device (Apple only).
+CarPlay connection is established between Mobile Device and HU.</Test_Case_Precondition>
+    <Test_Case_Description>1 Start audio playbaIDCEvo and wait for traffic announcement.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio playbaIDCEvo stop or pause during TA, and resumes to play after the TA interruption.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="101" source_row="16228">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173083</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-152: Audio Playback</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-16869; IDCEVODEV-87818</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>CarPlay is supported by Mobile Device (Apple only).
+CarPlay connection is established between Mobile Device and HU.</Test_Case_Precondition>
+    <Test_Case_Description>1 Go to &quot;Itunes&quot; in CarPlay Menu and start play audio. 
+2 Go to &quot;Podcasts&quot; in CarPlay Menu and start audio. 
+3 Try other audio you find and start play audio.</Test_Case_Description>
+    <Test_Case_Expected_Result>1 Audio in  iTunes is hearable and without interruptions.
+2 Audio in Podcast is hearable and without interruptions.
+3 Audio is hearable and without interruptions.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="102" source_row="16389">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173084</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-153: IE10_Phonecall_Music_Hearable</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-87818</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Carplay connected 
+Music playing via Carplay</Test_Case_Precondition>
+    <Test_Case_Description>1. Receive a phonecall on Carplay while music is playing</Test_Case_Description>
+    <Test_Case_Expected_Result>1. Phonecall sound should be hearable</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="103" source_row="16550">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173085</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-154: Audio Hearable</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-87818</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>Carplay connected</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via Carplay</Test_Case_Description>
+    <Test_Case_Expected_Result>1. Music should be hearable</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="104" source_row="16711">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173086</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-155: Video Interface Shown</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-87818</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. MGU, RAM ready 
+2. Carplay device ready to be connected</Test_Case_Precondition>
+    <Test_Case_Description>1. Start connecting device as Carplay source</Test_Case_Description>
+    <Test_Case_Expected_Result>1. Carplay interface should be available</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="105" source_row="16872">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173120</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-200: Audio_ENT_Android_Auto</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-87850; IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>MGU, RAM both flashed and ready
+Vehicle speed 0</Test_Case_Precondition>
+    <Test_Case_Description>Start Android Auto audio Source</Test_Case_Description>
+    <Test_Case_Expected_Result>1. Android auto source hearable and volume is adjustable</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="106" source_row="17033">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173121</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-201: Connect Android Auto device from Device Menu</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-87850; IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. ANdroid auto functionality is enabled on the system
+3. Android auto support system setting is enabled</Test_Case_Precondition>
+    <Test_Case_Description>1. Open HU pairing menu and add new device
+2. Connect AndroidPhone as AndroidAuto source on target
+3. Accept Android Auto disclaimer in the HMI and on the MD</Test_Case_Description>
+    <Test_Case_Expected_Result>1. Android auto activated and interface is shown</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="107" source_row="17194">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173122</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-202: Disconnect Android Auto device while multiple MDs are connected</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto
+4. Other MDs are paired to the system</Test_Case_Precondition>
+    <Test_Case_Description>1. Disconnect Android auto device</Test_Case_Description>
+    <Test_Case_Expected_Result>1. The system disconnects Android auto device from HU
+2. Reconnection is happening for a paired MD only if an empty slot is free, for the same profile.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="108" source_row="17355">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173123</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-203: Automatic Reconnection for Android Auto device after LC</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Perform a LC on bench/vehicle</Test_Case_Description>
+    <Test_Case_Expected_Result>1. Reconnection is happening for AndroidAuto device, with previous configuration</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="109" source_row="17516">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173124</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-204: Phonecall while in Android Auto</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Perform a phonecall while in AndroidAuto</Test_Case_Description>
+    <Test_Case_Expected_Result>1. Phonecall is the main audio source
+2. Phonecall is hearable
+3. Music is paused while in phonecall</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="110" source_row="17677">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173125</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-205: AndroidAuto_navigation_through_menus</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-87850; IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Navigate through AndroidAuto interface</Test_Case_Description>
+    <Test_Case_Expected_Result>1. Navigation through menus is possible, smooth and no crashes are observed.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="111" source_row="17838">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173126</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-206: AAP_guidance_alone</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Activate in GoogleMaps guidance
+2. Attempt quiIDCEvo turn-by-turn instructions successions by pressing Google Maps UI</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP navigation source.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="112" source_row="17999">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173127</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-207: AAP_media_alone</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Play music from internal storage or via 3rd Party app.</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP entertainment source</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="113" source_row="18160">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173128</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-208: AAP_assistant_alone</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Trigger Google Assistant session
+2. Cancel at midway + quiIDCEvo start/stop session</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP speech source</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="114" source_row="18321">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173129</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-209: AAP_media+guidance</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via AAP entertainment source
+2. Start AAP guidance</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP on ent source
+2. HU duIDCEvos AAP ent source when AAP guidance is hearable</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="115" source_row="18482">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173130</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-210: AAP_media+assistance</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via AAP entertainment source
+2. Trigger AAP speech</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP on ent source
+2. HU pauses AAP audio source and plays assistant. Audio resumes after assistant ended</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="116" source_row="18643">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173131</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-211: AAP_media+guidance+assistant</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via AAP entertainment source
+2. Start AAP guidance
+3. Trigger an AAP speech assistant</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP on ent source
+2. HU overlayes audio and navigation source
+3. AAP entertainment source is paused during assistant and AAP navigation audio is terminated. AAP ent resumes after assistant ends.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="117" source_row="18804">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173132</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-212: AAP_media mute/unmute</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via AAP entertainment source
+2. Press Mute button on volume control knob</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP on ent source
+2. HU mutes AAP ent source playing. At unmute, AAP source resumes and is hearable.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="118" source_row="18965">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173133</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-213: AAP_media+guidance mute/unmute</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via AAP entertainment source
+2. Start AAP guidance
+3. Mute system</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP on ent source
+2. AAP ent source is overlayed by AAP navigation source
+3. When Muted AAP ent source pauses and AAP navigation pauses or it's terminated.
+4. When Unmuted, AAP ent source resumes and AAP navi resumes(if unmute happens immediatly after mute), or it's heard in the next AAP navi annoucement</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="119" source_row="19126">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173134</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-214: AAP_media+assistance mute/unmute</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via AAP entertainment source
+2. Start AAP assistance
+3. Mute system</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP on ent source
+2. AAP ent source is paused during AAP assistant - blip sound is heard and assistant is active.
+3. After assistant is terminated, AAP ent is resumed.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="120" source_row="19287">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173135</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-215: AAP_media + Native assistant</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via AAP entertainment source
+2. Start Native assistant</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP on ent source
+2. AAP ent source is paused during native assistant 
+3. After native assistant is ended, AAP ent source is resumed.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="121" source_row="19448">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173136</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-216: AAP_media + Native navigation</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via AAP entertainment source
+2. Start Native navigation</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP on ent source
+2.HU plays ent source with duIDCEvoing done with device not by HU, and HU plays navi annoucements as overlay</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="122" source_row="19609">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173137</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-217: AAP_media + AAP navigation + Native assistant</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via AAP entertainment source
+2. Start AAP navigation
+3. Trigger Native assistant</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on AAP on ent source
+2.HU plays ent source with duIDCEvoing done with device not by HU, and HU plays navi annoucements as overlay
+3. When Native assistant is triggered, AAP ent is paused, and AAP navi annoucements is ended or mixed with assistant. AAP Ent is resumed after native assistant is ended.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="123" source_row="19770">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173138</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-218: Native media + AAP guidance</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via native media player
+2. Start AAP navigation</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on native media
+2. Navi annoucements and native media are overlayed.</Test_Case_Expected_Result>
+  </TestCase>
+  <TestCase id="124" source_row="19931">
+    <_Release_Item_ID>173155</_Release_Item_ID>
+    <Test_Case_Item_ID>173139</Test_Case_Item_ID>
+    <Test_Case_Name>CEC-219: Native media + AAP assistant</Test_Case_Name>
+    <Test_Case_Free_field_1>IDCEVODEV-42536</Test_Case_Free_field_1>
+    <Test_Result_Performance_Test_Number>0</Test_Result_Performance_Test_Number>
+    <Test_Result_Performance_Minimal>0.00</Test_Result_Performance_Minimal>
+    <Test_Result_Performance_Maximal>0.00</Test_Result_Performance_Maximal>
+    <Test_Result_Performance_Average>0.00</Test_Result_Performance_Average>
+    <Test_Case_Country>Common</Test_Case_Country>
+    <Test_Case_Variant_1>ECE Google Pixel 9 Pro XL</Test_Case_Variant_1>
+    <Test_Case_Variant_2>Common</Test_Case_Variant_2>
+    <Test_Case_Precondition>1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto</Test_Case_Precondition>
+    <Test_Case_Description>1. Start playing music via native media player
+2. Start AAP assistant</Test_Case_Description>
+    <Test_Case_Expected_Result>1. HU plays audio on native media
+2. AAP assitant pauses native media, and is resumed after AAP assistant is ended.</Test_Case_Expected_Result>
+  </TestCase>
+</TestCases>
