@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Test Automation Demo</title>
+<style>
+.editable-cell {
+    min-width: 200px;
+    min-height: 50px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    cursor: text;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.editable-cell:focus {
+    outline: 2px solid #007bff;
+    background-color: #f8f9fa;
+}
+.save-button {
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.save-button:hover {
+    background-color: #218838;
+}
+.save-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+}
+/* Specific width control for Test Name column */
+th:nth-child(2), td:nth-child(2) {
+    width: 10%;
+    max-width: 150px;
+    min-width: 100px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+/* Test Script Description column (6th column) - truncated view */
+td:nth-child(6) {
+    max-height: 60px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: max-height 0.3s ease;
+}
+td:nth-child(6).expanded {
+    max-height: none;
+    overflow: visible;
+}
+td:nth-child(6):not(.expanded)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30px;
+    height: 20px;
+    background: linear-gradient(to right, transparent, #ffffff);
+    pointer-events: none;
+}
+td:nth-child(6):not(.expanded):hover {
+    background-color: #f8f9fa;
+}
+th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+.status-message {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: none;
+}
+.status-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+.status-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+</style>
+</head>
+<body>
+<h2>STEP 1 — Upload XML</h2>
+<input type="file" id="xmlFile">
+<button onclick="uploadXML()">Upload</button>
+<h3>Select Test Cases</h3>
+<div id="testList"></div>
+<button onclick="importTests()">
+Import selected tests into CSV
+</button>
+<hr>
+<h2>STEP 2 — Update&Review CSV</h2>
+<button onclick="generateDescriptions()">
+Generate Script Description (AI)
+</button>
+<button onclick="generateScripts()">
+Generate Python Scripts
+</button>
+<button id="saveButton" class="save-button" onclick="saveCSV()" style="display: none;">
+Save Changes
+</button>
+<div id="progressContainer" style="display: none; margin: 10px 0;">
+  <div style="margin-bottom: 5px;">
+    <span id="progressText">Processing...</span>
+  </div>
+  <div style="width: 100%; background-color: #f0f0f0; border-radius: 10px;">
+    <div id="progressBar" style="width: 0%; height: 20px; background-color: #007bff; border-radius: 10px; transition: width 0.3s ease;"></div>
+  </div>
+</div>
+<div id="statusMessage" class="status-message"></div>
+<table border="1">
+<thead>
+<tr>
+<th>Test Case ID</th>
+<th>Test Name</th>
+<th>Test Case Precondition</th>
+<th>Test Case Description</th>
+<th>Test Case Expected Result</th>
+<th>Test Script Description</th>
+</tr>
+</thead>
+<tbody id="table"></tbody>
+</table>
+<script src="/static/script.js"></script>
+</body>
+</html>
