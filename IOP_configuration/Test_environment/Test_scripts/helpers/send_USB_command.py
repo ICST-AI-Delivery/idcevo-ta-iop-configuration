@@ -1,6 +1,37 @@
 import time
 import sys
 import subprocess
+import os
+import re
+
+def extract_com_port_from_batch():
+    """Extract COM port from run_IOP.bat file"""
+    try:
+        # Path to run_IOP.bat (4 folders up from current script)
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        batch_file_path = os.path.join(current_dir, '..', '..', '..', '..', 'run_IOP.bat')
+        batch_file_path = os.path.normpath(batch_file_path)
+        
+        if not os.path.exists(batch_file_path):
+            print(f"Warning: run_IOP.bat not found at {batch_file_path}, using default COM38")
+            return 'COM38'
+        
+        with open(batch_file_path, 'r') as file:
+            content = file.read()
+            
+        # Look for the USB_MATRIX_COM_PORT pattern
+        match = re.search(r'set\s+"USB_MATRIX_COM_PORT=([^"]+)"', content)
+        if match:
+            com_port = match.group(1)
+            print(f"Extracted COM port from run_IOP.bat: {com_port}")
+            return com_port
+        else:
+            print("Warning: USB_MATRIX_COM_PORT not found in run_IOP.bat, using default COM38")
+            return 'COM38'
+            
+    except Exception as e:
+        print(f"Warning: Error reading run_IOP.bat: {e}, using default COM38")
+        return 'COM38'
 
 # Safely handle command line argument
 try:
@@ -15,9 +46,10 @@ try:
     try:
         import serial
         # Configure Serial port for USB Matrix
-        print(f"Trying to open COM38...")
+        com_port = extract_com_port_from_batch()
+        print(f"Trying to open {com_port}...")
         ser = serial.Serial(
-            port='COM38',
+            port=com_port,
             baudrate=9600,
             bytesize=serial.EIGHTBITS,
             parity=serial.PARITY_NONE,
@@ -25,7 +57,7 @@ try:
             timeout=0.3
         )
         
-        print("COM38 opened successfully")
+        print(f"{com_port} opened successfully")
         time.sleep(2)
         
         # Select the hub and usb port for USB Matrix

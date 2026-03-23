@@ -40,6 +40,10 @@ Call_waiting
 Multiparty_call_switching
 Conference_call
 Signal_strength_indicator
+Internal_memory
+Reconnect_as_active_source
+Start_player_during_active_call
+A2DP_conn
 HFP_conn
 On_Tap_MD_connect_disconnect
 Mobile_Device_Reconnect_after_Power_Off

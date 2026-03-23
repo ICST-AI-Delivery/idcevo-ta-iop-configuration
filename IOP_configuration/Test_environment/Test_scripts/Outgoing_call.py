@@ -20,6 +20,8 @@ test_name = "Outgoing_call"
 
 def main():
     save_to_notepad(f"=== Test {test_name} started ===\n")
+    base_dir = extract_base_dir_from_batch()
+    path = f"{base_dir}/Test_environment/Test_scripts"
     
     # Initialize test result tracking
     test_passed = False
@@ -191,7 +193,7 @@ def main():
             assert rc == 0, f"Command {cmd} failed: {rc}\n"
 
         # Move the screenshot to the specified path
-        command = f"move {test_name}.png D:/traget/IDCevo/IOP_configuration/Test_results/Screenshots"
+        command = f"move {test_name}.png {base_dir}/Test_results/Screenshots"
         stdout, stderr, rc = run_cmd(command)
         if stderr:
             save_to_notepad(f"[Command failed:] ({command}:)")
@@ -199,8 +201,6 @@ def main():
         save_to_notepad(f"[Executed command:] ({command}:)")  
         save_to_notepad(f"Result: {stdout}\n") 
         assert rc == 0, f"Command {command} failed: {rc}\n"
-        
-        save_to_notepad(f"Screenshot saved to D:/traget/IDCevo/IOP_configuration/Test_results/Screenshots\n")
 
         # End call on Mobile Device
         phone.end_call_command()

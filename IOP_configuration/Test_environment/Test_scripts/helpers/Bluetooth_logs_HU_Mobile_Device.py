@@ -5,7 +5,8 @@ from save_to_notepad import *
 import time
 
 def main():
-    path = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts"
+    base_dir = extract_base_dir_from_batch()
+    path = f"{base_dir}/Test_environment/Test_scripts"
 
     try:
         # Check USB Matrix status
@@ -103,7 +104,8 @@ def main():
         time.sleep(2)
 
         # Clean up the screenshot
-        cmd = r"del D:\traget\IDCevo\IOP_configuration\Test_environment\Test_scripts\screenshot.png"
+        screenshot_path = f"{base_dir}/Test_environment/Test_scripts/screenshot.png".replace('/', '\\')
+        cmd = f'del "{screenshot_path}"'
         stdout, stderr, rc = run_cmd(cmd)
 
         # Click Report Button from Mobile1 display
@@ -139,7 +141,7 @@ def main():
         download_bug_report_commands = [
             f"for /f %f in ('adb -s {Mobile1} shell \"ls /bugreports/*.zip\"') do adb -s {Mobile1} pull %f",   # Mobile1 pull bugreports
             f"adb -s {Mobile1} shell rm /bugreports/*.zip",    # Mobile1 cleanup bugreports
-            f"move bugreport* D:/traget/IDCevo/IOP_configuration/Test_results"
+            f"move bugreport* {base_dir}/Test_results"
         ]
         
         for cmd in download_bug_report_commands:
@@ -187,7 +189,7 @@ def main():
             assert rc == 0, f"Download BTsnoop command {cmd} failed: {rc}\n"
 
         # move the btsnoop logs
-        command = f"move btsnoop* D:/traget/IDCevo/IOP_configuration/Test_results"
+        command = f"move btsnoop* {base_dir}/Test_results"
         stdout, stderr, rc = run_cmd(command)
         # Console display 
         if stderr:

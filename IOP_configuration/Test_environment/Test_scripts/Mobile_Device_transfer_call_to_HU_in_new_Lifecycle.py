@@ -25,7 +25,8 @@ def left_click():
    ctypes.windll.user32.mouse_event(4, 0, 0, 0, 0)  # mouse up
 
 def click_on_Retry():    
-    screenshot_path = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts/pc_screenshot.png"
+    base_dir = extract_base_dir_from_batch()   
+    screenshot_path = f"{base_dir}/Test_environment/Test_scripts/pc_screenshot.png"
     
     try:
         # Take screenshot of entire desktop
@@ -34,7 +35,7 @@ def click_on_Retry():
         screenshot.save(screenshot_path)
         save_to_notepad(f"PC desktop screenshot saved to {screenshot_path}\n")
 
-        path = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts"
+        path = f"{base_dir}/Test_environment/Test_scripts"
         x, y = find_icon_in_screenshot(f"{path}/pc_screenshot.png", f"{path}/helpers/Retry.png")
         set_mouse_position(x+10, y+10)
         time.sleep(0.05)
@@ -58,7 +59,8 @@ def click_on_Retry():
 
 def main():
     save_to_notepad(f"=== Test {test_name} started ===\n")
-    path = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts"
+    base_dir = extract_base_dir_from_batch()
+    path = f"{base_dir}/Test_environment/Test_scripts"
     
     # Initialize test result tracking
     test_passed = False
@@ -152,8 +154,8 @@ def main():
         
         # Move BTsnoop logs to target directory
         move_commands = [
-            f"move btsnoop_hci_before_poweroff_transfer.log D:/traget/IDCevo/IOP_configuration/Test_results",
-            f"move btsnoop_hci_before_poweroff_transfer.log.last D:/traget/IDCevo/IOP_configuration/Test_results"
+            f"move btsnoop_hci_before_poweroff_transfer.log {base_dir}/Test_results",
+            f"move btsnoop_hci_before_poweroff_transfer.log.last {base_dir}/Test_results"
         ]
         
         for cmd in move_commands:
@@ -288,7 +290,8 @@ def main():
             time.sleep(2)
 
         # Clean up the screenshot
-        cmd = r"del D:\traget\IDCevo\IOP_configuration\Test_environment\Test_scripts\screenshot.png"
+        screenshot_path = f"{base_dir}/Test_environment/Test_scripts/screenshot.png".replace('/', '\\')
+        cmd = f'del "{screenshot_path}"'
         stdout, stderr, rc = run_cmd(cmd)
         
         # Restart BTsnoop logging
@@ -388,7 +391,7 @@ def main():
             assert rc == 0, f"Command {cmd} failed: {rc}\n"
 
         # Move the screenshot to the specified path
-        command = f"move {test_name}.png D:/traget/IDCevo/IOP_configuration/Test_results/Screenshots"
+        command = f"move {test_name}.png {base_dir}/Test_results/Screenshots"
         stdout, stderr, rc = run_cmd(command)
         if stderr:
             save_to_notepad(f"[Command failed:] ({command}:)")

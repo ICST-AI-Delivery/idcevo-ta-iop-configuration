@@ -5,6 +5,38 @@ import os
 import sys
 import traceback
 from datetime import datetime
+import re
+
+def extract_base_dir_from_batch():
+    """Extract BASE_DIR from base_dir.txt file"""
+    try:
+        # Path to base_dir.txt (same folder as demo_app.py)
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        batch_file_path = os.path.join(current_dir, 'base_dir.txt')
+        batch_file_path = os.path.normpath(batch_file_path)
+        
+        if not os.path.exists(batch_file_path):
+            print(f"Warning: base_dir.txt not found at {batch_file_path}, using default D:/traget/IDCevo")
+            return 'D:/traget/IDCevo'
+        
+        with open(batch_file_path, 'r') as file:
+            content = file.read()
+            
+        # Look for the BASE_DIR pattern
+        match = re.search(r'set\s+"BASE_DIR=([^"]+)"', content)
+        if match:
+            base_dir = match.group(1)
+            # Convert backslashes to forward slashes for consistency
+            base_dir = base_dir.replace('\\', '/')
+            print(f"Extracted BASE_DIR from base_dir.txt: {base_dir}")
+            return base_dir
+        else:
+            print("Warning: BASE_DIR not found in base_dir.txt, using default D:/traget/IDCevo")
+            return 'D:/traget/IDCevo'
+            
+    except Exception as e:
+        print(f"Warning: Error reading base_dir.txt: {e}, using default D:/traget/IDCevo")
+        return 'D:/traget/IDCevo'
 
 def debug_log(message):
     """Simple debug function that writes to both console and file"""
@@ -49,8 +81,11 @@ except Exception as e:
     litellm = None
 
 app = Flask(__name__)
-CSV_PATH = "D:/traget/IDCevo/BMW_IDCevo_IOP_Test_script_generator/BMW_IDCevo_IOP.csv"
-XML_PATH = "D:/traget/IDCevo/BMW_IDCevo_IOP_Test_script_generator/BMW_IDCevo_IOP_Validation.xml"
+
+# Extract base directory from run_IOP.bat and construct paths
+base_dir = extract_base_dir_from_batch()
+CSV_PATH = f"{base_dir}/BMW_IDCevo_IOP_Test_script_generator/BMW_IDCevo_IOP.csv"
+XML_PATH = f"{base_dir}/BMW_IDCevo_IOP_Test_script_generator/BMW_IDCevo_IOP_Validation.xml"
 
 # Log when Flask app starts
 debug_log("Flask application initialized successfully")
@@ -578,7 +613,7 @@ def generate_scripts():
     debug_log(f"Loaded CSV with {len(df)} rows")
     
     # Target directory for test scripts (for review before moving to test configuration)
-    target_scripts_dir = "D:/traget/IDCevo/BMW IDCevo IOP demo/scripts"
+    target_scripts_dir = f"{base_dir}/BMW_IDCevo_IOP_Test_script_generator/scripts"
     debug_log(f"Target scripts directory: {target_scripts_dir}")
     
     if not os.path.exists(target_scripts_dir):
@@ -586,7 +621,7 @@ def generate_scripts():
         os.makedirs(target_scripts_dir, exist_ok=True)
     
     # Reference directory to compare against (actual test scripts location)
-    reference_scripts_dir = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts"
+    reference_scripts_dir = f"{base_dir}/IOP_configuration/Test_environment/Test_scripts"
     
     # Get list of existing script files from the reference directory
     existing_scripts = []
@@ -1058,7 +1093,8 @@ SCREENSHOT EXAMPLE:
             save_to_notepad(f"Result: {{stdout}}\\\n") 
             assert rc == 0, f"Command {{cmd}}\\ failed: {{rc}}\\\n"
 
-        command = f"move {{test_name}}\\.png D:/traget/IDCevo/IOP_configuration/Test_results/Screenshots"
+        screenshots_dir = f"{{base_dir}}/Test_results/Screenshots".replace('/', '\\')
+        command = f'move {{test_name}}.png "{{screenshots_dir}}"'
         stdout, stderr, rc = run_cmd(command)
         if stderr:
             save_to_notepad(f"[Command failed:] ({{command}}\\:)")
@@ -1115,9 +1151,10 @@ ICON CLICKS WITH SCREENSHOTS:
               assert x != 0 and y != 0, f"Icon has not been found on display.\\n"
               save_to_notepad(f"Icon has been found and pressed!\\n")
       
-      # Clean up screenshot
-      cmd = r"del D:\\traget\\IDCevo\\IOP_configuration\\Test_environment\\Test_scripts\\screenshot.png"
-      stdout, stderr, rc = run_cmd(cmd)
+    # Clean up screenshot
+    screenshot_path = f"{{base_dir}}/Test_environment/Test_scripts/screenshot.png".replace('/', '\\')
+    cmd = f'del "{{screenshot_path}}"'
+    stdout, stderr, rc = run_cmd(cmd)
 
 Test Case: {test_name}
 Script Description (implement EXACTLY): {script_description_for_api}
