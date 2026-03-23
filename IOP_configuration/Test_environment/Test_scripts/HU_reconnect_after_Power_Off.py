@@ -23,8 +23,9 @@ def left_click():
    ctypes.windll.user32.mouse_event(2, 0, 0, 0, 0)  # mouse down
    ctypes.windll.user32.mouse_event(4, 0, 0, 0, 0)  # mouse up
 
-def click_on_Retry():    
-    screenshot_path = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts/pc_screenshot.png"
+def click_on_Retry(): 
+    base_dir = extract_base_dir_from_batch()   
+    screenshot_path = f"{base_dir}/Test_environment/Test_scripts/pc_screenshot.png"
     
     try:
         # Take screenshot of entire desktop
@@ -33,7 +34,7 @@ def click_on_Retry():
         screenshot.save(screenshot_path)
         save_to_notepad(f"PC desktop screenshot saved to {screenshot_path}\n")
 
-        path = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts"
+        path = f"{base_dir}/Test_environment/Test_scripts"
         x, y = find_icon_in_screenshot(f"{path}/pc_screenshot.png", f"{path}/helpers/Retry.png")
         set_mouse_position(x+10, y+10)
         time.sleep(0.05)
@@ -57,7 +58,8 @@ def click_on_Retry():
 
 def main():
     save_to_notepad(f"=== Test {test_name} started ===\n")
-    path = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts"
+    base_dir = extract_base_dir_from_batch()
+    path = f"{base_dir}/Test_environment/Test_scripts"
     
     # Initialize test result tracking
     test_passed = False
@@ -161,7 +163,7 @@ def main():
         time.sleep(2)    
 
         # move the btsnoop logs
-        command = f"move btsnoop* D:/traget/IDCevo/IOP_configuration/Test_results"
+        command = f"move btsnoop* {base_dir}/Test_results"
         stdout, stderr, rc = run_cmd(command)
         # Console display 
         if stderr:
@@ -341,7 +343,8 @@ def main():
             save_to_notepad(f"Bluetooth icon has been found on HU display!\n")
         
         # Clean up the screenshot
-        cmd = r"del D:\traget\IDCevo\IOP_configuration\Test_environment\Test_scripts\screenshot.png"
+        screenshot_path = f"{base_dir}/Test_environment/Test_scripts/screenshot.png".replace('/', '\\')
+        cmd = f'del "{screenshot_path}"'
         stdout, stderr, rc = run_cmd(cmd)
         
         # Press on Manage Devices button from HU display
@@ -387,7 +390,7 @@ def main():
             assert rc == 0, f"Screenshot command {cmd} failed: {rc}\n"
         
         # move the screenshot
-        command = f"move {test_name}.png D:/traget/IDCevo/IOP_configuration/Test_results/Screenshots"
+        command = f"move {test_name}.png {base_dir}/Test_results/Screenshots"
         stdout, stderr, rc = run_cmd(command)
         # Console display 
         if stderr:

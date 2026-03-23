@@ -2,6 +2,7 @@ import serial
 import time
 import subprocess
 import re
+import os
 
 device_names = [
     "HU",
@@ -12,13 +13,44 @@ device_commands = {}
 # Global variable for serial connection
 ser = None
 
+def extract_com_port_from_batch():
+    """Extract COM port from run_IOP.bat file"""
+    try:
+        # Path to run_IOP.bat (4 folders up from current script)
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        batch_file_path = os.path.join(current_dir, '..', '..', '..', 'run_IOP.bat')
+        batch_file_path = os.path.normpath(batch_file_path)
+        
+        if not os.path.exists(batch_file_path):
+            print(f"Warning: run_IOP.bat not found at {batch_file_path}, using default COM38")
+            return 'COM38'
+        
+        with open(batch_file_path, 'r') as file:
+            content = file.read()
+            
+        # Look for the USB_MATRIX_COM_PORT pattern
+        import re
+        match = re.search(r'set\s+"USB_MATRIX_COM_PORT=([^"]+)"', content)
+        if match:
+            com_port = match.group(1)
+            print(f"Extracted USB Matrix COM port from run_IOP.bat: {com_port}")
+            return com_port
+        else:
+            print("Warning: USB_MATRIX_COM_PORT not found in run_IOP.bat, using default COM38")
+            return 'COM38'
+            
+    except Exception as e:
+        print(f"Warning: Error reading run_IOP.bat: {e}, using default COM38")
+        return 'COM38'
+
 def init_serial_connection():
     """Initialize serial connection when needed"""
     global ser
     if ser is None:
         try:
+            com_port = extract_com_port_from_batch()
             ser = serial.Serial(
-                port='COM38',
+                port=com_port,
                 baudrate=9600,
                 bytesize=serial.EIGHTBITS,
                 parity=serial.PARITY_NONE,
@@ -26,7 +58,8 @@ def init_serial_connection():
                 timeout=0.3
             )
         except Exception as e:
-            print(f"Warning: Could not initialize serial connection to COM38: {e}")
+            com_port = extract_com_port_from_batch()
+            print(f"Warning: Could not initialize serial connection to {com_port}: {e}")
             ser = None
     return ser
 

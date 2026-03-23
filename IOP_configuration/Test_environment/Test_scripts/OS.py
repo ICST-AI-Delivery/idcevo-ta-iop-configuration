@@ -13,7 +13,7 @@ def main():
 
     # Commands to be executed
     commands = [
-        r'dir D:\ /s /b | findstr /r "traget.*IDCevo.*[0-9][0-9]w[0-9]*\.[0-9]*-[0-9].*images.*idcevo-hv.*Flashbins.*IDCEvo-Artifacts.*tools.*fastboot$"',
+        r'dir D:\ /s /b | findstr /r "[0-9][0-9]w[0-9]*\.[0-9]*-[0-9].*images.*idcevo-hv.*Flashbins.*IDCEvo-Artifacts.*tools.*fastboot$"',
         adb_command
     ]
 

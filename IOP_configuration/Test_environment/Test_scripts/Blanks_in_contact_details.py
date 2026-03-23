@@ -10,7 +10,8 @@ test_name = "Blanks_in_contact_details"
 
 def main():
     save_to_notepad(f"=== Test {test_name} started ===\n")
-    path = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts"
+    base_dir = extract_base_dir_from_batch()
+    path = f"{base_dir}/Test_environment/Test_scripts"
     
     # Initialize test result tracking
     test_passed = False
@@ -166,7 +167,6 @@ def main():
         save_to_notepad(f"Contact '{contact_to_find}' button has been found and pressed on HU display.\n")
 
         # Check if contact_to_find word can be found on HU display
-        found = find_word_on_device_via_regex(HU, click_target)
         if found == True:
             success_message = f"{mobile_name} Contact with blank details is displayed successfully on HU."
             save_to_notepad(f"{success_message}\n")
@@ -194,7 +194,7 @@ def main():
             assert rc == 0, f"Command {cmd} failed: {rc}\n"
 
         # move the screenshot
-        command = f"move {test_name}.png D:/traget/IDCevo/IOP_configuration/Test_results/Screenshots"
+        command = f"move {test_name}.png {base_dir}/Test_results/Screenshots"
         stdout, stderr, rc = run_cmd(command)
         # Console display 
         if stderr:

@@ -23,7 +23,8 @@ test_name = "HFP_conn"
 
 def main():
     save_to_notepad(f"=== Test {test_name} started ===\n")
-    path = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts"
+    base_dir = extract_base_dir_from_batch()
+    path = f"{base_dir}/Test_environment/Test_scripts"
     
     # Initialize test result tracking
     test_passed = False
@@ -101,7 +102,8 @@ def main():
             save_to_notepad(f"Bluetooth icon has been found on HU display!\n")
         
         # Clean up the screenshot
-        cmd = r"del D:\traget\IDCevo\IOP_configuration\Test_environment\Test_scripts\screenshot.png"
+        screenshot_path = f"{base_dir}/Test_environment/Test_scripts/screenshot.png".replace('/', '\\')
+        cmd = f'del "{screenshot_path}"'
         stdout, stderr, rc = run_cmd(cmd)
 
         # Click Manage Devices Button from HU display
@@ -157,7 +159,7 @@ def main():
             assert rc == 0, f"Command {cmd} failed: {rc}\n"
 
         # Move the screenshot to Screenshots folder
-        command = f"move {test_name}.png D:/traget/IDCevo/IOP_configuration/Test_results/Screenshots"
+        command = f"move {test_name}.png {base_dir}/Test_results/Screenshots"
         stdout, stderr, rc = run_cmd(command)
         if stderr:
             save_to_notepad(f"[Command failed:] ({command}:)")

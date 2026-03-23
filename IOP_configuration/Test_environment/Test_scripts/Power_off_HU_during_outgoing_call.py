@@ -24,6 +24,8 @@ test_name = "Power_off_HU_during_outgoing_call"
 
 def main():
     save_to_notepad(f"=== Test {test_name} started ===\n")
+    base_dir = extract_base_dir_from_batch()
+    path = f"{base_dir}/Test_environment/Test_scripts"
     
     # Initialize test result tracking
     test_passed = False
@@ -174,8 +176,8 @@ def main():
         
         # Move BTsnoop logs to target directory
         move_commands = [
-            f"move btsnoop_hci_before_poweroff_outgoing.log D:/traget/IDCevo/IOP_configuration/Test_results",
-            f"move btsnoop_hci_before_poweroff_outgoing.log.last D:/traget/IDCevo/IOP_configuration/Test_results"
+            f"move btsnoop_hci_before_poweroff_outgoing.log {base_dir}/Test_results",
+            f"move btsnoop_hci_before_poweroff_outgoing.log.last {base_dir}/Test_results"
         ]
         
         for cmd in move_commands:
@@ -235,7 +237,7 @@ def main():
             assert rc == 0, f"Command {cmd} failed: {rc}\n"
 
         # Move the screenshot to the specified path
-        command = f"move {test_name}.png D:/traget/IDCevo/IOP_configuration/Test_results/Screenshots"
+        command = f"move {test_name}.png {base_dir}/Test_results/Screenshots"
         stdout, stderr, rc = run_cmd(command)
         if stderr:
             save_to_notepad(f"[Command failed:] ({command}:)")

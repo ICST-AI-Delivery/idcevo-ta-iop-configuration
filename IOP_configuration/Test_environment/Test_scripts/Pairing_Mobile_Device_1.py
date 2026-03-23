@@ -9,7 +9,8 @@ test_name = "Pairing_Mobile_Device_1"
 
 def main():
     save_to_notepad(f"=== Test {test_name} started ===\n")
-    path = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts"
+    base_dir = extract_base_dir_from_batch()
+    path = f"{base_dir}/Test_environment/Test_scripts"
     
     # Initialize test result tracking
     test_passed = False
@@ -108,7 +109,8 @@ def main():
                     save_to_notepad(f"Bluetooth icon has been found on HU display!\n")
 
         # delete the screenshot
-        command = r"del D:\traget\IDCevo\IOP_configuration\Test_environment\Test_scripts\screenshot.png" 
+        screenshot_path = f"{base_dir}/Test_environment/Test_scripts/screenshot.png".replace('/', '\\')
+        command = f'del "{screenshot_path}"'
         stdout, stderr, rc = run_cmd(command)
         # Console display 
         if stderr:
@@ -237,7 +239,7 @@ def main():
                     test_passed = True
 
         # move the screenshot
-        command = f"move {test_name}.png D:/traget/IDCevo/IOP_configuration/Test_results/Screenshots"
+        command = f"move {test_name}.png {base_dir}/Test_results/Screenshots"
         stdout, stderr, rc = run_cmd(command)
         # Console display 
         if stderr:
