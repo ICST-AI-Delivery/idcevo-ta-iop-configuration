@@ -2149,6 +2149,23 @@ def huawei_p40_pro_transfer_audio_to_mobile(device, bluetooth_HU_name):
 # Xperia5 IMPLEMENTATION
 # =====================================================
 def Xperia5_transfer_audio_to_mobile(device, bluetooth_HU_name):
+    # Run input swipe command on Mobile device
+    command = f"shell input swipe 500 60 400 400"     # Mobile input swipe
+    stdout, stderr, rc = run_adb(command, device)
+    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
+    save_to_notepad(f"Result: {stdout}\n")
+    # Console display
+    if stderr:
+        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
+        save_to_notepad(f"Error text: {stderr}\n")
+    time.sleep(3)
+
+    found = click_on_device_regex(device,"call")
+    if found == True:
+        save_to_notepad(f"call button pressed successfully\n")
+    else:
+        save_to_notepad(f"call button could not be pressed\n")
+    time.sleep(3)
     found = click_on_device_regex(device,bluetooth_HU_name)
     if found == True:
         save_to_notepad(f"{bluetooth_HU_name} button pressed successfully\n")
@@ -2163,17 +2180,6 @@ def Xperia5_transfer_audio_to_mobile(device, bluetooth_HU_name):
     return found
 
 def Xperia5_transfer_audio_to_HU(device, bluetooth_HU_name):
-
-    # Run input tap command on Mobile device
-    command = f"shell input tap 70 500"     # Mobile input tap
-    stdout, stderr, rc = run_adb(command, device)
-    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
-    save_to_notepad(f"Result: {stdout}\n")
-    # Console display
-    if stderr:
-        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
-        save_to_notepad(f"Error text: {stderr}\n")
-
     found = click_on_device_regex(device,"Phone")
     if found == True:
         save_to_notepad(f"Phone button pressed successfully\n")
@@ -2232,23 +2238,6 @@ def legion_phone2_Pro_transfer_audio_to_HU(device, bluetooth_HU_name):
 # OPPO Find X8 Pro IMPLEMENTATION
 # =====================================================
 def oppo_find_x8_pro_transfer_audio_to_HU(device, bluetooth_HU_name):
-    # Run input swipe command on Mobile device
-    command = f"shell input swipe 500 60 400 400"     # Mobile input swipe
-    stdout, stderr, rc = run_adb(command, device)
-    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
-    save_to_notepad(f"Result: {stdout}\n")
-    # Console display
-    if stderr:
-        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
-        save_to_notepad(f"Error text: {stderr}\n")
-
-    found = click_on_device_regex(device,"Phone")
-    if found == True:
-        save_to_notepad(f"Phone button pressed successfully\n")
-    else:
-        save_to_notepad(f"Phone button could not be pressed\n")
-    time.sleep(3)
-
     base_dir = extract_base_dir_from_batch()
     path = f"{base_dir}/Test_environment/Test_scripts"
     # Click Phone Word commands
@@ -2298,8 +2287,25 @@ def oppo_find_x8_pro_transfer_audio_to_HU(device, bluetooth_HU_name):
     return found
 
 def oppo_find_x8_pro_transfer_audio_to_mobile(device, bluetooth_HU_name):
+    # Run input swipe command on Mobile device
+    command = f"shell input swipe 500 60 400 400"     # Mobile input swipe
+    stdout, stderr, rc = run_adb(command, device)
+    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
+    save_to_notepad(f"Result: {stdout}\n")
+    # Console display
+    if stderr:
+        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
+        save_to_notepad(f"Error text: {stderr}\n")
     base_dir = extract_base_dir_from_batch()
     path = f"{base_dir}/Test_environment/Test_scripts"
+
+    found = click_on_device_regex(device,"Phone")
+    if found == True:
+        save_to_notepad(f"Phone button pressed successfully\n")
+    else:
+        save_to_notepad(f"Phone button could not be pressed\n")
+    time.sleep(3)
+
     # Click Phone Word commands
     commands = [
         f"shell screencap -p /sdcard/screenshot.png", # Mobile command to take screenshot
@@ -2346,24 +2352,6 @@ def oppo_find_x8_pro_transfer_audio_to_mobile(device, bluetooth_HU_name):
 # Pixel 9 Pro IMPLEMENTATION
 # =====================================================
 def pixel_9_pro_transfer_audio_to_HU(device, bluetooth_HU_name):
-    # Run input swipe command on Mobile device
-    command = f"shell input swipe 500 60 400 400"     # Mobile input swipe
-    stdout, stderr, rc = run_adb(command, device)
-    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
-    save_to_notepad(f"Result: {stdout}\n")
-    # Console display
-    if stderr:
-        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
-        save_to_notepad(f"Error text: {stderr}\n")
-    time.sleep(3)
-
-    found = click_on_device_regex(device,"call")
-    if found == True:
-        save_to_notepad(f"call button pressed successfully\n")
-    else:
-        save_to_notepad(f"call button could not be pressed\n")
-    time.sleep(3)
-
     base_dir = extract_base_dir_from_batch()
     path = f"{base_dir}/Test_environment/Test_scripts"
     # Click Phone Word commands
@@ -2406,6 +2394,69 @@ def pixel_9_pro_transfer_audio_to_HU(device, bluetooth_HU_name):
         save_to_notepad(f"{bluetooth_HU_name} button could not be pressed\n")
     return found
 
+def pixel_9_pro_transfer_audio_to_mobile(device, bluetooth_HU_name):
+    # Run input swipe command on Mobile device
+    command = f"shell input swipe 500 60 400 400"     # Mobile input swipe
+    stdout, stderr, rc = run_adb(command, device)
+    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
+    save_to_notepad(f"Result: {stdout}\n")
+    # Console display
+    if stderr:
+        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
+        save_to_notepad(f"Error text: {stderr}\n")
+    time.sleep(3)
+
+    found = click_on_device_regex(device,"call")
+    if found == True:
+        save_to_notepad(f"call button pressed successfully\n")
+    else:
+        save_to_notepad(f"call button could not be pressed\n")
+    time.sleep(3)
+
+    base_dir = extract_base_dir_from_batch()
+    path = f"{base_dir}/Test_environment/Test_scripts"
+
+    # Click Phone Word commands
+    commands = [
+        f"shell screencap -p /sdcard/screenshot.png", # Mobile command to take screenshot
+        f"pull /sdcard/screenshot.png {path}", # Mobile command to save screenshot on PC
+        f"shell input tap 0 0" # Mobile command to click Phone word
+    ]
+
+    for cmd in commands:
+        x = 0
+        y = 0
+        if cmd == commands[2]:
+            # Split bluetooth_HU_name by space and use only the first part
+            bluetooth_name_first_part = bluetooth_HU_name.split()[0]
+            x,y = find_word_in_screenshot(f"{path}/screenshot.png",bluetooth_name_first_part)
+            cmd = f"shell input tap {x} {y-100}"
+
+        stdout, stderr, rc = run_adb(cmd, device)
+        # Console display
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({cmd}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({cmd}:)")
+        save_to_notepad(f"Result: {stdout}\n")
+
+    # delete the screenshot
+    screenshot_path = f"{base_dir}/Test_environment/Test_scripts/screenshot.png".replace('/', '\\')
+    command = f'del "{screenshot_path}"'
+    stdout, stderr, rc = run_cmd(command)
+    # Console display
+    if stderr:
+        save_to_notepad(f"[Command failed:] ({command}:)")
+        save_to_notepad(f"Error text: {stderr}\n")
+    save_to_notepad(f"[Executed command:] ({command}:)")
+    save_to_notepad(f"Result: {stdout}\n")
+
+    found = click_on_device_regex(device,"Phone")
+    if found == True:
+        save_to_notepad(f"Phone button pressed successfully\n")
+    else:
+        save_to_notepad(f"Phone button could not be pressed\n")
+    return found
 # =====================================================
 # MI 9 IMPLEMENTATION
 # =====================================================
@@ -2457,28 +2508,6 @@ def mi_9_transfer_audio_to_mobile(device, bluetooth_HU_name):
 # OnePlus 13 IMPLEMENTATION
 # =====================================================
 def oneplus_13_transfer_audio_to_HU(device, bluetooth_HU_name):
-    # Run input swipe command on Mobile device
-    command = f"shell input swipe 300 60 400 400"     # Mobile input swipe
-    stdout, stderr, rc = run_adb(command, device)
-    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
-    save_to_notepad(f"Result: {stdout}\n")
-    # Console display
-    if stderr:
-        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
-        save_to_notepad(f"Error text: {stderr}\n")
-    time.sleep(3)
-
-    # Run input tap command on Mobile device
-    command = f"shell input tap 150 1100"     # Mobile input tap
-    stdout, stderr, rc = run_adb(command, device)
-    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
-    save_to_notepad(f"Result: {stdout}\n")
-    # Console display
-    if stderr:
-        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
-        save_to_notepad(f"Error text: {stderr}\n")
-    time.sleep(3)
-
     base_dir = extract_base_dir_from_batch()
     path = f"{base_dir}/Test_environment/Test_scripts"
     # Click Phone Word commands
@@ -2526,24 +2555,6 @@ def oneplus_13_transfer_audio_to_HU(device, bluetooth_HU_name):
 # motorola one fusion IMPLEMENTATION
 # =====================================================
 def motorola_one_fusion_transfer_audio_to_HU(device, bluetooth_HU_name):
-    # Run input swipe command on Mobile device
-    command = f"shell input swipe 500 60 400 400"     # Mobile input swipe
-    stdout, stderr, rc = run_adb(command, device)
-    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
-    save_to_notepad(f"Result: {stdout}\n")
-    # Console display
-    if stderr:
-        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
-        save_to_notepad(f"Error text: {stderr}\n")
-    time.sleep(3)
-
-    found = click_on_device_regex(device,"call")
-    if found == True:
-        save_to_notepad(f"call button pressed successfully\n")
-    else:
-        save_to_notepad(f"call button could not be pressed\n")
-    time.sleep(3)
-
     found = click_on_device_regex(device,"Phone")
     if found == True:
         save_to_notepad(f"Phone button pressed successfully\n")
@@ -2745,7 +2756,7 @@ DEVICE_MENU = {
        "conference_call": poco_f7_ultra_conference_call
    },
    "Pixel 9 Pro": {
-       "transfer_audio_to_mobile": oppo_find_x8_pro_transfer_audio_to_mobile,
+       "transfer_audio_to_mobile": pixel_9_pro_transfer_audio_to_mobile,
        "transfer_audio_to_HU": pixel_9_pro_transfer_audio_to_HU
    },
    "one fusion": {

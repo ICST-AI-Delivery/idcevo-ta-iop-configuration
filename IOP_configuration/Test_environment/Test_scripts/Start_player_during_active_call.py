@@ -157,6 +157,12 @@ def main():
         save_to_notepad(f"Opened Media menu\n")
         time.sleep(1)
 
+        # Click Source button with regex from HU display
+        found = click_on_device_regex(HU, "Source")
+        time.sleep(1)
+        assert found == True, f"Source button has not been found on HU display.\n"
+        save_to_notepad(f"Source button has been found and pressed on HU display.\n")
+
         # Click Bluetooth name on HU from Media menu
         x, y = find_word_on_device_via_regex_with_coordinates(HU, "Bluetooth")
         assert x != 0 and y != 0, f"Bluetooth name not found on HU display\n"
@@ -281,6 +287,10 @@ def main():
         error_message = str(e)
         save_to_notepad(header="TEST FAILED", stderr=error_message, color="red")
         save_to_excel(test_name, "Failed", error_message)
+
+        # End call on Mobile Device1
+        phone.end_call_command()
+        time.sleep(2)
 
         try:
             # Cleanup commands on test failure

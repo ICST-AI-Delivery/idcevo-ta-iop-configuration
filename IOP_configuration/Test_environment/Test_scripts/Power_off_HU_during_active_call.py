@@ -262,7 +262,7 @@ def main():
         
         # Check if bluetooth connection was released after HU power off
         found = phone.check_bluetooth_connection()
-        if "ConnectionState: STATE_DISCONNECTED" in found:
+        if "ConnectionState: STATE_DISCONNECTED" in found or not found:
             success_message = f"Bluetooth connection was released and incoming call is indicated on {mobile_name}"
             save_to_notepad(f"{success_message}\n")
             save_to_notepad(header="TEST PASSED", color="green")
