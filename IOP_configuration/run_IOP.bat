@@ -8,7 +8,7 @@ echo.
 REM --- Create temporary batch file for each port ---
 echo Creating temporary batch files for USB port configuration...
 
-for %%N in (1,2,3,5) do (
+for %%N in (1,2,3,4,5) do (
    echo @echo off > temp_port_%%N.bat
    echo setlocal EnableDelayedExpansion >> temp_port_%%N.bat
    echo set "USB_MATRIX_COM_PORT=COM38" >> temp_port_%%N.bat

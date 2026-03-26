@@ -195,6 +195,12 @@ def main():
         
         save_to_notepad(f"Extracted Bluetooth device name: {bluetooth_device_name}\n")    
 
+        # Transfer audio to Mobile Device 1 speaker
+        found = phone.transfer_audio_to_mobile(bluetooth_device_name)
+        assert found == True, f"Transfer audio to mobile command failed\n"
+        save_to_notepad(f"Audio transfer to Mobile Device 1 initiated\n")
+        time.sleep(3)  # Wait for audio transfer to take effect
+        
         # Transfer audio to HU
         found = phone.transfer_audio_to_HU(bluetooth_device_name)
         assert found == True, f"Transfer audio to HU command failed\n"
@@ -237,12 +243,6 @@ def main():
         assert rc == 0, f"Command {command} failed: {rc}\n"
         
         save_to_notepad(f"HU device screenshot saved successfully.\n")
-
-        # Transfer audio to Mobile Device 1 speaker
-        found = phone.transfer_audio_to_mobile(bluetooth_device_name)
-        assert found == True, f"Transfer audio to mobile command failed\n"
-        save_to_notepad(f"Audio transfer to Mobile Device 1 initiated\n")
-        time.sleep(3)  # Wait for audio transfer to take effect
         
         # End call on Mobile Device1
         phone.end_call_command()

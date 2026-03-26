@@ -42,6 +42,7 @@ Conference_call
 Signal_strength_indicator
 Internal_memory
 Reconnect_as_active_source
+Reconnect_as_inactive_audio_source
 Start_player_during_active_call
 A2DP_conn
 HFP_conn

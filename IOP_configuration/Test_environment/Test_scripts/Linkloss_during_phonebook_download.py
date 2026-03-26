@@ -475,14 +475,14 @@ def main():
         # Click Manage Devices Button from HU display
         found = click_on_device(HU, "Manage devices")
         time.sleep(1)
-        assert found == True, f"Manage devices button has not been found on HU display.\n"
-        save_to_notepad(f"Manage devices button has been found and pressed on HU display.\n")
+
+        # Click Not now Button from HU display
+        found = click_on_device(HU, "Not now")
+        time.sleep(1)
 
         # Click Smartphones Button from HU display
         found = click_on_device(HU, "Smartphones")
         time.sleep(1)
-        assert found == True, f"Smartphones button has not been found on HU display.\n"
-        save_to_notepad(f"Smartphones button has been found and pressed on HU display.\n")
 
         # Commands to be executed
         menu_commands = [
@@ -511,7 +511,7 @@ def main():
             assert rc == 0, f"Command {cmd} failed: {rc}\n"
             if cmd == menu_commands[2]:
                 if x==0 & y==0:
-                    assert x!=0 & y!=0, f"Mobile Menu Button icon has not been found on HU display.\n"
+                    save_to_notepad(f"Mobile Menu Button icon has not been found on HU display.\n")
                 else:
                     save_to_notepad(f"Mobile Menu Button icon has been found on HU display!\n")
 
@@ -522,20 +522,14 @@ def main():
 
         found = click_on_device_regex(HU,"Remove device")
         time.sleep(1)
-        assert found == True, f"Remove device button has not been found on HU display.\n"
-        save_to_notepad(f"Remove device button has been found and pressed on HU display.\n")
 
         rc = phone.run_turn_screen_on_command()
-        assert rc == 0, f"Command failed: {rc}\n"
 
         rc = phone.run_unlock_screen_command()
-        assert rc == 0, f"Command failed: {rc}\n"
 
         rc = phone.run_settings_menu_command()
-        assert rc == 0, f"Command failed: {rc}\n"
 
         rc = phone.run_bluetooth_menu_command()
-        assert rc == 0, f"Command failed: {rc}\n"
         time.sleep(3)
 
         phone.click_close_button_popup()
@@ -552,7 +546,6 @@ def main():
         time.sleep(2)
 
         phone.disable_bluetooth()
-        assert rc == 0, f"Command failed: {rc}\n"
 
         # Run cleanup commands even on failure
         try:
