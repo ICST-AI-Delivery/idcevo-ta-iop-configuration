@@ -57,6 +57,39 @@ def main():
         phone.play_audio_command()
         save_to_notepad(f"Started playing audio on Mobile Device\n")
         time.sleep(3)
+
+        # Open Media menu on HU
+        command = f"shell input tap 1225 1325"
+        stdout, stderr, rc = run_adb(command, HU)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({command}:)")  
+        save_to_notepad(f"Result: {stdout}\n") 
+        assert rc == 0, f"Command {command} failed: {rc}\n"
+        save_to_notepad(f"Opened Media menu on HU\n")
+        time.sleep(2)
+        
+        # Click Source button with regex on HU display
+        found = click_on_device_regex(HU, "Source")
+        assert found, f"Source button not found on HU display\n"
+        save_to_notepad(f"Clicked Source button on HU\n")
+        time.sleep(2)
+        
+        # Click Bluetooth name on HU from Media menu with regex and coordinates
+        x, y = find_word_on_device_via_regex_with_coordinates(HU, "Bluetooth")
+        assert x != 0 and y != 0, f"Bluetooth option not found on HU display\n"
+        
+        command = f"shell input tap {x} {y-100}"
+        stdout, stderr, rc = run_adb(command, HU)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({command}:)")  
+        save_to_notepad(f"Result: {stdout}\n") 
+        assert rc == 0, f"Command {command} failed: {rc}\n"
+        save_to_notepad(f"Clicked Bluetooth option on HU\n")
+        time.sleep(2)
         
         # Take screenshot and click Bluetooth icon on HU
         commands = [
@@ -174,6 +207,50 @@ def main():
             save_to_notepad(f"Error text: {stderr}\n")
         save_to_notepad(f"[Executed command:] ({command}:)")  
         save_to_notepad(f"Result: {stdout}\n")
+        assert rc == 0, f"Command {command} failed: {rc}\n"
+        time.sleep(1)
+
+        # Open Media menu on HU
+        command = f"shell input tap 1225 1325"
+        stdout, stderr, rc = run_adb(command, HU)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({command}:)")  
+        save_to_notepad(f"Result: {stdout}\n") 
+        assert rc == 0, f"Command {command} failed: {rc}\n"
+        save_to_notepad(f"Opened Media menu on HU\n")
+        time.sleep(2)
+
+        # Click Bluetooth button with regex from HU display
+        found = click_on_device_regex(HU, "Bluetooth")
+        time.sleep(1)
+        assert found == True, f"Bluetooth button has not been found on HU display.\n"
+        save_to_notepad(f"Bluetooth button has been found and pressed on HU display.\n")
+
+        # Click Radio Button to switch from audio playback to Radio
+        x, y = find_word_on_device_via_regex_with_coordinates(HU, "Radio")
+        assert x != 0 and y != 0, f"Radio not found on HU display\n"
+
+        command = f"shell input tap {x} {y-100}"
+        stdout, stderr, rc = run_adb(command, HU)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({command}:)")
+        save_to_notepad(f"Result: {stdout}\n")
+        assert rc == 0, f"Command {command} failed: {rc}\n"
+        save_to_notepad(f"Clicked on Radio\n")
+        time.sleep(1)
+        
+        # Return to home menu - HU commands
+        command = f"shell input keyevent 3"
+        stdout, stderr, rc = run_adb(command, HU)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({command}:)")  
+        save_to_notepad(f"Result: {stdout}\n") 
         assert rc == 0, f"Command {command} failed: {rc}\n"
         time.sleep(1)
         
