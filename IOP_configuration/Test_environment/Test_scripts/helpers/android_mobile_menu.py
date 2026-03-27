@@ -428,6 +428,57 @@ class AndroidDevice:
         save_to_notepad(f"[Executed command:] ({audio_pause_command}:)")
         save_to_notepad(f"Result: {stdout}\n")
         time.sleep(3)
+        return rc
+   
+   def skip_forward_audio_command(self):
+        # Run adb command to skip to next song on Mobile device
+        skip_forward_command = f"shell input keyevent 87"
+        stdout, stderr, rc = run_adb(skip_forward_command, self.device_id)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({skip_forward_command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({skip_forward_command}:)")
+        save_to_notepad(f"Result: {stdout}\n")
+        time.sleep(3)
+        return rc
+   
+   def skip_backward_audio_command(self):
+        # Run adb command to skip to previous song on Mobile device
+        skip_backward_command = f"shell input keyevent 88"
+        stdout, stderr, rc = run_adb(skip_backward_command, self.device_id)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({skip_backward_command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({skip_backward_command}:)")
+        save_to_notepad(f"Result: {stdout}\n")
+        time.sleep(3)
+        return rc
+   
+   def fast_forward_command(self):
+        for _ in range(20):
+            # Run adb command to fast-forward song on Mobile device
+            fast_forward_command = f"shell cmd media_session dispatch fast-forward"
+            stdout, stderr, rc = run_adb(fast_forward_command, self.device_id)
+            if stderr:
+                save_to_notepad(f"[Command failed:] ({fast_forward_command}:)")
+                save_to_notepad(f"Error text: {stderr}\n")
+            save_to_notepad(f"[Executed command:] ({fast_forward_command}:)")
+            save_to_notepad(f"Result: {stdout}\n")
+            time.sleep(0.03)
+        return rc
+   
+   def fast_rewind_command(self):
+        for _ in range(20):
+            # Run adb command to rewind song on Mobile device
+            rewind_command = f"shell cmd media_session dispatch rewind"
+            stdout, stderr, rc = run_adb(rewind_command, self.device_id)
+            if stderr:
+                save_to_notepad(f"[Command failed:] ({rewind_command}:)")
+                save_to_notepad(f"Error text: {stderr}\n")
+            save_to_notepad(f"[Executed command:] ({rewind_command}:)")
+            save_to_notepad(f"Result: {stdout}\n")
+            time.sleep(0.03)
+        return rc
 
    def get_contacts_name_and_photo_id_command(self):
         # Run adb command to query contacts on mobile device
