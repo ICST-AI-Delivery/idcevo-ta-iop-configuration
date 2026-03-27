@@ -44,6 +44,10 @@ Internal_memory
 Reconnect_as_active_source
 Reconnect_as_inactive_audio_source
 Start_player_during_active_call
+Playback_on_Mobile_Device
+Pause_on_Mobile_Device
+Skip_on_Mobile_Device
+FFW_FRW_on_Mobile_Device
 A2DP_conn
 HFP_conn
 On_Tap_MD_connect_disconnect

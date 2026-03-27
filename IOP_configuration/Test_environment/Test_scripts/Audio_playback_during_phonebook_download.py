@@ -59,6 +59,9 @@ def main():
 
         phone = create_device(Mobile1,mobile_name)
 
+        phone.play_audio_command()
+        time.sleep(2)
+
         phone.click_close_button_popup()
         time.sleep(2)
 
@@ -185,9 +188,6 @@ def main():
 
         found = click_on_device(HU, "Not now")
         time.sleep(1)
-
-        phone.play_audio_command()
-        time.sleep(2)
 
         # Run adb command to go to HU home screen
         home_command = f"shell input keyevent 3"
