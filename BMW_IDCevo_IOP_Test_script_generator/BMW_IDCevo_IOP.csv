@@ -101,6 +101,7 @@ stop screen recordings on HU after test is done with stop_screen_recording(""HU"
 Synchronisation is finished.",Start_player_during_active_call,"
 
 
+
 check USB Matrix status with status = USB_Matrix_Status().
 get serial numbers for them with HU, Mobile1 = get_serial_number().
 get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
@@ -130,9 +131,13 @@ check if ongoing call is not interrupted by verifying if last 3 digits of mobile
 please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
 run the following function on Mobile Device1: phone.end_call_command() in order to end call.
 run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
 save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
 run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
 stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+
 
 
 "
