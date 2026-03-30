@@ -248,7 +248,7 @@ def main():
         time.sleep(1)
 
         # Click Remove device
-        found = click_on_device_regex(HU,"Remove device")
+        found = click_on_device_with_verification(HU,"Remove")
         time.sleep(1)
         
         rc = phone.run_turn_screen_on_command()

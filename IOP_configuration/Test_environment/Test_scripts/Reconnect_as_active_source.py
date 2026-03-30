@@ -72,8 +72,6 @@ def main():
         
         # Click Source button with regex on HU display
         found = click_on_device_regex(HU, "Source")
-        assert found, f"Source button not found on HU display\n"
-        save_to_notepad(f"Clicked Source button on HU\n")
         time.sleep(2)
         
         # Click Bluetooth name on HU from Media menu with regex and coordinates

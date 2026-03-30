@@ -48,6 +48,11 @@ Playback_on_Mobile_Device
 Pause_on_Mobile_Device
 Skip_on_Mobile_Device
 FFW_FRW_on_Mobile_Device
+Playback_on_HU
+Pause_on_HU
+Skip_on_HU
+Title
+Artist
 A2DP_conn
 HFP_conn
 On_Tap_MD_connect_disconnect

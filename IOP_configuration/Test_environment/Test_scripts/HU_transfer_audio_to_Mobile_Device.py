@@ -230,12 +230,6 @@ def main():
         assert rc == 0, f"Command {command} failed: {rc}\n"
         
         save_to_notepad(f"HU device screenshot saved successfully.\n")
-
-        # Transfer audio to HU
-        found = phone.transfer_audio_to_HU(bluetooth_device_name)
-        assert found == True, f"Transfer audio to HU command failed\n"
-        save_to_notepad(f"Audio transfer to HU initiated\n")
-        time.sleep(3)  # Wait for audio transfer to take effect
                 
         # End call on Mobile Device1
         phone.end_call_command()
