@@ -5,7 +5,7 @@ from helpers.save_to_notepad import *
 from helpers.android_mobile_menu import *
 import time
 
-test_name = "Skip_on_Mobile_Device"
+test_name = "Title"
 
 def main():
     save_to_notepad(f"=== Test {test_name} started ===\n")
@@ -51,7 +51,6 @@ def main():
         
         # Create Mobile device object
         phone = create_device(Mobile1, mobile_name)
-        save_to_notepad(f"Created Mobile device object with name: {mobile_name}\n")
         
         # Start audio playback on Mobile Device 1
         phone.play_audio_command()
@@ -86,29 +85,25 @@ def main():
         save_to_notepad(f"[Executed command:] ({command}:)")  
         save_to_notepad(f"Result: {stdout}\n") 
         assert rc == 0, f"Command {command} failed: {rc}\n"
-        save_to_notepad(f"Clicked Bluetooth option on HU\n")
-        time.sleep(3)       
-        
-        # Skip audio playback forward on Mobile Device 1
-        rc = phone.skip_forward_audio_command()
-        save_to_notepad(f"Skipped audio playback forward on Mobile Device 1\n")
-        time.sleep(3)
-                
-        # Skip audio playback backwards on Mobile Device 1
-        rc = phone.skip_backward_audio_command()
-        save_to_notepad(f"Skipped audio playback backwards on Mobile Device 1\n")
+        save_to_notepad(f"Clicked Bluetooth option in Media menu\n")
         time.sleep(3)
         
+        # Get the song title from Mobile device
+        track_title = phone.song_title_command()
+        time.sleep(2) 
+        
+        # Check if current track title is displayed on HU
+        found = find_word_on_device_via_regex(HU, track_title)
         # Check test result
-        if rc == 0:
-            success_message = f"Skip functionality works correctly - HU skips to previous song (or beginning of current song) - test Passed."
+        if found == True:
+            success_message = f"Audio playback is initiated on HU and HU displays correct song title - test Passed."
             save_to_notepad(f"{success_message}\n")
             save_to_notepad(header="TEST PASSED", color="green")
             save_to_excel(test_name, "Passed", success_message)
             test_passed = True
         else:
-            assert False, f"Skip functionality is not working properly - test Failed"
-
+            assert False, f"Song title display functionality failed - test Failed"
+        
         # Take a screenshot of HU screen
         commands = [
             f"shell screencap -d 4633128631561747456 -p /sdcard/{test_name}.png",
@@ -137,30 +132,30 @@ def main():
         
         # Pause audio on Mobile Device
         phone.pause_audio_command()
-        save_to_notepad(f"Paused audio on Mobile Device 1\n")
+        save_to_notepad(f"Paused audio on Mobile Device\n")
         time.sleep(2)
-
-        # Click Bluetooth button with regex from HU display
+        
+        # Click Bluetooth button with regex on HU display
         found = click_on_device_regex(HU, "Bluetooth")
-        time.sleep(1)
-        assert found == True, f"Bluetooth button has not been found on HU display.\n"
-        save_to_notepad(f"Bluetooth button has been found and pressed on HU display.\n")
-
-        # Click Radio Button to switch from audio playback to Radio
+        assert found, f"Bluetooth button not found on HU display\n"
+        save_to_notepad(f"Clicked Bluetooth button on HU\n")
+        time.sleep(2)
+        
+        # Click Radio button on HU from Media menu with regex and coordinates
         x, y = find_word_on_device_via_regex_with_coordinates(HU, "Radio")
-        assert x != 0 and y != 0, f"Radio not found on HU display\n"
-
+        assert x != 0 and y != 0, f"Radio option not found in Media menu\n"
+        
         command = f"shell input tap {x} {y-100}"
         stdout, stderr, rc = run_adb(command, HU)
         if stderr:
             save_to_notepad(f"[Command failed:] ({command}:)")
             save_to_notepad(f"Error text: {stderr}\n")
-        save_to_notepad(f"[Executed command:] ({command}:)")
-        save_to_notepad(f"Result: {stdout}\n")
+        save_to_notepad(f"[Executed command:] ({command}:)")  
+        save_to_notepad(f"Result: {stdout}\n") 
         assert rc == 0, f"Command {command} failed: {rc}\n"
-        save_to_notepad(f"Clicked on Radio\n")
-        time.sleep(1)
-
+        save_to_notepad(f"Switched from mobile playback to radio\n")
+        time.sleep(2)
+        
         # Return to home menu - HU commands
         command = f"shell input keyevent 3"
         stdout, stderr, rc = run_adb(command, HU)
@@ -170,7 +165,6 @@ def main():
         save_to_notepad(f"[Executed command:] ({command}:)")  
         save_to_notepad(f"Result: {stdout}\n") 
         assert rc == 0, f"Command {command} failed: {rc}\n"
-        time.sleep(1)
         
         command = f"shell rm /sdcard/*.png"
         stdout, stderr, rc = run_adb(command, HU)
@@ -183,14 +177,14 @@ def main():
         
         # Return to home menu - Mobile device commands
         rc = phone.run_home_command()
-        save_to_notepad(f"Returned Mobile device to home menu\n")
+        assert rc == 0, f"Mobile home command failed: {rc}\n"
+        save_to_notepad(f"Returned to home menu on both devices\n")
         
         # Stop screen recording and cleanup
         save_to_notepad(f"Stopping screen recording...\n")
         stop_screen_recording("HU")
-        
-        # Clean up recordings based on test result
         cleanup_recordings(test_passed, test_name)
+        
         if test_passed:
             save_to_notepad(f"Test passed - recording deleted\n")
         else:
@@ -203,16 +197,17 @@ def main():
         save_to_notepad(header="TEST FAILED", stderr=error_message, color="red")
         save_to_excel(test_name, "Failed", error_message)
         
+        # Cleanup commands on test failure
         try:
-            # Cleanup commands on failure
+            # Return to home menu - HU commands
             command = f"shell input keyevent 3"
             stdout, stderr, rc = run_adb(command, HU)
             
             command = f"shell rm /sdcard/*.png"
             stdout, stderr, rc = run_adb(command, HU)
             
-            # Return Mobile device to home menu
-            phone.run_home_command()
+            # Return to home menu - Mobile device commands
+            rc = phone.run_home_command()
             
         except Exception as cleanup_error:
             save_to_notepad(f"Error during cleanup: {cleanup_error}\n")

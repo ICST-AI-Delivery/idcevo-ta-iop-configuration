@@ -404,6 +404,7 @@ class AndroidDevice:
         # Run Audio play commands on Mobile device
         audio_play_commands = [
             f"shell monkey -p com.google.android.apps.youtube.music -c android.intent.category.LAUNCHER 1",     # Mobile open YT Music
+            f"shell monkey -p com.gbox.com.google.android.apps.youtube.music -c android.intent.category.LAUNCHER 1",     # Mobile open YT Music
             f"shell input keyevent 85"      # Mobile play audio command
         ]
 
@@ -479,6 +480,101 @@ class AndroidDevice:
             save_to_notepad(f"Result: {stdout}\n")
             time.sleep(0.03)
         return rc
+   
+   def song_title_command(self):
+        # Run adb command to get son title on Mobile device
+        song_title_command = f"shell dumpsys media_session | findstr description="
+        stdout, stderr, rc = run_adb(song_title_command, self.device_id)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({song_title_command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({song_title_command}:)")
+        save_to_notepad(f"Result: {stdout}\n")
+        
+        # Extract the song title from the metadata
+        # Format: metadata: size=7, description=Beautiful Pain (feat. Sia), Eminem, Eminem
+        if stdout and "description=" in stdout:
+            try:
+                # Find the description part
+                desc_start = stdout.find("description=") + len("description=")
+                desc_end = stdout.find(",", desc_start)
+                if desc_end == -1:
+                    desc_end = len(stdout)
+                
+                # Extract the full song title
+                song_title = stdout[desc_start:desc_end].strip()
+                save_to_notepad(f"Extracted song title: '{song_title}'\n")
+                
+                # Extract the first word from the title
+                if song_title:
+                    first_word = song_title.split()[0]
+                    save_to_notepad(f"First word of song title: '{first_word}'\n")
+                    time.sleep(3)
+                    return first_word
+                else:
+                    save_to_notepad(f"Warning: Could not extract song title from stdout\n")
+                    time.sleep(3)
+                    return ""
+            except Exception as e:
+                save_to_notepad(f"Error extracting song title: {e}\n")
+                time.sleep(3)
+                return ""
+        else:
+            save_to_notepad(f"Warning: No description found in stdout\n")
+            time.sleep(3)
+            return ""
+        
+   def artist_name_command(self):
+        # Run adb command to get artist name on Mobile device
+        artist_name_command = f"shell dumpsys media_session | findstr description="
+        stdout, stderr, rc = run_adb(artist_name_command, self.device_id)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({artist_name_command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({artist_name_command}:)")
+        save_to_notepad(f"Result: {stdout}\n")
+        
+        # Extract the artist name from the metadata
+        # Format: metadata: size=7, description=Beautiful Pain (feat. Sia), Eminem, Eminem
+        # Artist name is after the first comma following the song title
+        if stdout and "description=" in stdout:
+            try:
+                # Find the description part
+                desc_start = stdout.find("description=") + len("description=")
+                desc_end = stdout.find(",", desc_start)
+                if desc_end == -1:
+                    save_to_notepad(f"Warning: Could not find comma after song title\n")
+                    time.sleep(3)
+                    return ""
+                
+                # Find the artist name (after the first comma)
+                artist_start = desc_end + 1
+                artist_end = stdout.find(",", artist_start)
+                if artist_end == -1:
+                    artist_end = len(stdout)
+                
+                # Extract the full artist name
+                artist_name = stdout[artist_start:artist_end].strip()
+                save_to_notepad(f"Extracted artist name: '{artist_name}'\n")
+                
+                # Extract the first word from the artist name
+                if artist_name:
+                    first_word = artist_name.split()[0]
+                    save_to_notepad(f"First word of artist name: '{first_word}'\n")
+                    time.sleep(3)
+                    return first_word
+                else:
+                    save_to_notepad(f"Warning: Could not extract artist name from stdout\n")
+                    time.sleep(3)
+                    return ""
+            except Exception as e:
+                save_to_notepad(f"Error extracting artist name: {e}\n")
+                time.sleep(3)
+                return ""
+        else:
+            save_to_notepad(f"Warning: No description found in stdout\n")
+            time.sleep(3)
+            return ""
 
    def get_contacts_name_and_photo_id_command(self):
         # Run adb command to query contacts on mobile device
@@ -2780,7 +2876,7 @@ DEVICE_MENU = {
        "get_missed_calls": huawei_p40_pro_get_missed_calls,
        "get_combined_calls": huawei_p40_pro_get_combined_calls,
        "get_call_history_with_timestamps": huawei_p40_pro_get_call_history_with_timestamps,
-       "transfer_audio_to_mobile": oppo_find_x8_pro_transfer_audio_to_mobile,
+       "transfer_audio_to_mobile": Xperia5_transfer_audio_to_mobile,
        "transfer_audio_to_HU": motorola_one_fusion_transfer_audio_to_HU,
        "conference_call": poco_f7_ultra_conference_call
    },
@@ -2802,7 +2898,7 @@ DEVICE_MENU = {
        "transfer_audio_to_HU": oneplus_13_transfer_audio_to_HU
    },
    "OnePlus Open": {
-       "transfer_audio_to_mobile": oppo_find_x8_pro_transfer_audio_to_mobile,
+       "transfer_audio_to_mobile": Xperia5_transfer_audio_to_mobile,
        "transfer_audio_to_HU": motorola_one_fusion_transfer_audio_to_HU,
        "conference_call": poco_f7_ultra_conference_call
    },

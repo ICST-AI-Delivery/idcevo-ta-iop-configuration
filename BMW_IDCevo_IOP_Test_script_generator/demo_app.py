@@ -128,8 +128,8 @@ def extract_test_name(full_name):
        name = full_name.split(":")[1].strip()
    else:
        name = full_name.strip()
-   # convert to python friendly format
-   name = name.replace(" ", "_")
+   # convert to python friendly format - replace spaces and special characters with underscores
+   name = re.sub(r'[^a-zA-Z0-9_]', '_', name)
    return name
 
 ############################################
