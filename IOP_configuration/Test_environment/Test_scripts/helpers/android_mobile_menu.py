@@ -575,6 +575,162 @@ class AndroidDevice:
             save_to_notepad(f"Warning: No description found in stdout\n")
             time.sleep(3)
             return ""
+        
+   def album_name_command(self):
+        # Run adb command to get album name on Mobile device
+        album_name_command = f"shell dumpsys media_session | findstr description="
+        stdout, stderr, rc = run_adb(album_name_command, self.device_id)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({album_name_command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({album_name_command}:)")
+        save_to_notepad(f"Result: {stdout}\n")
+        
+        # Extract the album name from the metadata
+        # Format: metadata: size=7, description=Beautiful Pain (feat. Sia), Eminem, Eminem
+        # Album name is after the second comma following the song title (second value)
+        if stdout and "description=" in stdout:
+            try:
+                # Find the description part
+                desc_start = stdout.find("description=") + len("description=")
+                desc_end = stdout.find(",", desc_start)
+                if desc_end == -1:
+                    save_to_notepad(f"Warning: Could not find comma after song title\n")
+                    time.sleep(3)
+                    return ""
+                
+                # Find the first comma after the description
+                first_comma = desc_end
+                second_comma_start = first_comma + 1
+                second_comma = stdout.find(",", second_comma_start)
+                if second_comma == -1:
+                    save_to_notepad(f"Warning: Could not find second comma after song title\n")
+                    time.sleep(3)
+                    return ""
+                
+                # Find the album name (after the second comma)
+                album_start = second_comma + 1
+                album_end = stdout.find(",", album_start)
+                if album_end == -1:
+                    album_end = len(stdout)
+                
+                # Extract the full album name
+                album_name = stdout[album_start:album_end].strip()
+                save_to_notepad(f"Extracted album name: '{album_name}'\n")
+                
+                # Extract the first word from the album name
+                if album_name:
+                    first_word = album_name.split()[0]
+                    save_to_notepad(f"First word of album name: '{first_word}'\n")
+                    time.sleep(3)
+                    return first_word
+                else:
+                    save_to_notepad(f"Warning: Could not extract album name from stdout\n")
+                    time.sleep(3)
+                    return ""
+            except Exception as e:
+                save_to_notepad(f"Error extracting album name: {e}\n")
+                time.sleep(3)
+                return ""
+        else:
+            save_to_notepad(f"Warning: No description found in stdout\n")
+            time.sleep(3)
+            return ""
+        
+   def cover_art_command(self):
+        # Run adb command to get logcat COVERART entries with a 1-second timeout
+        import subprocess
+        import time
+        import os
+        import threading
+        
+        try:           
+            # Use a different approach that avoids shell pipes on Windows
+            # Start logcat process without pipe to avoid termination issues
+            process = subprocess.Popen(
+                ["adb", "-s", self.device_id, "logcat"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+                encoding="utf-8",
+                creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name == 'nt' else 0
+            )
+            
+            # Collect output for 1 second using a timeout mechanism
+            output_lines = []
+            start_time = time.time()
+            timeout_duration = 1.0  # 1 second
+            
+            def read_output():
+                try:
+                    for line in iter(process.stdout.readline, ''):
+                        if time.time() - start_time >= timeout_duration:
+                            break
+                        if "COVERART" in line.upper():
+                            output_lines.append(line.strip())
+                except:
+                    pass
+            
+            # Start reading in a separate thread
+            reader_thread = threading.Thread(target=read_output)
+            reader_thread.daemon = True
+            reader_thread.start()
+            
+            # Wait for the timeout duration
+            time.sleep(timeout_duration)
+            
+            # Force terminate the process using different methods
+            try:
+                if os.name == 'nt':  # Windows
+                    # Use taskkill to force terminate on Windows
+                    subprocess.run(f"taskkill /F /PID {process.pid}", shell=True, 
+                                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                else:
+                    process.terminate()
+                
+                # Give a moment for termination
+                time.sleep(0.1)
+                
+                # If still running, kill it
+                if process.poll() is None:
+                    process.kill()
+                    
+            except:
+                # Fallback - just kill it
+                try:
+                    process.kill()
+                except:
+                    pass
+            
+            # Wait for reader thread to finish (with timeout)
+            reader_thread.join(timeout=0.5)
+            
+            # Get any remaining stderr
+            stderr = ""
+            try:
+                _, stderr = process.communicate(timeout=0.5)
+            except:
+                stderr = "Process terminated after timeout"
+            
+            stdout = "\n".join(output_lines)
+            
+            save_to_notepad(f"[Executed command with 1s timeout:] (adb -s {self.device_id} logcat | filter for COVERART)")
+            save_to_notepad(f"Result: {stdout}\n")
+            
+            if stderr and "terminated after timeout" not in stderr:
+                save_to_notepad(f"[Command had errors:] (logcat command)")
+                save_to_notepad(f"Error text: {stderr}\n")
+
+            # Clear the logcat buffer first to get only fresh entries
+            clear_cmd = f"adb -s {self.device_id} logcat -c"
+            subprocess.run(clear_cmd, shell=True, timeout=5)
+            save_to_notepad(f"[Executed command:] ({clear_cmd})\n")
+
+            return stdout if stdout else ""
+            
+        except Exception as e:
+            save_to_notepad(f"Error in cover_art_command: {e}\n")
+            return ""
 
    def get_contacts_name_and_photo_id_command(self):
         # Run adb command to query contacts on mobile device
