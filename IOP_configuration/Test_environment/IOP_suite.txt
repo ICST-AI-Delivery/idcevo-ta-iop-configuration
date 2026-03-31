@@ -52,7 +52,12 @@ Playback_on_HU
 Pause_on_HU
 Skip_on_HU
 Title
+Album
 Artist
+Cover_Art
+Total_Elapsed_time
+Resume_during_after_call
+Music_search
 A2DP_conn
 HFP_conn
 On_Tap_MD_connect_disconnect
