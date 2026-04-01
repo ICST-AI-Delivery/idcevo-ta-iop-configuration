@@ -6,7 +6,7 @@ REM SSH Key Permission Fixer
 REM Fixes Windows file permissions for SSH private keys
 REM =============================================================================
 
-set OPENSSH_FILE=bmw_id_rsa
+set OPENSSH_FILE="%~dp0IOP_configuration\id_ed25519_idcevo"
 
 echo ===============================================
 echo SSH Key Permission Fixer

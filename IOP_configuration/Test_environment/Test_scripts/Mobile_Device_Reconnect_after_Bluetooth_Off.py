@@ -9,7 +9,8 @@ test_name = "Mobile_Device_Reconnect_after_Bluetooth_Off"
 
 def main():
     save_to_notepad(f"=== Test {test_name} started ===\n")
-    path = "D:/traget/IDCevo/IOP_configuration/Test_environment/Test_scripts"
+    base_dir = extract_base_dir_from_batch()
+    path = f"{base_dir}/Test_environment/Test_scripts"
     
     # Initialize test result tracking
     test_passed = False
@@ -93,7 +94,8 @@ def main():
             save_to_notepad(f"Bluetooth icon has been found on HU display!\n")
         
         # Clean up the screenshot
-        cmd = r"del D:\traget\IDCevo\IOP_configuration\Test_environment\Test_scripts\screenshot.png"
+        screenshot_path = f"{base_dir}/Test_environment/Test_scripts/screenshot.png".replace('/', '\\')
+        cmd = f'del "{screenshot_path}"'
         stdout, stderr, rc = run_cmd(cmd)
 
         found = click_on_device(HU,"Manage devices")
@@ -133,48 +135,43 @@ def main():
         assert rc == 0, f"Command failed: {rc}\n" 
         time.sleep(10)
 
-        # Commands to be executed
+        # Check if Connected word can be found on HU display
+        found = find_word_on_device(HU,"Connected")
+        if found == True:
+            success_message = f"{mobile_name} has been reconnected successfully with HU after Bluetooth Off."
+            save_to_notepad(f"{success_message}\n")
+            save_to_notepad(header="TEST PASSED", color="green")
+            # Save to Excel with test_name, result="Passed" and comment=success_message
+            save_to_excel(test_name, "Passed", success_message)
+            # Mark test as passed for recording cleanup
+            test_passed = True
+        else:
+            assert False, f"{mobile_name} has not been reconnected with HU after Bluetooth Off.\n"
+
+        # Take screenshot
         commands = [
-            f"shell screencap -d 4633128631561747456 -p /sdcard/{test_name}.png", # HU command to take screenshot
-            f"pull /sdcard/{test_name}.png" # HU command to save screenshot on PC
+            f"shell screencap -d 4633128631561747456 -p /sdcard/{test_name}.png",
+            f"pull /sdcard/{test_name}.png"
         ]
-        
+
         for cmd in commands:
-            found = False
-            if cmd == commands[1]:
-                found = find_word_on_device(HU,"Connected")
-
-            stdout, stderr, rc = run_adb(cmd, HU)
-
-            # Console display 
+            stdout, stderr, rc = run_adb(cmd,HU)
             if stderr:
                 save_to_notepad(f"[Command failed:] ({cmd}:)")
                 save_to_notepad(f"Error text: {stderr}\n")
-            save_to_notepad(f"[Executed command:] ({cmd}:)")  
-            save_to_notepad(f"Result: {stdout}\n") 
-
+            save_to_notepad(f"[Executed command:] ({cmd}:)")
+            save_to_notepad(f"Result: {stdout}\n")
             assert rc == 0, f"Command {cmd} failed: {rc}\n"
-            if cmd == commands[1]:
-                if found == False:
-                    assert found == True, f"{mobile_name} has not been reconnected with HU after Power Off.\n"
-                else:
-                    success_message = f"{mobile_name} has been reconnected successfully with HU after Power Off."
-                    save_to_notepad(f"{success_message}\n")
-                    save_to_notepad(header="TEST PASSED", color="green")
-                    # Save to Excel with test_name, result="Passed" and comment=success_message
-                    save_to_excel(test_name, "Passed", success_message)
-                    # Mark test as passed for recording cleanup
-                    test_passed = True
 
         # move the screenshot
-        command = f"move {test_name}.png D:/traget/IDCevo/IOP_configuration/Test_results/Screenshots"
+        command = f"move {test_name}.png {base_dir}/Test_results/Screenshots"
         stdout, stderr, rc = run_cmd(command)
-        # Console display 
+        # Console display
         if stderr:
             save_to_notepad(f"[Command failed:] ({command}:)")
             save_to_notepad(f"Error text: {stderr}\n")
-        save_to_notepad(f"[Executed command:] ({command}:)")  
-        save_to_notepad(f"Result: {stdout}\n") 
+        save_to_notepad(f"[Executed command:] ({command}:)")
+        save_to_notepad(f"Result: {stdout}\n")
         assert rc == 0, f"Command {command} failed: {rc}\n"
         
         # Run cleanup commands after test is done

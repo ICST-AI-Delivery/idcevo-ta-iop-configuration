@@ -1,4 +1,481 @@
 Test Case Description,Test Case Expected Result,Test Case ID,Test Case Precondition,Test Name,Test Script Description
+"1 Navigate to music search.
+2 Enter the name of a traIDCEvo or artist in the search field.","2 Searching troughout Title, Artist, Genre and Albums is possible.",173048,"Mobile Device and HU are connected.
+Synchronisation is finished.",Music_search,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+click Search Button with regex from HU display with found = click_on_device_regex(HU, ""Search"").
+run the following command on HU: adb shell dumpsys broadcastradio | findstr -i metadata to get radio names available for HU. Extract the first radio name displayed in a variable.
+Click on every single character from the extracted radio name with verification on HU display with found = click_on_device_with_verification(HU, char_to_click). For Space character click on Space icon with x, y = find_icon_in_screenshot(f""{path}/screenshot.png"", f""{path}/helpers/Space.png"") or x, y = find_icon_in_screenshot(f""{path}/screenshot.png"", f""{path}/helpers/Space_2.png"").
+check if the extracted radio name is displayed correctly on HU with regex with found = find_word_on_device_via_regex(HU, radio_name). If it was found then music search  functionality works correctly and the test is Passed. If not then music search failed and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\\traget\\IDCevo\\IOP_configuration\\Test_results\\Screenshots.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Start playing music on Mobile Device from an album with cover art.
+2 CheIDCEvo if the cover art is dislayed correctly.","1 Audio playbaIDCEvo is initiated on HU.
+2 HU displays cover art.",173047,"Mobile Device (only for iOS supported) and HU are connected.
+Synchronisation is finished.",Cover_Art,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1 from an album with cover art.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+run the following command on HU: adb shell input tap 1520 1030 to skip audio playback forward on HU.
+run the following command on HU: adb shell input tap 1120 1030 to skip audio playback backwards on HU.
+run the following function on Mobile device: phone.cover_art_command() to check if cover art is transmitted successfully on HU.
+check if cover art is displayed correctly by verifying if the cover art is not blank or corrupted with cover_art_valid == True if cover_art contains the string ""avrcpcontroller.BipImageDescriptor: COVERART parsed encoding JPEG"". If it was found then audio playback is initiated on HU and HU displays cover art and the test is Passed. If not then cover art display functionality failed and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Start playing music on Mobile Device.
+2 Initiate an incoming call from Mobile Device 3 to Mobile Device 1.
+3 End call.","1 Audio playbaIDCEvo is initiated on HU.
+2 Audio playbaIDCEvo is paused and/or song is muted.
+3 Audio playbaIDCEvo resumes.",173046,"Mobile Device and HU are connected.
+Synchronisation is finished.",Resume_during_after_call,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: sim_state = phone.check_SIM_command(). If the command does not contain word LOADED Mobile device doesn't have SIM card on it and test is skipped.
+extract the mobile1 phone number with phone_number_mobile1 = phone.get_phone_number_command().
+run the following function on Mobile device: phone.play_audio_command() to start playing music on Mobile Device.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+check USB Matrix status with status = USB_Matrix_Status(). If USB Matrix is connected to port 1 then change it to port 2 and if is connected to any other port except port1 change the connection to port 1.
+get serial numbers for them with HU, Mobile3 = get_serial_number().
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device3 object with phone3 = create_device(Mobile3,mobile_name3).
+run the following function on Mobile device: sim_state = phone3.check_SIM_command(). If the command does not contain word LOADED Mobile device doesn't have SIM card on it and test is skipped.
+extract the mobile3 phone number with phone_number_mobile3 = phone3.get_phone_number_command().
+run the following function on Mobile device3: rc = phone3.run_turn_screen_on_command() to turn Mobile3 screen on.
+run the following function on Mobile device3: rc = phone3.run_unlock_screen_command() to unlock Mobile3 screen.
+run the following function on Mobile device3: rc = phone3.dial_command(phone_number_mobile1) to initiate an incoming call from Mobile Device 3 to Mobile Device 1. Wait 5 seconds for the incoming call to be established.
+switch USB Matrix back to the port from the beginning with select_mobile_device(1, status).
+run the following function on Mobile device1: rc = phone1.answer_call_command() to answer the call from Mobile device3.
+run the following function on Mobile device1: rc = phone1.end_call_command() to end the call.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+check if audio playback resumes after call ends by verifying if Bluetooth audio source is active again with found = find_word_on_device_via_regex(HU, ""Bluetooth""). If it was found then audio playback is initiated on HU, audio playback is paused and/or song is muted during call, and audio playback resumes after call and the test is Passed. If not then audio resume functionality failed and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\\traget\\IDCevo\\IOP_configuration\\Test_results\\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Start audio playbaIDCEvo on Mobile Device 1.
+2 On the lower right of the display the status bar should be visible.
+In there on the left side the elapsed time should be seen. On the right side the remaining playtime should be seen.","1 Audio playbaIDCEvo is initiated on HU.
+2 HU displays correct playing time.
+
+Note:
+For MGU22:
+If an Carplay device is connected both elapsed and remaining time will be displayed.
+If an Android device is connected only elapsed time will be displayed.",173045,"Mobile Device and HU are connected.
+Synchronisation is finished.",Total_Elapsed_time,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+check if elapsed time is displayed in the status bar on the lower right of the display with found = find_word_on_device_via_regex(HU, ""[0-9]:"").
+check if remaining playtime is displayed on the right side of the status bar with found = find_word_on_device_via_regex(HU, ""-[0-9]:"") for devices that support it.
+check if correct playing time is displayed on HU with found == True. If it was found then audio playback is initiated on HU and HU displays correct playing time and the test is Passed. If not then playing time display functionality failed and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\\traget\\IDCevo\\IOP_configuration\\Test_results\\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Start audio playbaIDCEvo on Mobile Device 1.
+2 CheIDCEvo if name of the current artist is shown.","Audio playbaIDCEvo is initiated on HU. 
+HU displays correct artist name.",173044,"Mobile Device and HU are connected.
+Synchronisation is finished.",Artist,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+run the following function on Mobile device: artist_name = phone.artist_name_command() to extract the name of the current artist playing from Mobile Device 1.
+check if current artist name is displayed on HU with found = find_word_on_device_via_regex(HU, artist_name). If it was found then audio playback is initiated on HU and HU displays correct artist name and the test is Passed. If not then artist name display functionality failed and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Start audio playbaIDCEvo on Mobile Device 1.
+2 CheIDCEvo if name of the current traIDCEvo is shown.","1 Audio playbaIDCEvo is initiated on HU.
+2 HU displays correct song title.",173042,"Mobile Device and HU are connected.
+Synchronisation is finished.",Title,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+check if audio playback is initiated on HU by verifying if Bluetooth audio source is active with found = find_word_on_device_via_regex(HU, ""Bluetooth"").
+run the following function on Mobile device: phone.song_title_command() to extract the title of the song playing from Mobile Device 1.
+check if current track title is displayed on HU with found = find_word_on_device_via_regex(HU, track_title). If it was found then audio playback is initiated on HU and HU displays correct song title and the test is Passed. If not then song title display functionality failed and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Start audio playbaIDCEvo on HU.
+2 Skip audio playbaIDCEvo forward on HU.
+3 Skip audio playbaIDCEvo baIDCEvowards on HU.","1. Audio playbaIDCEvo is initiated on HU.
+2. Mobile Device 1 skips to next song. 
+3. Mobile Device 1 skips to previous song (or beginning of current song).",173040,"Mobile Device and HU are connected.
+Synchronisation is finished.",Skip_on_HU,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+run the following command on HU: adb shell input tap 1520 1030 to skip audio playback forward on HU.
+run the following command on HU: adb shell input tap 1120 1030 to skip audio playback backwards on HU.
+check if HU skips to next and previous song or beginning of current song by verifying the returncode with rc == 0. If it was found then Mobile Device 1 skips to next song and Mobile Device 1 skips to previous song (or beginning of current song) and the test is Passed. If not then skip functionality is not working properly and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Start audio playbaIDCEvo on HU.
+2 Pause audio playbaIDCEvo on HU.
+
+Note: For MGU22 in order to pause you need to press the Volume Icon in the top right corner.","1 Audio playbaIDCEvo is initiated on HU.
+2 Audio playbaIDCEvo is paused on Mobile Device 1.",173039,"Mobile Device and HU are connected.
+Synchronisation is finished.",Pause_on_HU,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth""). 
+run the following command on HU: adb shell input tap 1320 1030 to pause audio playback on HU.
+check if audio playback is paused on HU with found = find_word_on_device_via_regex(HU, ""Bluetooth""). If it was found then audio playback is paused on Mobile Device 1 and the test is Passed. If not then audio pause functionality failed and the test is failed. 
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+1 Start audio playbaIDCEvo on HU.,"1 Audio playbaIDCEvo is initiated on HU.
+HU displays current playing position.",173038,"Mobile Device and HU are connected.
+Synchronisation is finished.",Playback_on_HU,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+run the following command on HU: adb shell input tap 1320 1030 to start audio playback on HU.
+check if audio playback is initiated on HU by verifying if Bluetooth audio source is active with found = find_word_on_device_via_regex(HU, ""Bluetooth""). If it was found then audio playback is initiated on HU and HU displays current playing position and the test is Passed. If not then audio playback initiation failed on HU and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Start audio playbaIDCEvo on Mobile Device 1.
+2 Press fast forward on Mobile Device 1.
+3 Press fast baIDCEvowards on Mobile Device 1.","1 Audio playbaIDCEvo is initiated on HU.
+2 HU winds forwards.
+3 HU rewinds.",173037,"Mobile Device and HU are connected.
+Synchronisation is finished.",FFW_FRW_on_Mobile_Device,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+run the following function on Mobile device: phone.fast_forward_command() to press fast forward on Mobile Device 1.
+run the following function on Mobile device: phone.fast_rewind_command() to press fast backwards on Mobile Device 1.
+check if HU fast-forward and rewind is working correctly by verifying the returncode with rc == 0. If it was found then audio playback is initiated on HU, HU winds forwards, and HU rewinds and the test is Passed. If not then fast rewind failed and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Start audio playbaIDCEvo on Mobile Device 1.
+2 Skip audio playbaIDCEvo forward on Mobile Device 1.
+3 Skip audio playbaIDCEvo baIDCEvowards on Mobile Device 1.","1 Audio playbaIDCEvo is initiated on HU.
+2 HU skips to next song. 
+3 HU skips to previous song (or beginning of current song).",173036,"Mobile Device and HU are connected.
+Synchronisation is finished.",Skip_on_Mobile_Device,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+check if audio playback is initiated on HU by verifying if Bluetooth audio source is active with found = find_word_on_device_via_regex(HU, ""Bluetooth""). If it was found then audio playback is initiated on HU.
+run the following function on Mobile device: phone.skip_forward_audio_command() to skip audio playback forward on Mobile Device 1.
+run the following function on Mobile device: phone.skip_backward_audio_command() to skip audio playback backwards on Mobile Device 1.
+check if HU skips to next and previous song or beginning of current song by verifying the returncode of the commands with rc == 0. If it was found then HU skips to previous song (or beginning of current song) and the test is Passed. If not then skip functionality is not working properly and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Start audio playbaIDCEvo on Mobile Device 1.
+2 Pause audio playbaIDCEvo on Mobile Device 1.","1 Audio playbaIDCEvo is initiated on Mobile Device 1.
+2 Audio playbaIDCEvo is paused in HU.",173035,"Mobile Device and HU are connected.
+Synchronisation is finished.",Pause_on_Mobile_Device,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+check if audio playback is initiated on Mobile Device 1 by verifying if Bluetooth audio source is active with found = find_word_on_device_via_regex(HU, ""Bluetooth"").
+run the following function on Mobile device: phone.pause_audio_command() to pause audio playback on Mobile Device 1.
+check if audio playback is paused in HU by verifying the returncode of pause audio command with rc == 0. If it was found then audio playback is paused in HU and the test is Passed. If not then audio pause functionality failed and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+1 Start audio playbaIDCEvo on Mobile Device 1.,1 Audio playbaIDCEvo is initiated on HU.,173034,"Mobile Device and HU are connected.
+Synchronisation is finished.",Playback_on_Mobile_Device,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+check if audio playback is initiated on HU by verifying if Bluetooth audio source is active with found = find_word_on_device_via_regex(HU, ""Bluetooth""). If it was found then audio playback is initiated on HU and the test is Passed. If not then audio playback initiation failed on HU and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Initiate call from HU to Mobile Device 3.
+2 Accept call on Mobile Device 3.
+3 Start audio playbaIDCEvo on HU during an active call.","3 Ongoing call is not interrupted. Play status does not change to ""playing"". A2DP audio is still muted on Mobile Device 1. Audio playbaIDCEvo resumes correctly after ending the call.",173032,"Mobile Device and HU are connected.
+Synchronisation is finished.",Start_player_during_active_call,"
+
+
+
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: sim_state = phone.check_SIM_command(). If the command does not contain word LOADED Mobile device doesn't have SIM card on it and test is skipped.
+extract the mobile1 phone number with phone_number_mobile1 = phone.get_phone_number_command().
+check USB Matrix status with status = USB_Matrix_Status(). If USB Matrix is connected to port 1 then change it to port 2 and if is connected to any other port except port1 change the connection to port 1.
+get serial numbers for them with HU, Mobile3 = get_serial_number().
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device3 object with phone3 = create_device(Mobile3,mobile_name3).
+run the following function on Mobile device: sim_state = phone3.check_SIM_command(). If the command does not contain word LOADED Mobile device doesn't have SIM card on it and test is skipped.
+extract the mobile3 phone number with phone_number_mobile3 = phone3.get_phone_number_command().
+switch USB Matrix back to the port from the beginning with select_mobile_device(1, status).
+click Mobile device name button with regex from HU display with found = click_on_device_regex(HU, mobile_name).
+click Calls Button from HU display with found = click_on_device(HU, ""Calls"").
+click last 3 digits from Mobile number 3 button from HU display with found = click_on_device_regex(HU,last_3_digits).
+check USB Matrix status with status = USB_Matrix_Status(). If USB Matrix is connected to port 1 then change it to port 2 and if is connected to any other port except port1 change the connection to port 1.
+run the following function on Mobile Device1: phone.answer_call_command() in order to answer call.
+switch USB Matrix back to the port from the beginning with select_mobile_device(1, status).
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+run the following command on HU: adb shell input tap 1320 1030 to play audio on HU.
+run the following command on HU: adb shell input keyevent 3 to go to home menu.
+check if ongoing call is not interrupted by verifying if last 3 digits of mobile3 phone number can still be found on HU display with found = find_word_on_device_via_regex(HU, last_3_digits). If it was found then ongoing call is not interrupted, play status does not change to ""playing"", A2DP audio is still muted on Mobile Device 1, and audio playback will resume correctly after ending the call and the test is Passed. If not then call was interrupted by audio playback and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+run the following function on Mobile Device1: phone.end_call_command() in order to end call.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+
+
+
+"
+"1 Play music on Mobile Device 1.
+2 On HU switch from audio playbaIDCEvo to Radio. 
+3 Put Mobile Device in shielding bag or shielding chamber.
+4 Wait 15 seconds and then get Mobile Device out of shielding bag or shielding chamber. Wait a few seconds.","2 Radio is playing.
+3 Bluetooth connection is released.
+4 Bluetooth connection is re-established. Radio is playing and audio playbaIDCEvo is inactive source.",173031,"Mobile Device and HU are connected.
+To simulate the linkloss a shielding bag or shielding chamber is recommended.",Reconnect_as_inactive_audio_source,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to play music on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+click Bluetooth icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth_2.png"").
+click Manage Devices Button from HU display with found = click_on_device(HU,""Manage devices"").
+click Smartphones Button on from HU display with found = click_on_device(HU,""Smartphones"").
+run the following function on Mobile device: phone.enable_airplane_mode_command() to simulate putting Mobile Device in shielding bag or shielding chamber. Wait 5 seconds with airplane mode enabled.
+run the following function on Mobile device: phone.disable_airplane_mode_command() to disable airplane mode.
+run the following function on Mobile device: phone.run_linkloss_command() to simulate getting Mobile Device out of shielding bag or shielding chamber. Wait 15 seconds for bluetooth connection to be re-established.
+check if ""Connected"" word can be found on HU display with found = find_word_on_device(HU,""Connected""). If it was found then Bluetooth connection is re-established, Radio is playing and audio playback is inactive source and the test is Passed. If not then Bluetooth connection was not re-established after removing from shielding and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\\traget\\IDCevo\\IOP_configuration\\Test_results\\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Play music on Mobile Device 1.
+2 Put Mobile Device in shielding bag or shielding chamber.
+3 Wait 15 seconds and then get Mobile Device out of shielding bag or shielding chamber. Wait a few seconds.","2 Bluetooth connection is released.
+3 Bluetooth connection is re-established. Audio is playing.",173030,"Mobile Device and HU are connected.
+To simulate the linkloss a shielding bag or shielding chamber is recommended.",Reconnect_as_active_source,"
+
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to play music on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+click Bluetooth icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth_2.png"").
+click Manage Devices Button from HU display with found = click_on_device(HU,""Manage devices"").
+click Smartphones Button on from HU display with found = click_on_device(HU,""Smartphones"").
+run the following function on Mobile device: phone.enable_airplane_mode_command() to simulate putting Mobile Device in shielding bag or shielding chamber. Wait 5 seconds with airplane mode enabled.
+run the following function on Mobile device: phone.disable_airplane_mode_command() to disable airplane mode.
+run the following function on Mobile device: phone.run_linkloss_command() to simulate getting Mobile Device out of shielding bag or shielding chamber. Wait a few seconds for bluetooth connection to be re-established.
+check if ""Connected"" word can be found on HU display with found = find_word_on_device(HU,""Connected""). If it was found then Bluetooth connection is re-established, audio is playing, and the test is Passed. If not then Bluetooth connection was not re-established after removing from shielding or audio is not playing and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\\traget\\IDCevo\\IOP_configuration\\Test_results\\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+run the following command on HU: adb shell input keyevent 3 to go home menu.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+
+"
+1 Play music from internal memory of Mobile Device 1 (connected device),1 Music is transmitted to HU.,173028,"Mobile Device and HU are connected.
+Synchronisation is finished.
+Music is stored on internal memory of the device.",Internal_memory,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: result = phone.check_music_from_internal_memory_command(). If the result variable is empty Mobile device doesn't have music stored on internal memory card on it and test is skipped. If is not empty extract the first line in a variable.
+run the following function on Mobile device: phone.play_music_from_internal_memory_command() to play music from internal memory of Mobile Device 1 (connected device).
+check if Audio is playing successfully on Mobile device with rc==0. If it is then music is transmitted to HU and the test is Passed. If not then music transmission from internal memory failed and the test is failed.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth""). 
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+"1 Put Mobile Device in shielding bag or shielding chamber.
+2 Get Mobile Device out of shielding bag or shielding chamber. Wait a few seconds.","1 Bluetooth connection is released.
+2 Bluetooth connection is re-established. Audio icon is visible on the display of the HU.",173027,"Mobile Device is connected as audio device (audio icon can be seen in the display of the HU).
+To simulate the linkloss a shielding bag or shielding chamber is recommended.",A2DP_conn,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+click Bluetooth icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth_2.png"").
+run the following function on Mobile device: phone.enable_airplane_mode_command() to simulate putting Mobile Device in shielding bag or shielding chamber. Wait 5 seconds with airplane mode enabled.
+run the following function on Mobile device: phone.disable_airplane_mode_command() to disable airplane mode.
+run the following function on Mobile device: phone.run_linkloss_command() to simulate getting Mobile Device out of shielding bag or shielding chamber. Wait 15 seconds for bluetooth connection to be re-established.
+check if Audio icon can be found on HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Mobile_Audio.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Mobile_Audio_2.png""). If it was found then Bluetooth connection is re-established and Audio icon is visible on the display of the HU and the test is Passed. If not then Bluetooth connection was not re-established after removing from shielding and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png.
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
 "1 CheIDCEvo the signal strength indicator in the upper right corner of the display of HU. 
 Compare with strength shown on Mobile Device.",1 Correct fieldstrength is shown on HU.,173024,"Mobile Device and HU are connected.
 Synchronisation is finished.",Signal_strength_indicator,"
@@ -254,6 +731,8 @@ run the following commands after test is done in order to return to home menu: H
 Synchronisation is finished.",HU_transfer_audio_to_Mobile_Device,"
 
 
+
+
 check USB Matrix status with status = USB_Matrix_Status().
 get serial numbers for them with HU, Mobile1 = get_serial_number().
 get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
@@ -275,7 +754,6 @@ run the following function on Mobile device3: rc = phone3.dial_command(phone_num
 click Accept button with regex from HU display with found = click_on_device_regex(HU, ""Accept"") to accept the call on HU.
 switch USB Matrix back to the port from the beginning with select_mobile_device(1, status).
 extract bluetooth_device_name for HU in a variable using the following adb command: adb shell dumpsys bluetooth_manager | findstr -i ""Name:"".
-run the following function on Mobile device1: found = phone.transfer_audio_to_HU(bluetooth_device_name) to change speaker and transfer audio to HU speaker. Wait 3 seconds for audio transfer to take effect.
 click Transfer button with regex from HU display with found = click_on_device_regex(HU, ""Transfer"") to transfer the audio on Mobile device1.
 check if audio transfer is successful on Mobile Device 1 with found == True. If is True, then audio transfer functionality works correctly and the test is Passed. If is False, audio transfer failed and the test is failed.
 please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
@@ -285,6 +763,8 @@ run the following commands after test is done in order to return to home menu: H
 stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
 
 
+
+
 "
 "1 Initiate an incoming call from Mobile Device 3 to Mobile Device 1.
 2 Accept call on HU..
@@ -292,6 +772,7 @@ stop screen recordings on HU after test is done with stop_screen_recording(""HU"
 4 On Mobile Device 1 (connected device)  navigate to change speaker and transfer audio to HU.","3 Audio is only audible on Mobile Device 1.
 4 Audio is only audible on HU.",173017,"Mobile Device and HU are connected.
 Synchronisation is finished.",Mobile_Device_transfer_audio_to_HU,"
+
 
 check USB Matrix status with status = USB_Matrix_Status().
 get serial numbers for them with HU, Mobile1 = get_serial_number().
@@ -313,15 +794,16 @@ run the following function on Mobile device3: rc = phone3.run_unlock_screen_comm
 run the following function on Mobile device3: rc = phone3.dial_command(phone_number_mobile1) to initiate an incoming call from Mobile Device 3 to Mobile Device 1. Wait 5 seconds for the incoming call to be established.
 click Accept button with regex from HU display with found = click_on_device_regex(HU, ""Accept"") to accept call on HU.
 switch USB Matrix back to the port from the beginning with select_mobile_device(1, status).
+run the following function on Mobile device1: found = phone.transfer_audio_to_mobile(bluetooth_device_name) to change speaker and transfer audio to Mobile devices1 speaker. Wait 3 seconds for audio transfer to take effect.
 extract bluetooth_device_name for HU in a variable using the following adb command: adb shell dumpsys bluetooth_manager | findstr -i ""Name:"".
 run the following function on Mobile device1: found = phone.transfer_audio_to_HU(bluetooth_device_name) to change speaker and transfer audio to HU speaker. Wait 3 seconds for audio transfer to take effect.
 check if audio is only audible on HU with found == True. If audio is routed to HU then audio transfer to HU works correctly and the test is Passed. If audio routing is not working properly then the test is failed.
 please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
-run the following function on Mobile device1: found = phone.transfer_audio_to_mobile(bluetooth_device_name) to change speaker and transfer audio to Mobile devices1 speaker. Wait 3 seconds for audio transfer to take effect.
 run the following function on Mobile Device1: phone.end_call_command() in order to end call.
 save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
 run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
 stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+
 
 
 "
@@ -440,6 +922,7 @@ stop screen recordings on HU after test is done with stop_screen_recording(""HU"
 For TestraIDCEvos and Testcases set mode Parken: ""Parken_BN_IO"".",2 Bluetooth connection is released. Call is transfered to Mobile Device 1. Audio and voice are audible on Mobile Device 1 and Mobile Device 3.,173013,"Mobile Device and HU are connected.
 Synchronisation is finished.",Power_off_HU_during_active_call,"
 
+
 check USB Matrix status with status = USB_Matrix_Status().
 get serial numbers for them with HU, Mobile1 = get_serial_number().
 get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
@@ -465,7 +948,7 @@ run the following function on Mobile device: rc = phone.run_turn_screen_on_comma
 run the following function on Mobile device: rc = phone.run_unlock_screen_command() to unlock Mobile screen.
 run the following function on Mobile device: phone.run_settings_menu_command() go to Mobile Settings menu.
 run the following function on Mobile device: rc = phone.run_bluetooth_menu_command() go to Mobile Bluetooth menu.
-check if bluetooth connection was released after HU power off with found = phone.check_bluetooth_connection(). If found contains the following text: ConnectionState: STATE_DISCONNECTED then Bluetooth connection was released and call is transferred to Mobile Device 1 and the test is Passed. If not then call was terminated or connection remained active and the test is Failed.
+check if bluetooth connection was released after HU power off with found = phone.check_bluetooth_connection(). If found contains the following text: ConnectionState: STATE_DISCONNECTED or is empty then Bluetooth connection was released and call is transferred to Mobile Device 1 and the test is Passed. If not then call was terminated or connection remained active and the test is Failed.
 please make a screenshot on Mobile device screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
 run the following function to power on HU: power_on_HU() during incoming call. Wait 60 seconds for HU to boot up and establish Bluetooth connection.
 run the following command in Windows cmd to resume DLT logs after reboot: ssh -i id_ed25519_idcevo -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@160.48.249.99 ""nohup dlt-receive -a localhost -o /var/data/{mobile_name_without_space}.dlt >/dev/null 2>&1 &"".
@@ -479,6 +962,7 @@ click English Button from HU display with regex with found = click_on_device_reg
 run the following function on Mobile Device1: phone.end_call_command() in order to end call.
 save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
 run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; Mobile device commands: rc = phone.run_home_command().
+
 
 "
 "1 Initiate an incoming call from MD3 to MD1
@@ -573,8 +1057,8 @@ run the following adb commands on HU: adb shell device_config put bluetooth INIT
 run the following 2 adb commands on HU: adb shell am start -a android.settings.LOCALE_SETTINGS; adb shell input swipe 1200 500 2000 200 to Navigate on Language Menu.
 click English Button from HU display with regex with found = click_on_device_regex(HU, ""English""). If found == False run the following adb commands on HU: adb shell input tap 200 700; adb shell input swipe 1200 500 2000 200 then click English button again with found = click_on_device_regex(HU, ""English"").
 run the following adb command on HU: adb shell input tap 3000 650.
-check if last 3 digits of mobile3 phone number can be found on HU display with found = find_word_on_device_via_regex(HU, last_3_digits). If it was found then Bluetooth connection is established and call is transferred to HU and the test is Passed. If not then Bluetooth connection was not established properly after HU power on during incoming call and the test is failed.
 please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+check if last 3 digits of mobile3 phone number can be found on HU display with found = find_word_on_device_via_regex(HU, last_3_digits). If it was found then Bluetooth connection is established and call is transferred to HU and the test is Passed. If not then Bluetooth connection was not established properly after HU power on during incoming call and the test is failed.
 run the following function on Mobile Device1: phone.end_call_command() in order to end call.
 save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
 run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
@@ -585,6 +1069,7 @@ run the following commands after test is done in order to return to home menu: H
 2 During an incoming call power off HU.
 For TestraIDCEvos and Testcases set mode Parken: ""Parken_BN_IO"".",2 Bluetooth connection released. Incoming call is indicated on Mobile Device.,173009,"Mobile Device and HU are connected.
 Synchronisation is finished.",Power_off_HU_during_incoming_call,"
+
 
 check USB Matrix status with status = USB_Matrix_Status().
 get serial numbers for them with HU, Mobile1 = get_serial_number().
@@ -609,11 +1094,12 @@ run the following function on Mobile device: rc = phone.run_turn_screen_on_comma
 run the following function on Mobile device: rc = phone.run_unlock_screen_command() to unlock Mobile screen.
 run the following function on Mobile device: phone.run_settings_menu_command() go to Mobile Settings menu.
 run the following function on Mobile device: rc = phone.run_bluetooth_menu_command() go to Mobile Bluetooth menu.
-check if bluetooth connection was released after HU power off with found = phone.check_bluetooth_connection(). If found contains the following text: ConnectionState: STATE_DISCONNECTED then Bluetooth connection was released and incoming call is indicated on Mobile Device and the test is Passed. If not then call was terminated or connection remained active and the test is Failed.
+check if bluetooth connection was released after HU power off with found = phone.check_bluetooth_connection(). If found contains the following text: ConnectionState: STATE_DISCONNECTED or is empty then Bluetooth connection was released and incoming call is indicated on Mobile Device and the test is Passed. If not then call was terminated or connection remained active and the test is Failed.
 please make a screenshot on Mobile device screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
 run the following function on Mobile Device1: phone.end_call_command() in order to end call.
 save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
 run the following commands after test is done in order to return to home menu: Mobile device commands: rc = phone.run_home_command().
+
 
 
 "
@@ -683,8 +1169,8 @@ run the following adb commands on HU: adb shell device_config put bluetooth INIT
 run the following 2 adb commands on HU: adb shell am start -a android.settings.LOCALE_SETTINGS; adb shell input swipe 1200 500 2000 200 to Navigate on Language Menu.
 click English Button from HU display with regex with found = click_on_device_regex(HU, ""English""). If found == False run the following adb commands on HU: adb shell input tap 200 700; adb shell input swipe 1200 500 2000 200 then click English button again with found = click_on_device_regex(HU, ""English"").
 run the following adb command on HU: adb shell input tap 3000 650.
-check if last 3 digits of mobile3 phone number can be found on HU display with found = find_word_on_device_via_regex(HU, last_3_digits). If it was found then Bluetooth connection reestablished between HU to Mobile Device 1 and audio is audible on HU and the test is Passed. If not then Bluetooth connection was not reestablished properly after HU power on and the test is failed.
 please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+check if last 3 digits of mobile3 phone number can be found on HU display with found = find_word_on_device_via_regex(HU, last_3_digits). If it was found then Bluetooth connection reestablished between HU to Mobile Device 1 and audio is audible on HU and the test is Passed. If not then Bluetooth connection was not reestablished properly after HU power on and the test is failed.
 run the following function on Mobile Device1: phone.end_call_command() in order to end call.
 save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
 run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
@@ -696,6 +1182,7 @@ run the following commands after test is done in order to return to home menu: H
 3 During an active outgoing call power off HU.
 For TestraIDCEvos and Testcases set mode Parken: ""Parken_BN_IO"".",3 Bluetooth connection released. Audio is still audible on Mobile Device (some implementations might hang up).,173006,"Mobile Device and HU are connected.
 Synchronisation is finished.",Power_off_HU_during_outgoing_call,"
+
 
 
 check USB Matrix status with status = USB_Matrix_Status().
@@ -723,11 +1210,12 @@ run the following function on Mobile device: rc = phone.run_turn_screen_on_comma
 run the following function on Mobile device: rc = phone.run_unlock_screen_command() to unlock Mobile screen.
 run the following function on Mobile device: phone.run_settings_menu_command() go to Mobile Settings menu.
 run the following function on Mobile device: rc = phone.run_bluetooth_menu_command() go to Mobile Bluetooth menu.
-check if bluetooth connection was released after HU power off with found = phone.check_bluetooth_connection(). If found contains the following text: ConnectionState: STATE_DISCONNECTED then Bluetooth connection was released and audio is still audible on Mobile Device and the test is Passed. If not then call was terminated and some implementations might hang up and the test is Failed.
+check if bluetooth connection was released after HU power off with found = phone.check_bluetooth_connection(). If found contains the following text: ConnectionState: STATE_DISCONNECTED or is empty then Bluetooth connection was released and audio is still audible on Mobile Device and the test is Passed. If not then call was terminated and some implementations might hang up and the test is Failed.
 please make a screenshot on Mobile device screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
 run the following function on Mobile Device1: phone.end_call_command() in order to end call.
 save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
 run the following commands after test is done in order to return to home menu: Mobile device commands: rc = phone.run_home_command().
+
 
 
 "
@@ -735,6 +1223,7 @@ run the following commands after test is done in order to return to home menu: M
 2 Accept call on Mobile Device 3.
 3 Terminate call on HU.",3 Call is terminated on Mobile Device and HU.,173005,"Mobile Device and HU are connected.
 Synchronisation is finished.",Terminate_active_call,"
+
 check USB Matrix status with status = USB_Matrix_Status().
 get serial numbers for them with HU, Mobile1 = get_serial_number().
 get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
@@ -764,6 +1253,7 @@ please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\I
 save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
 run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
 stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+
 "
 "1 Initiate an outgoing call from Mobile Device 1 to Mobile Device 3.
 2 Accept call on Mobile Device 3.",2 Call is active on Mobile Device and HU. Audio is transmitted in both directions.,173004,"Mobile Device and HU are connected.
@@ -1099,7 +1589,8 @@ stop screen recordings on HU and Mobile after test is done with stop_screen_reco
 2 Go to a contact that has blanks in its contact details.
 ",2 Blanks are displayed correctly.,172987,"Mobile Device and HU are connected.
 Phonebook download is finished.
-A contact with blanks (some spaces between charakters) in contact details is stored in Phonebook.",Blanks_in_contact_details,"check USB Matrix status with status = USB_Matrix_Status().
+A contact with blanks (some spaces between charakters) in contact details is stored in Phonebook.",Blanks_in_contact_details,"
+check USB Matrix status with status = USB_Matrix_Status().
 get serial numbers for them with HU, Mobile1 = get_serial_number().
 create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"")(example for HU).
 get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
@@ -1110,14 +1601,15 @@ run the following function on mobile device: stdout = phone.get_contacts_name_co
 run the following function on mobile device: stdout = phone.get_contacts_name_with_postal_address_command(). Extract the display_name for all contacts with postal address displayed in a list.
 extract the first contact for with a blank postal address in the name.Check if the contact last name is available with stdout = phone.get_contacts_data3_command() and if it is save it in a variable. If not save the whole name in a variable with stdout = phone.get_contacts_data2_command().
 click on the extracted name Button on from HU display with found = click_on_device_with_verification(HU, click_target). If it was not found run the following adb command: adb shell input swipe 1700 700 2000 200 to scroll down on contacts list from HU display. Try it for 10 times if the extracted contact was not found the test is failed.
-check if contact found word can be found on HU display with found = find_word_on_device_via_regex(HU, click_target). If it was found then Mobile device Contact with blank details is displayed successfully on HU and the test is Passed. If not then Mobile device Contact with blank details is not displayed and the test is failed.
+check if contact name was found on HU display with found = True. If it was found then Mobile device Contact with blank details is displayed successfully on HU and the test is Passed. If not then Mobile device Contact with blank details is not displayed and the test is failed.
 please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
 run the following adb command on HU: adb shell input keyevent 3.
 click Mobile device name button with regex from HU display with found = click_on_device_regex(HU, mobile_name).
 run the following adb command on HU display: adb shell input swipe 1700 700 200 2500.
 save in Excel the status of the test (passed or failed) with the corresponding message.
 run the following commmands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png.
-stop screen recordings on HU and Mobile after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed."
+stop screen recordings on HU and Mobile after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
 "1 On IDCEvo go to Communication --> Contacts
 2 Go to any contact with special characters in name or other fields.
 
@@ -1167,11 +1659,13 @@ run the following commmands after test is done in order to return to home menu: 
 stop screen recordings on HU and Mobile after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed."
 1 While phonebook is downloading start audio playbaIDCEvo from Mobile Device.,1 Audio playbaIDCEvo does not interrupt phonebook download.,172984,"Mobile Device and HU are connected.
 Phonebook download has started and is not finished.
-In case the download of the phonebook is already finished, then delete Mobile Device on HU",Audio_playback_during_phonebook_download,"check USB Matrix status with status = USB_Matrix_Status().
+In case the download of the phonebook is already finished, then delete Mobile Device on HU",Audio_playback_during_phonebook_download,"
+check USB Matrix status with status = USB_Matrix_Status().
 get serial numbers for them with HU, Mobile1 = get_serial_number().
 create recordings folder with create_recordings_folder() and start screen recording for HU and for Mobile Device with start_screen_recording(f""-s {HU}"", test_name, ""HU"")(example for HU).
 get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
 create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to play audio.
 run the following function on Mobile device: phone.click_close_button_popup() to click Close button for pop ups that may appear on screen.
 run the following function on Mobile device: rc = phone.run_turn_screen_on_command() to turn Mobile screen on.
 run the following function on Mobile device: rc = phone.run_unlock_screen_command() to unlock Mobile screen.
@@ -1189,7 +1683,6 @@ click bluetooth_device_name button with regex from Mobile device display with fo
 click Connect Button on from HU display with found = click_on_device(HU, ""Connect"").
 click Pair button from Mobile device display with found = phone.click_pair_with_HU_button().
 click Not now button from HU display with found = click_on_device(HU, ""Not now""). It may not appear everytime so we don't have an assert check for it.
-run the following function on Mobile device: phone.play_audio_command()to play audio.
 run the following adb command on HU: adb shell input keyevent 3 to go to Home screen.
 click Not now button from HU display with found = click_on_device(HU, ""Not now""). It may not appear everytime so we don't have an assert check for it.
 click Mobile device name button with regex from HU display with found = click_on_device_regex(HU, mobile_name).
@@ -1212,7 +1705,8 @@ run the following function on Mobile device: phone.click_unpair_button() to unpa
 run the following function on Mobile device: phone.disable_bluetooth() to disable Bluetooth of Mobile device.
 save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
 run the following commmands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command()
-stop screen recordings on HU and Mobile device after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed."
+stop screen recordings on HU and Mobile device after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
 1 Phonebook download is initiated and still running. Use a shielding bag or shielding chamber or go out of range to simulate a linkloss,1 After linkloss HU and Mobile Device cancel import and return to previous states.,172983,"Mobile Device and HU are connected.
 Phonebook download has started and is not finished.
 In case the download of the phonebook is already finished, then delete Mobile Device on HU",Linkloss_during_phonebook_download,"check USB Matrix status with status = USB_Matrix_Status().
@@ -1749,7 +2243,9 @@ PIN code shown on both sides are the same.
 
 Mobile Device 1 is still paired as Hands-Free Device 1 and as Bluetooth-Audio Device.
 ",172967,"Mobile Device 1 (Test Device) is allready paired.
-Mobile Device 2 (other Device) isn`t paired with HU.",Pairing_Mobile_Device_2,"check USB Matrix status with status = USB_Matrix_Status(). If USB Matrix is connected to port 1 then change it to port 2 and if is connected to any other port except port1 change the connection to port 1.
+Mobile Device 2 (other Device) isn`t paired with HU.",Pairing_Mobile_Device_2,"
+
+check USB Matrix status with status = USB_Matrix_Status(). If USB Matrix is connected to port 1 then change it to port 2 and if is connected to any other port except port1 change the connection to port 1.
 get serial numbers for them with HU, Mobile2 = get_serial_number().
 create recordings folder with create_recordings_folder() and start screen recording for HU and for Mobile Device with start_screen_recording(f""-s {HU}"", test_name, ""HU"")(example for HU).
 get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
@@ -1786,7 +2282,9 @@ run the following function on Mobile device: phone.disable_bluetooth() to disabl
 save in Excel the status of the test (passed or failed) with the corresponding message.
 run the following commmands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
 switch USB Matrix back to the port from the beginning with select_mobile_device(1, status).
-stop screen recordings on HU and Mobile after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed."
+stop screen recordings on HU and Mobile after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+
+"
 "1 Activate Bluetooth on Mobile Device.
 In order to be visible for other Bluetooth devices you have to enter the Bluetooth settings menu of your mobile device.
 
@@ -1851,3 +2349,24 @@ run the following command: dir D:\ /s /b | findstr /r ""traget.*IDCevo.*[0-9][0-
 run the following adb command on HU: adb shell ""if [ -f /system/build.prop ] || [ -f /vendor/build.prop ]; then echo Android; else echo Unknown; fi"".
 check if adb command returns Android. If it returns Android then the test is Passed. If not then test is Failed.
 save in Excel the status of the test (passed or failed) with the corresponding message."
+"1 Start audio playbaIDCEvo on Mobile Device 1.
+2 CheIDCEvo if name of the current album is shown.","1 Audio playbaIDCEvo is initiated on HU.
+2 HU displays correct album name.",173043,"Mobile Device and HU are connected.
+Synchronisation is finished.",Album,"check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+run the following function on Mobile device: album_name = phone.album_name_command() to extract the name of the current album playing from Mobile Device 1.
+check if current album name is displayed on HU with found = find_word_on_device_via_regex(HU, album_name). If it was found then audio playback is initiated on HU and HU displays correct album name and the test is Passed. If not then album name display functionality failed and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\\traget\\IDCevo\\IOP_configuration\\Test_results\\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed."

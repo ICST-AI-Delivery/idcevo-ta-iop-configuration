@@ -1,0 +1,1 @@
+set "BASE_DIR=D:\traget\IDCevo\BMW_IDCevo_IOP_Test_Setup"

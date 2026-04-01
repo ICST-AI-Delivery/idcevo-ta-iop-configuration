@@ -8,6 +8,37 @@ import subprocess
 import signal
 import re
 
+def extract_base_dir_from_batch():
+    """Extract BASE_DIR from run_IOP.bat file"""
+    try:
+        # Path to run_IOP.bat (2 folders up from current script)
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        batch_file_path = os.path.join(current_dir, '..', '..', '..', 'run_IOP.bat')
+        batch_file_path = os.path.normpath(batch_file_path)
+        
+        if not os.path.exists(batch_file_path):
+            # print(f"Warning: run_IOP.bat not found at {batch_file_path}, using default D:/traget/IDCevo/IOP_configuration")
+            return 'D:/traget/IDCevo/IOP_configuration'
+        
+        with open(batch_file_path, 'r') as file:
+            content = file.read()
+            
+        # Look for the BASE_DIR pattern
+        match = re.search(r'set\s+"BASE_DIR=([^"]+)"', content)
+        if match:
+            base_dir = match.group(1)
+            # Convert backslashes to forward slashes for consistency
+            base_dir = base_dir.replace('\\', '/')
+            # print(f"Extracted BASE_DIR from run_IOP.bat: {base_dir}")
+            return base_dir
+        else:
+            # print("Warning: BASE_DIR not found in run_IOP.bat, using default D:/traget/IDCevo/IOP_configuration")
+            return 'D:/traget/IDCevo/IOP_configuration'
+            
+    except Exception as e:
+        # print(f"Warning: Error reading run_IOP.bat: {e}, using default D:/traget/IDCevo/IOP_configuration")
+        return 'D:/traget/IDCevo/IOP_configuration'
+    
 # OCR function to find words in screenshots
 def find_word_in_screenshot(image, word):
     # Search the specific word in the screenshot and extract the coordinates
@@ -1080,7 +1111,8 @@ def toggle_switch_widget(
    return False
 
 def create_recordings_folder():
-    results_folder = r"D:\traget\IDCevo\IOP_configuration\Test_results"
+    base_dir = extract_base_dir_from_batch()
+    results_folder = f"{base_dir}/Test_results".replace('/', '\\')
     recordings_folder = os.path.join(results_folder, "Recordings")
     
     if not os.path.exists(recordings_folder):

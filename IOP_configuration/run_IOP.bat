@@ -11,7 +11,9 @@ echo Creating temporary batch files for USB port configuration...
 for %%N in (1,2,3,4,5) do (
    echo @echo off > temp_port_%%N.bat
    echo setlocal EnableDelayedExpansion >> temp_port_%%N.bat
-   echo set "BASE_DIR=D:\traget\IDCevo\IOP_configuration" >> temp_port_%%N.bat
+   echo set "USB_MATRIX_COM_PORT=COM38" >> temp_port_%%N.bat
+   echo set "SWITCH_COM_PORT=COM36" >> temp_port_%%N.bat
+   echo set "BASE_DIR=D:\traget\IDCevo\BMW_IDCevo_IOP_Test_Setup\IOP_configuration" >> temp_port_%%N.bat
    echo set "SUITE_PATH=!BASE_DIR!\Test_environment\IOP_suite.txt" >> temp_port_%%N.bat
    echo set "TEST_DIR=!BASE_DIR!\Test_environment\Test_scripts" >> temp_port_%%N.bat
    echo set "RESULTS_DIR=!BASE_DIR!\Test_results" >> temp_port_%%N.bat
@@ -20,17 +22,17 @@ for %%N in (1,2,3,4,5) do (
    echo echo ============================================== >> temp_port_%%N.bat
    echo echo DELETING PREVIOUS RESULTS >> temp_port_%%N.bat
    echo echo ============================================== >> temp_port_%%N.bat
-   echo if exist "!RESULTS_DIR!\results.html" ^( >> temp_port_%%N.bat
-   echo    del /f /q "!RESULTS_DIR!\results.html" >> temp_port_%%N.bat
-   echo    echo Deleted: results.html >> temp_port_%%N.bat
+   echo if exist "!RESULTS_DIR!\IOP_logs.html" ^( >> temp_port_%%N.bat
+   echo    del /f /q "!RESULTS_DIR!\IOP_logs.html" >> temp_port_%%N.bat
+   echo    echo Deleted: IOP_logs.html >> temp_port_%%N.bat
    echo ^) else ^( >> temp_port_%%N.bat
-   echo    echo results.html not found. >> temp_port_%%N.bat
+   echo    echo IOP_logs.html not found. >> temp_port_%%N.bat
    echo ^) >> temp_port_%%N.bat
-   echo if exist "!RESULTS_DIR!\Test_results.xls" ^( >> temp_port_%%N.bat
-   echo    del /f /q "!RESULTS_DIR!\Test_results.xls" >> temp_port_%%N.bat
-   echo    echo Deleted: Test_results.xls >> temp_port_%%N.bat
+   echo if exist "!RESULTS_DIR!\IOP_results.xls" ^( >> temp_port_%%N.bat
+   echo    del /f /q "!RESULTS_DIR!\IOP_results.xls" >> temp_port_%%N.bat
+   echo    echo Deleted: IOP_results.xls >> temp_port_%%N.bat
    echo ^) else ^( >> temp_port_%%N.bat
-   echo    echo Test_results.xls not found. >> temp_port_%%N.bat
+   echo    echo IOP_results.xls not found. >> temp_port_%%N.bat
    echo ^) >> temp_port_%%N.bat
    echo if exist "!RESULTS_DIR!\*.dlt" ^( >> temp_port_%%N.bat
    echo    del /f /q "!RESULTS_DIR!\*.dlt" >> temp_port_%%N.bat
@@ -177,7 +179,7 @@ for %%N in (1,2,3,4,5) do (
    echo echo. >> temp_port_%%N.bat
    echo echo. >> temp_port_%%N.bat
    echo ssh -i id_ed25519_idcevo -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@160.48.249.99 "killall dlt-receive" >> temp_port_%%N.bat
-   echo scp -i id_ed25519_idcevo root@160.48.249.99:/var/data/!CLEAN_NAME!.dlt D:\traget\IDCevo\IOP_configuration\Test_results >> temp_port_%%N.bat
+   echo scp -i id_ed25519_idcevo root@160.48.249.99:/var/data/!CLEAN_NAME!.dlt !BASE_DIR!\Test_results >> temp_port_%%N.bat
    echo ssh -i id_ed25519_idcevo -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@160.48.249.99 "rm -f /var/data/!CLEAN_NAME!.dlt" >> temp_port_%%N.bat
    echo python "!BASE_DIR!\Test_environment\Test_scripts\helpers\Bluetooth_logs_HU_Mobile_Device.py" >> temp_port_%%N.bat
    echo echo ============================================== >> temp_port_%%N.bat
@@ -206,7 +208,7 @@ for %%N in (1,2,3,4,5) do (
 )
 
 REM --- Execute each temporary batch file ---
-for %%N in (1,2,3,4,5,6,7,8) do (
+for %%N in (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16) do (
    echo.
    echo ===============================================
    echo PROCESSING USB PORT %%N
@@ -217,7 +219,7 @@ for %%N in (1,2,3,4,5,6,7,8) do (
 REM --- Clean up temporary files ---
 echo.
 echo Cleaning up temporary files...
-for %%N in (1,2,3,4,5,6,7,8) do (
+for %%N in (1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16) do (
    if exist temp_port_%%N.bat del temp_port_%%N.bat
 )
 

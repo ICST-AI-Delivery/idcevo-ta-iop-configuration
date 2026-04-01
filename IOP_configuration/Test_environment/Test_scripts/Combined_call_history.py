@@ -9,6 +9,8 @@ test_name = "Combined_call_history"
 
 def main():
     save_to_notepad(f"=== Test {test_name} started ===\n")
+    base_dir = extract_base_dir_from_batch()
+    path = f"{base_dir}/Test_environment/Test_scripts"
     
     try:
         # Check USB Matrix status
@@ -150,7 +152,7 @@ def main():
             assert rc == 0, f"Command {cmd} failed: {rc}\n"
 
         # move the screenshot
-        command = f"move {test_name}.png D:/traget/IDCevo/IOP_configuration/Test_results/Screenshots"
+        command = f"move {test_name}.png {base_dir}/Test_results/Screenshots"
         stdout, stderr, rc = run_cmd(command)
         # Console display 
         if stderr:
