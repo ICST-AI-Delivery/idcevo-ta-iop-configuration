@@ -239,7 +239,7 @@ class AndroidDevice:
             save_to_notepad(f"Toggle switch Pair could not be enabled\n")
         time.sleep(1)
 
-        found = click_action_keywords(self.device_id,primary_keywords=["Pair", "PAIR"])
+        found = click_action_keywords(self.device_id,primary_keywords=["Pair", "PAIR", "Authorize"])
         return found
 
    def click_allow_button_popup(self):
@@ -273,6 +273,74 @@ class AndroidDevice:
             save_to_notepad(f"Settings Icon clicked via keywords\n")
         else:
             save_to_notepad(f"Settings Icon not clicked via keywords\n")
+
+   def activate_shuffle_mode_command(self):
+        # Run adb command to get son title on Mobile device
+        song_title_command = f"shell dumpsys media_session | findstr description="
+        stdout, stderr, rc = run_adb(song_title_command, self.device_id)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({song_title_command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({song_title_command}:)")
+        save_to_notepad(f"Result: {stdout}\n")
+        
+        # Extract the song title from the metadata
+        # Format: metadata: size=7, description=Beautiful Pain (feat. Sia), Eminem, Eminem
+        if stdout and "description=" in stdout:
+            # Find the description part
+            desc_start = stdout.find("description=") + len("description=")
+            desc_end = stdout.find(",", desc_start)
+            if desc_end == -1:
+                desc_end = len(stdout)
+            
+            # Extract the full song title
+            song_title = stdout[desc_start:desc_end].strip()
+            save_to_notepad(f"Extracted song title: '{song_title}'\n")
+            
+            # Extract the first word from the title
+            if song_title:
+                first_word = song_title.split()[0]
+                save_to_notepad(f"First word of song title: '{first_word}'\n")
+                time.sleep(3)
+
+        found = click_on_device_regex(self.device_id, first_word)
+        if found == True:
+            save_to_notepad(f"Song Title clicked via regex\n")
+        else:
+            save_to_notepad(f"Song Title not clicked via regex\n")
+        time.sleep(2)
+
+        found = click_on_icon(self.device_id,
+                                desc_keywords=["Shuffle on"],
+                                resource_ids=["com.google.android.apps.youtube.music:id/queue_shuffle_button"]
+                            )
+        if found == True:
+            save_to_notepad(f"Shuffle Icon clicked via keywords\n")
+        else:
+            save_to_notepad(f"Shuffle Icon not clicked via keywords\n")
+        return found
+   
+   def deactivate_shuffle_mode_command(self):
+        found = click_on_icon(self.device_id,
+                                desc_keywords=["Shuffle on"],
+                                resource_ids=["com.google.android.apps.youtube.music:id/queue_shuffle_button"]
+                            )
+        if found == True:
+            save_to_notepad(f"Shuffle Icon clicked via keywords\n")
+        else:
+            save_to_notepad(f"Shuffle Icon not clicked via keywords\n")
+        time.sleep(2)
+
+        # Run back command on Mobile device
+        command = f"shell input keyevent 4"     # Mobile back
+        stdout, stderr, rc = run_adb(command, self.device_id)
+        save_to_notepad(f"[Executed command:] (adb -s {self.device_id} {command}:)")
+        save_to_notepad(f"Result: {stdout}\n")
+        # Console display
+        if stderr:
+            save_to_notepad(f"[Command failed:] (adb -s {self.device_id} {command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+
 
    def click_unpair_button(self):
         found = click_action_keywords(self.device_id,primary_keywords=["forget", "unpair"],confirm_keywords=["forget device", "unpair","remove device"])
@@ -639,12 +707,10 @@ class AndroidDevice:
         
    def cover_art_command(self):
         # Run adb command to get logcat COVERART entries with a 1-second timeout
-        import subprocess
-        import time
         import os
         import threading
         
-        try:           
+        try:  
             # Use a different approach that avoids shell pipes on Windows
             # Start logcat process without pipe to avoid termination issues
             process = subprocess.Popen(
@@ -659,7 +725,7 @@ class AndroidDevice:
             # Collect output for 1 second using a timeout mechanism
             output_lines = []
             start_time = time.time()
-            timeout_duration = 1.0  # 1 second
+            timeout_duration = 10.0  # 10 seconds
             
             def read_output():
                 try:
@@ -720,11 +786,6 @@ class AndroidDevice:
             if stderr and "terminated after timeout" not in stderr:
                 save_to_notepad(f"[Command had errors:] (logcat command)")
                 save_to_notepad(f"Error text: {stderr}\n")
-
-            # Clear the logcat buffer first to get only fresh entries
-            clear_cmd = f"adb -s {self.device_id} logcat -c"
-            subprocess.run(clear_cmd, shell=True, timeout=5)
-            save_to_notepad(f"[Executed command:] ({clear_cmd})\n")
 
             return stdout if stdout else ""
             
@@ -2599,6 +2660,7 @@ def oppo_find_x8_pro_transfer_audio_to_mobile(device, bluetooth_HU_name):
     if stderr:
         save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
         save_to_notepad(f"Error text: {stderr}\n")
+
     base_dir = extract_base_dir_from_batch()
     path = f"{base_dir}/Test_environment/Test_scripts"
 
@@ -2650,6 +2712,113 @@ def oppo_find_x8_pro_transfer_audio_to_mobile(device, bluetooth_HU_name):
     else:
         save_to_notepad(f"Phone button could not be pressed\n")
     return found
+
+# =====================================================
+# OPPO F17 IMPLEMENTATION
+# =====================================================
+def oppo_F17_enable_bt(device):
+    # Run input tap command on Mobile device
+    command = f"shell input tap 600 2200"     # Mobile input tap
+    stdout, stderr, rc = run_adb(command, device)
+    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
+    save_to_notepad(f"Result: {stdout}\n")
+    # Console display
+    if stderr:
+        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
+        save_to_notepad(f"Error text: {stderr}\n")
+    time.sleep(2) 
+
+    found = click_on_device_regex(device, "Bluetooth")
+    if found == True:
+        save_to_notepad(f"Button Bluetooth enabled successfully\n")
+    else:
+        save_to_notepad(f"Button Bluetooth could not be enabled\n")
+
+def oppo_F17_disable_bt(device):
+    found = click_on_device_regex(device, "Bluetooth")
+    if found == True:
+        save_to_notepad(f"Button Bluetooth disabled successfully\n")
+    else:
+        save_to_notepad(f"Button Bluetooth could not be disabled\n")
+
+def oppo_F17_transfer_audio_to_mobile(device, bluetooth_HU_name):
+    # Run back command on Mobile device
+    command = f"shell input keyevent 3"     # Mobile back
+    stdout, stderr, rc = run_adb(command, device)
+    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
+    save_to_notepad(f"Result: {stdout}\n")
+    # Console display
+    if stderr:
+        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
+        save_to_notepad(f"Error text: {stderr}\n")
+    time.sleep(3)
+
+    # Run input swipe command on Mobile device
+    command = f"shell input swipe 500 60 400 400"     # Mobile input swipe
+    stdout, stderr, rc = run_adb(command, device)
+    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
+    save_to_notepad(f"Result: {stdout}\n")
+    # Console display
+    if stderr:
+        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
+        save_to_notepad(f"Error text: {stderr}\n")
+    time.sleep(3)
+
+    found = click_on_device_regex(device,"call")
+    if found == True:
+        save_to_notepad(f"call button pressed successfully\n")
+    else:
+        save_to_notepad(f"call button could not be pressed\n")
+    time.sleep(3)
+    found = click_on_device_regex(device,bluetooth_HU_name)
+    if found == True:
+        save_to_notepad(f"{bluetooth_HU_name} button pressed successfully\n")
+    else:
+        save_to_notepad(f"{bluetooth_HU_name} button could not be pressed\n")
+
+    found = click_on_device_regex(device,"Phone")
+    if found == True:
+        save_to_notepad(f"Phone button pressed successfully\n")
+    else:
+        save_to_notepad(f"Phone button could not be pressed\n")
+    return found
+
+def oppo_F17_conference_call(device):
+    # Run back command on Mobile device
+    command = f"shell input keyevent 3"     # Mobile back
+    stdout, stderr, rc = run_adb(command, device)
+    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
+    save_to_notepad(f"Result: {stdout}\n")
+    # Console display
+    if stderr:
+        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
+        save_to_notepad(f"Error text: {stderr}\n")
+    time.sleep(3)
+
+    # Run input swipe command on Mobile device
+    command = f"shell input swipe 500 60 400 400"     # Mobile input swipe
+    stdout, stderr, rc = run_adb(command, device)
+    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
+    save_to_notepad(f"Result: {stdout}\n")
+    # Console display
+    if stderr:
+        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
+        save_to_notepad(f"Error text: {stderr}\n")
+    time.sleep(3)
+
+    found = click_on_device_regex(device,"call")
+    if found == True:
+        save_to_notepad(f"call button pressed successfully\n")
+    else:
+        save_to_notepad(f"call button could not be pressed\n")
+    time.sleep(3)
+
+    found = click_on_device_regex(device,"Merge")
+    if found == True:
+        save_to_notepad(f"Clicked Merge button completed via keywords\n")
+    else:
+        save_to_notepad(f"Clicked Merge button not completed via keywords\n")
+    time.sleep(3)
 
 # =====================================================
 # Pixel 9 Pro IMPLEMENTATION
@@ -3048,6 +3217,18 @@ DEVICE_MENU = {
    "OPPO Find X8 Pro": {
        "transfer_audio_to_mobile": oppo_find_x8_pro_transfer_audio_to_mobile,
        "transfer_audio_to_HU": oppo_find_x8_pro_transfer_audio_to_HU
+   },
+   "OPPO F17": {
+       "enable_bluetooth": oppo_F17_enable_bt,
+       "disable_bluetooth": oppo_F17_disable_bt,
+       "get_received_calls": huawei_p40_pro_get_received_calls,
+       "get_dialed_calls": huawei_p40_pro_get_dialed_calls,
+       "get_missed_calls": huawei_p40_pro_get_missed_calls,
+       "get_combined_calls": huawei_p40_pro_get_combined_calls,
+       "get_call_history_with_timestamps": huawei_p40_pro_get_call_history_with_timestamps,
+       "transfer_audio_to_mobile": oppo_F17_transfer_audio_to_mobile,
+       "transfer_audio_to_HU": oppo_find_x8_pro_transfer_audio_to_HU,
+       "conference_call": oppo_F17_conference_call
    },
    "OnePlus 13": {
        "transfer_audio_to_mobile": oppo_find_x8_pro_transfer_audio_to_mobile,

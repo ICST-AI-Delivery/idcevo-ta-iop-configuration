@@ -1,4 +1,31 @@
 Test Case Description,Test Case Expected Result,Test Case ID,Test Case Precondition,Test Name,Test Script Description
+"1 Start audio playbaIDCEvo on Mobile Device 1.
+2 Activate shuffle mode on Mobile Device 1.
+3 Skip to next traIDCEvo.","2 Correct shuffle mode.
+3 TraIDCEvos are played in random order.",173054,"Mobile Device and HU are connected.
+Synchronisation is finished.",Shuffle_on_Mobile_Device,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+run the following function on Mobile device: phone.activate_shuffle_mode_command() to activate shuffle mode on Mobile Device 1.
+run the following function on Mobile device: phone.skip_forward_audio_command() to skip to next track on Mobile Device 1.
+check if shuffle mode is activated correctly by verifying tracks are played in random order with shuffle_active == True. If is then correct shuffle mode is activated and tracks are played in random order and the test is Passed. If not then shuffle mode activation failed and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\\traget\\IDCevo\\IOP_configuration\\Test_results\\Screenshots.
+run the following function on Mobile device: phone.skip_backward_audio_command() to skip to previous track on Mobile Device 1.
+run the following function on Mobile device: phone.deactivate_shuffle_mode_command() to deactivate shuffle mode on Mobile Device 1.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
 "1 Navigate to music search.
 2 Enter the name of a traIDCEvo or artist in the search field.","2 Searching troughout Title, Artist, Genre and Albums is possible.",173048,"Mobile Device and HU are connected.
 Synchronisation is finished.",Music_search,"
@@ -136,6 +163,27 @@ save in Excel the status of the test (passed or failed) with the corresponding m
 run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
 stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
 "
+"1 Start audio playbaIDCEvo on Mobile Device 1.
+2 CheIDCEvo if name of the current album is shown.","1 Audio playbaIDCEvo is initiated on HU.
+2 HU displays correct album name.",173043,"Mobile Device and HU are connected.
+Synchronisation is finished.",Album,"check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
+run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
+click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
+click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
+run the following function on Mobile device: album_name = phone.album_name_command() to extract the name of the current album playing from Mobile Device 1.
+check if current album name is displayed on HU with found = find_word_on_device_via_regex(HU, album_name). If it was found then audio playback is initiated on HU and HU displays correct album name and the test is Passed. If not then album name display functionality failed and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\\traget\\IDCevo\\IOP_configuration\\Test_results\\Screenshots.
+run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
+click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
+click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed."
 "1 Start audio playbaIDCEvo on Mobile Device 1.
 2 CheIDCEvo if name of the current traIDCEvo is shown.","1 Audio playbaIDCEvo is initiated on HU.
 2 HU displays correct song title.",173042,"Mobile Device and HU are connected.
@@ -2349,24 +2397,3 @@ run the following command: dir D:\ /s /b | findstr /r ""traget.*IDCevo.*[0-9][0-
 run the following adb command on HU: adb shell ""if [ -f /system/build.prop ] || [ -f /vendor/build.prop ]; then echo Android; else echo Unknown; fi"".
 check if adb command returns Android. If it returns Android then the test is Passed. If not then test is Failed.
 save in Excel the status of the test (passed or failed) with the corresponding message."
-"1 Start audio playbaIDCEvo on Mobile Device 1.
-2 CheIDCEvo if name of the current album is shown.","1 Audio playbaIDCEvo is initiated on HU.
-2 HU displays correct album name.",173043,"Mobile Device and HU are connected.
-Synchronisation is finished.",Album,"check USB Matrix status with status = USB_Matrix_Status().
-get serial numbers for them with HU, Mobile1 = get_serial_number().
-create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
-get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
-create Mobile device object with phone = create_device(Mobile1,mobile_name).
-run the following function on Mobile device: phone.play_audio_command() to start audio playback on Mobile Device 1.
-run the following command on HU: adb shell input tap 1225 1325 to open Media menu.
-click Source button with regex on HU display with found = click_on_device_regex(HU, ""Source"").
-click Bluetooth name on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Bluetooth"").
-run the following function on Mobile device: album_name = phone.album_name_command() to extract the name of the current album playing from Mobile Device 1.
-check if current album name is displayed on HU with found = find_word_on_device_via_regex(HU, album_name). If it was found then audio playback is initiated on HU and HU displays correct album name and the test is Passed. If not then album name display functionality failed and the test is failed.
-please make a screenshot on HU screen and save it on the path D:\\traget\\IDCevo\\IOP_configuration\\Test_results\\Screenshots.
-run the following function on Mobile Device: phone.pause_audio_command() to pause audio.
-click Bluetooth button with regex on HU display with found = click_on_device_regex(HU, ""Bluetooth"").
-click Radio button on HU from Media menu with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Radio"") to switch from mobile playback to radio.
-save in Excel the status of the test (passed or failed) with the corresponding message.
-run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
-stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed."
