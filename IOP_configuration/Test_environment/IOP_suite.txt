@@ -57,7 +57,10 @@ Artist
 Cover_Art
 Total_Elapsed_time
 Resume_during_after_call
+<<<<<<< HEAD
 Shuffle_on_Mobile_Device
+=======
+>>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
 Music_search
 A2DP_conn
 HFP_conn

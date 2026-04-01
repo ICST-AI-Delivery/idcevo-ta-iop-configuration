@@ -239,7 +239,11 @@ class AndroidDevice:
             save_to_notepad(f"Toggle switch Pair could not be enabled\n")
         time.sleep(1)
 
+<<<<<<< HEAD
         found = click_action_keywords(self.device_id,primary_keywords=["Pair", "PAIR", "Authorize"])
+=======
+        found = click_action_keywords(self.device_id,primary_keywords=["Pair", "PAIR"])
+>>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
         return found
 
    def click_allow_button_popup(self):
@@ -274,6 +278,7 @@ class AndroidDevice:
         else:
             save_to_notepad(f"Settings Icon not clicked via keywords\n")
 
+<<<<<<< HEAD
    def activate_shuffle_mode_command(self):
         # Run adb command to get son title on Mobile device
         song_title_command = f"shell dumpsys media_session | findstr description="
@@ -342,6 +347,8 @@ class AndroidDevice:
             save_to_notepad(f"Error text: {stderr}\n")
 
 
+=======
+>>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
    def click_unpair_button(self):
         found = click_action_keywords(self.device_id,primary_keywords=["forget", "unpair"],confirm_keywords=["forget device", "unpair","remove device"])
         if found == True:
@@ -707,10 +714,19 @@ class AndroidDevice:
         
    def cover_art_command(self):
         # Run adb command to get logcat COVERART entries with a 1-second timeout
+<<<<<<< HEAD
         import os
         import threading
         
         try:  
+=======
+        import subprocess
+        import time
+        import os
+        import threading
+        
+        try:           
+>>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
             # Use a different approach that avoids shell pipes on Windows
             # Start logcat process without pipe to avoid termination issues
             process = subprocess.Popen(
@@ -725,7 +741,11 @@ class AndroidDevice:
             # Collect output for 1 second using a timeout mechanism
             output_lines = []
             start_time = time.time()
+<<<<<<< HEAD
             timeout_duration = 10.0  # 10 seconds
+=======
+            timeout_duration = 1.0  # 1 second
+>>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
             
             def read_output():
                 try:
@@ -787,6 +807,14 @@ class AndroidDevice:
                 save_to_notepad(f"[Command had errors:] (logcat command)")
                 save_to_notepad(f"Error text: {stderr}\n")
 
+<<<<<<< HEAD
+=======
+            # Clear the logcat buffer first to get only fresh entries
+            clear_cmd = f"adb -s {self.device_id} logcat -c"
+            subprocess.run(clear_cmd, shell=True, timeout=5)
+            save_to_notepad(f"[Executed command:] ({clear_cmd})\n")
+
+>>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
             return stdout if stdout else ""
             
         except Exception as e:
@@ -2660,7 +2688,10 @@ def oppo_find_x8_pro_transfer_audio_to_mobile(device, bluetooth_HU_name):
     if stderr:
         save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
         save_to_notepad(f"Error text: {stderr}\n")
+<<<<<<< HEAD
 
+=======
+>>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
     base_dir = extract_base_dir_from_batch()
     path = f"{base_dir}/Test_environment/Test_scripts"
 
@@ -2714,6 +2745,7 @@ def oppo_find_x8_pro_transfer_audio_to_mobile(device, bluetooth_HU_name):
     return found
 
 # =====================================================
+<<<<<<< HEAD
 # OPPO F17 IMPLEMENTATION
 # =====================================================
 def oppo_F17_enable_bt(device):
@@ -2821,6 +2853,8 @@ def oppo_F17_conference_call(device):
     time.sleep(3)
 
 # =====================================================
+=======
+>>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
 # Pixel 9 Pro IMPLEMENTATION
 # =====================================================
 def pixel_9_pro_transfer_audio_to_HU(device, bluetooth_HU_name):
@@ -3218,6 +3252,7 @@ DEVICE_MENU = {
        "transfer_audio_to_mobile": oppo_find_x8_pro_transfer_audio_to_mobile,
        "transfer_audio_to_HU": oppo_find_x8_pro_transfer_audio_to_HU
    },
+<<<<<<< HEAD
    "OPPO F17": {
        "enable_bluetooth": oppo_F17_enable_bt,
        "disable_bluetooth": oppo_F17_disable_bt,
@@ -3230,6 +3265,8 @@ DEVICE_MENU = {
        "transfer_audio_to_HU": oppo_find_x8_pro_transfer_audio_to_HU,
        "conference_call": oppo_F17_conference_call
    },
+=======
+>>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
    "OnePlus 13": {
        "transfer_audio_to_mobile": oppo_find_x8_pro_transfer_audio_to_mobile,
        "transfer_audio_to_HU": oneplus_13_transfer_audio_to_HU
