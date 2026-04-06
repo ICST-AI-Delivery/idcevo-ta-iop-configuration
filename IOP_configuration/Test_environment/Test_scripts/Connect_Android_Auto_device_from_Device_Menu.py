@@ -142,8 +142,7 @@ def main():
         
         
         # Click Start button from HU display with regex to accept Android Auto disclaimer in the HMI
-        found = find_word_on_device_via_regex_with_coordinates(HU, "Start")
-        
+        found = find_word_on_device_via_regex_with_coordinates(HU, "Start")        
         command = f"shell input tap {x} {y+400}"
         stdout, stderr, rc = run_adb(command, HU)
         if stderr:
