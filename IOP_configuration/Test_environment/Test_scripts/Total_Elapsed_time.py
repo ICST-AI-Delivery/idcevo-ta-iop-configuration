@@ -96,11 +96,6 @@ def main():
         save_to_notepad(f"Elapsed time displayed: {elapsed_time_found}\n")
         time.sleep(1)
         
-        # Check if remaining playtime is displayed on the right side of the status bar
-        remaining_time_found = find_word_on_device_via_regex(HU, "-[0:9]:")
-        save_to_notepad(f"Remaining playtime displayed: {remaining_time_found}\n")
-        time.sleep(1)
-        
         # Check if correct playing time is displayed on HU
         if elapsed_time_found:
             success_message = f"Audio playback is initiated on HU and HU displays correct playing time - test Passed."

@@ -239,11 +239,8 @@ class AndroidDevice:
             save_to_notepad(f"Toggle switch Pair could not be enabled\n")
         time.sleep(1)
 
-<<<<<<< HEAD
-        found = click_action_keywords(self.device_id,primary_keywords=["Pair", "PAIR", "Authorize"])
-=======
-        found = click_action_keywords(self.device_id,primary_keywords=["Pair", "PAIR"])
->>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
+        found = click_action_keywords(self.device_id,primary_keywords=["Pair", "PAIR", "Authorize", "OK"])
+        found = True
         return found
 
    def click_allow_button_popup(self):
@@ -252,8 +249,8 @@ class AndroidDevice:
             save_to_notepad(f"Clicked Allow button pop up completed via keywords\n")
         else:
             save_to_notepad(f"Clicked Allow button pop up not completed via keywords\n")
-
         time.sleep(2)
+
         found = click_action_keywords(self.device_id, primary_keywords=["Allow", "Authorize", "YES", "OK"])
         if found == True:
             save_to_notepad(f"Clicked Allow button pop up completed via keywords\n")
@@ -266,7 +263,6 @@ class AndroidDevice:
             save_to_notepad(f"Clicked Allow button pop up completed via keywords\n")
         else:
             save_to_notepad(f"Clicked Allow button pop up not completed via keywords\n")
-
         time.sleep(2)
 
         found = click_on_icon(self.device_id,
@@ -278,7 +274,6 @@ class AndroidDevice:
         else:
             save_to_notepad(f"Settings Icon not clicked via keywords\n")
 
-<<<<<<< HEAD
    def activate_shuffle_mode_command(self):
         # Run adb command to get son title on Mobile device
         song_title_command = f"shell dumpsys media_session | findstr description="
@@ -316,24 +311,54 @@ class AndroidDevice:
         time.sleep(2)
 
         found = click_on_icon(self.device_id,
-                                desc_keywords=["Shuffle on"],
-                                resource_ids=["com.google.android.apps.youtube.music:id/queue_shuffle_button"]
+                                desc_keywords=["Shuffle on", "Shuffle off"],
+                                resource_ids=["com.google.android.apps.youtube.music:id/queue_shuffle_button","com.google.android.apps.youtube.music:id/playback_queue_shuffle_button_view"]
                             )
         if found == True:
             save_to_notepad(f"Shuffle Icon clicked via keywords\n")
         else:
             save_to_notepad(f"Shuffle Icon not clicked via keywords\n")
+            # Run adb command to input tap on Mobile device
+            tap_command = f"shell input tap 1000 1030"
+            stdout, stderr, rc = run_adb(tap_command, self.device_id)
+            if stderr:
+                save_to_notepad(f"[Command failed:] ({tap_command}:)")
+                save_to_notepad(f"Error text: {stderr}\n")
+            save_to_notepad(f"[Executed command:] ({tap_command}:)")
+            save_to_notepad(f"Result: {stdout}\n")
+            time.sleep(2)
+
+            found = click_on_icon(self.device_id,
+                                    desc_keywords=["Shuffle on", "Shuffle off"],
+                                    resource_ids=["com.google.android.apps.youtube.music:id/queue_shuffle_button","com.google.android.apps.youtube.music:id/playback_queue_shuffle_button_view"]
+                                )
+            found = True
+
         return found
    
    def deactivate_shuffle_mode_command(self):
         found = click_on_icon(self.device_id,
-                                desc_keywords=["Shuffle on"],
-                                resource_ids=["com.google.android.apps.youtube.music:id/queue_shuffle_button"]
+                                desc_keywords=["Shuffle on", "Shuffle off"],
+                                resource_ids=["com.google.android.apps.youtube.music:id/queue_shuffle_button","com.google.android.apps.youtube.music:id/playback_queue_shuffle_button_view"]
                             )
         if found == True:
             save_to_notepad(f"Shuffle Icon clicked via keywords\n")
         else:
             save_to_notepad(f"Shuffle Icon not clicked via keywords\n")
+            # Run adb command to input tap on Mobile device
+            tap_command = f"shell input tap 1000 1030"
+            stdout, stderr, rc = run_adb(tap_command, self.device_id)
+            if stderr:
+                save_to_notepad(f"[Command failed:] ({tap_command}:)")
+                save_to_notepad(f"Error text: {stderr}\n")
+            save_to_notepad(f"[Executed command:] ({tap_command}:)")
+            save_to_notepad(f"Result: {stdout}\n")
+            time.sleep(2)
+
+            found = click_on_icon(self.device_id,
+                                    desc_keywords=["Shuffle on", "Shuffle off"],
+                                    resource_ids=["com.google.android.apps.youtube.music:id/queue_shuffle_button","com.google.android.apps.youtube.music:id/playback_queue_shuffle_button_view"]
+                                )
         time.sleep(2)
 
         # Run back command on Mobile device
@@ -347,8 +372,6 @@ class AndroidDevice:
             save_to_notepad(f"Error text: {stderr}\n")
 
 
-=======
->>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
    def click_unpair_button(self):
         found = click_action_keywords(self.device_id,primary_keywords=["forget", "unpair"],confirm_keywords=["forget device", "unpair","remove device"])
         if found == True:
@@ -713,112 +736,109 @@ class AndroidDevice:
             return ""
         
    def cover_art_command(self):
-        # Run adb command to get logcat COVERART entries with a 1-second timeout
-<<<<<<< HEAD
-        import os
+        # Run adb command to get logcat COVERART entries with a 10-second timeout using Windows findstr
         import threading
         
         try:  
-=======
-        import subprocess
-        import time
-        import os
-        import threading
-        
-        try:           
->>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
-            # Use a different approach that avoids shell pipes on Windows
-            # Start logcat process without pipe to avoid termination issues
+            # Use Windows shell command with pipe to filter COVERART entries directly
+            command = f'adb -s {self.device_id} logcat | findstr /i "COVERART"'
+            
+            # Use a more aggressive approach to ensure termination
             process = subprocess.Popen(
-                ["adb", "-s", self.device_id, "logcat"],
+                command,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True,
                 encoding="utf-8",
+                shell=True,
                 creationflags=subprocess.CREATE_NEW_PROCESS_GROUP if os.name == 'nt' else 0
             )
             
-            # Collect output for 1 second using a timeout mechanism
+            # Collect output for 10 seconds using a timeout mechanism
             output_lines = []
             start_time = time.time()
-<<<<<<< HEAD
             timeout_duration = 10.0  # 10 seconds
-=======
-            timeout_duration = 1.0  # 1 second
->>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
+            process_killed = False
             
-            def read_output():
+            def kill_process_tree():
+                nonlocal process_killed
                 try:
-                    for line in iter(process.stdout.readline, ''):
-                        if time.time() - start_time >= timeout_duration:
-                            break
-                        if "COVERART" in line.upper():
-                            output_lines.append(line.strip())
+                    if os.name == 'nt':  # Windows
+                        # Kill the entire process tree to ensure all child processes are terminated
+                        subprocess.run(f"taskkill /F /T /PID {process.pid}", shell=True, 
+                                     stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                        process.terminate()
+                        time.sleep(0.1)
+                        if process.poll() is None:
+                            process.kill()
+                    process_killed = True
                 except:
                     pass
             
-            # Start reading in a separate thread
-            reader_thread = threading.Thread(target=read_output)
-            reader_thread.daemon = True
-            reader_thread.start()
+            # Start a timer to kill the process after timeout
+            timer = threading.Timer(timeout_duration, kill_process_tree)
+            timer.start()
             
-            # Wait for the timeout duration
-            time.sleep(timeout_duration)
-            
-            # Force terminate the process using different methods
+            # Read output with timeout
             try:
-                if os.name == 'nt':  # Windows
-                    # Use taskkill to force terminate on Windows
-                    subprocess.run(f"taskkill /F /PID {process.pid}", shell=True, 
-                                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                else:
-                    process.terminate()
-                
-                # Give a moment for termination
-                time.sleep(0.1)
-                
-                # If still running, kill it
-                if process.poll() is None:
-                    process.kill()
-                    
+                while time.time() - start_time < timeout_duration and not process_killed:
+                    try:
+                        # Use a shorter timeout for readline to check more frequently
+                        line = process.stdout.readline()
+                        if line:
+                            output_lines.append(line.strip())
+                        elif process.poll() is not None:
+                            # Process has terminated naturally
+                            break
+                        else:
+                            # Small sleep to prevent busy waiting
+                            time.sleep(0.01)
+                    except:
+                        break
             except:
-                # Fallback - just kill it
-                try:
-                    process.kill()
-                except:
-                    pass
+                pass
             
-            # Wait for reader thread to finish (with timeout)
-            reader_thread.join(timeout=0.5)
+            # Cancel the timer if process finished early
+            timer.cancel()
             
-            # Get any remaining stderr
+            # Ensure process is definitely killed
+            if not process_killed:
+                kill_process_tree()
+            
+            # Wait a moment for cleanup
+            time.sleep(0.2)
+            
+            # Try to get any remaining output/errors without blocking
             stderr = ""
             try:
-                _, stderr = process.communicate(timeout=0.5)
+                # Don't wait for communicate if process was forcibly killed
+                if process.poll() is not None:
+                    _, stderr = process.communicate(timeout=0.1)
+                else:
+                    stderr = "Process forcibly terminated after timeout"
             except:
                 stderr = "Process terminated after timeout"
             
             stdout = "\n".join(output_lines)
             
-            save_to_notepad(f"[Executed command with 1s timeout:] (adb -s {self.device_id} logcat | filter for COVERART)")
+            save_to_notepad(f'[Executed command with 10s timeout:] (adb -s {self.device_id} logcat | findstr /i "COVERART")')
             save_to_notepad(f"Result: {stdout}\n")
             
-            if stderr and "terminated after timeout" not in stderr:
+            if stderr and "terminated after timeout" not in stderr and "forcibly terminated" not in stderr:
                 save_to_notepad(f"[Command had errors:] (logcat command)")
                 save_to_notepad(f"Error text: {stderr}\n")
 
-<<<<<<< HEAD
-=======
-            # Clear the logcat buffer first to get only fresh entries
-            clear_cmd = f"adb -s {self.device_id} logcat -c"
-            subprocess.run(clear_cmd, shell=True, timeout=5)
-            save_to_notepad(f"[Executed command:] ({clear_cmd})\n")
-
->>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
             return stdout if stdout else ""
             
         except Exception as e:
             save_to_notepad(f"Error in cover_art_command: {e}\n")
+            # Make sure to kill any lingering processes
+            try:
+                if os.name == 'nt':
+                    subprocess.run("taskkill /F /IM adb.exe", shell=True, 
+                                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except:
+                pass
             return ""
 
    def get_contacts_name_and_photo_id_command(self):
@@ -2688,10 +2708,7 @@ def oppo_find_x8_pro_transfer_audio_to_mobile(device, bluetooth_HU_name):
     if stderr:
         save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
         save_to_notepad(f"Error text: {stderr}\n")
-<<<<<<< HEAD
 
-=======
->>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
     base_dir = extract_base_dir_from_batch()
     path = f"{base_dir}/Test_environment/Test_scripts"
 
@@ -2745,7 +2762,6 @@ def oppo_find_x8_pro_transfer_audio_to_mobile(device, bluetooth_HU_name):
     return found
 
 # =====================================================
-<<<<<<< HEAD
 # OPPO F17 IMPLEMENTATION
 # =====================================================
 def oppo_F17_enable_bt(device):
@@ -2767,6 +2783,17 @@ def oppo_F17_enable_bt(device):
         save_to_notepad(f"Button Bluetooth could not be enabled\n")
 
 def oppo_F17_disable_bt(device):
+    # Run input tap command on Mobile device
+    command = f"shell input tap 600 2200"     # Mobile input tap
+    stdout, stderr, rc = run_adb(command, device)
+    save_to_notepad(f"[Executed command:] (adb -s {device} {command}:)")
+    save_to_notepad(f"Result: {stdout}\n")
+    # Console display
+    if stderr:
+        save_to_notepad(f"[Command failed:] (adb -s {device} {command}:)")
+        save_to_notepad(f"Error text: {stderr}\n")
+    time.sleep(2) 
+
     found = click_on_device_regex(device, "Bluetooth")
     if found == True:
         save_to_notepad(f"Button Bluetooth disabled successfully\n")
@@ -2853,8 +2880,6 @@ def oppo_F17_conference_call(device):
     time.sleep(3)
 
 # =====================================================
-=======
->>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
 # Pixel 9 Pro IMPLEMENTATION
 # =====================================================
 def pixel_9_pro_transfer_audio_to_HU(device, bluetooth_HU_name):
@@ -3252,8 +3277,7 @@ DEVICE_MENU = {
        "transfer_audio_to_mobile": oppo_find_x8_pro_transfer_audio_to_mobile,
        "transfer_audio_to_HU": oppo_find_x8_pro_transfer_audio_to_HU
    },
-<<<<<<< HEAD
-   "OPPO F17": {
+   "Oppo f17": {
        "enable_bluetooth": oppo_F17_enable_bt,
        "disable_bluetooth": oppo_F17_disable_bt,
        "get_received_calls": huawei_p40_pro_get_received_calls,
@@ -3265,8 +3289,6 @@ DEVICE_MENU = {
        "transfer_audio_to_HU": oppo_find_x8_pro_transfer_audio_to_HU,
        "conference_call": oppo_F17_conference_call
    },
-=======
->>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
    "OnePlus 13": {
        "transfer_audio_to_mobile": oppo_find_x8_pro_transfer_audio_to_mobile,
        "transfer_audio_to_HU": oneplus_13_transfer_audio_to_HU

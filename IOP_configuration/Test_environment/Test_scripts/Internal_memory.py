@@ -111,9 +111,12 @@ def main():
         save_to_notepad(f"Result: {stdout}\n")
         assert rc == 0, f"Command {tap_cmd} failed: {rc}\n"
 
+        # Click Source button with regex on HU display
+        found = click_on_device_regex(HU, "Source")
+        time.sleep(2)
+
         # Click Bluetooth Audio on HU from Media menu
-        x, y = find_word_on_device_via_regex_with_coordinates(HU,"Bluetooth")
-        
+        x, y = find_word_on_device_via_regex_with_coordinates(HU,"Bluetooth")        
         cmd = f"shell input tap {x} {y-100}"
         run_adb(cmd, HU)
         time.sleep(3)
@@ -147,6 +150,27 @@ def main():
         # Pause audio on Mobile Device
         phone.pause_audio_command()
         save_to_notepad(f"Audio paused on Mobile device\n")
+        time.sleep(2)
+
+        # Click Bluetooth button with regex on HU display
+        found = click_on_device_regex(HU, "Bluetooth")
+        assert found == True, f"Bluetooth button not found on HU display\n"
+        save_to_notepad(f"Clicked Bluetooth button on HU\n")
+        time.sleep(2)
+        
+        # Click Radio button on HU from Media menu
+        x, y = find_word_on_device_via_regex_with_coordinates(HU, "Radio")
+        assert x != 0 and y != 0, f"Radio option not found on HU display\n"
+        
+        command = f"shell input tap {x} {y-100}"
+        stdout, stderr, rc = run_adb(command, HU)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({command}:)")  
+        save_to_notepad(f"Result: {stdout}\n") 
+        assert rc == 0, f"Command {command} failed: {rc}\n"
+        save_to_notepad(f"Switched from mobile playback to radio\n")
         time.sleep(2)
         
         # Return to home menu - HU commands
@@ -190,6 +214,32 @@ def main():
         error_message = str(e)
         save_to_notepad(header="TEST FAILED", stderr=error_message, color="red")
         save_to_excel(test_name, "Failed", error_message)
+        
+        # Pause audio on Mobile Device
+        phone.pause_audio_command()
+        save_to_notepad(f"Audio paused on Mobile device\n")
+        time.sleep(2)
+
+        # Click Bluetooth button with regex on HU display
+        found = click_on_device_regex(HU, "Bluetooth")
+        assert found == True, f"Bluetooth button not found on HU display\n"
+        save_to_notepad(f"Clicked Bluetooth button on HU\n")
+        time.sleep(2)
+        
+        # Click Radio button on HU from Media menu
+        x, y = find_word_on_device_via_regex_with_coordinates(HU, "Radio")
+        assert x != 0 and y != 0, f"Radio option not found on HU display\n"
+        
+        command = f"shell input tap {x} {y-100}"
+        stdout, stderr, rc = run_adb(command, HU)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({command}:)")  
+        save_to_notepad(f"Result: {stdout}\n") 
+        assert rc == 0, f"Command {command} failed: {rc}\n"
+        save_to_notepad(f"Switched from mobile playback to radio\n")
+        time.sleep(2)
         
         try:
             # Return to home menu on failure - HU commands

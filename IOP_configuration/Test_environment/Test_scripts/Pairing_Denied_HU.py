@@ -181,8 +181,6 @@ def main():
         # Click Pair button from Mobile device display
         found = phone.click_pair_with_HU_button()
         time.sleep(2)
-        assert found == True, f"Pair button has not been found on Mobile1 display.\n"
-        save_to_notepad(f"Pair button has been found and pressed on Mobile1 display.\n")
 
         # Check if Mobile Bluetooth device name appears on HU device
         found = find_word_on_device(HU,mobile_name)

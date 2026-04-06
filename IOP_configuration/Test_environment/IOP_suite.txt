@@ -11,6 +11,20 @@ Pairing_Denied_Mobile_Device
 Pairing_Timeout
 Pairing_Mobile_Device_1
 Pairing_Mobile_Device_2
+A2DP_conn
+HFP_conn
+On_Tap_MD_connect_disconnect
+Mobile_Device_Reconnect_after_Power_Off
+Mobile_Device_Reconnect_after_Bluetooth_Off
+HU_reconnect_after_Power_Off
+HU_reconnect_after_Bluetooth_Off
+Mobile_Device_out_of_range
+Power_off_HU_during_outgoing_call
+Power_on_HU_during_outgoing_call
+Power_off_HU_during_incoming_call
+Power_on_HU_during_incoming_call
+Power_off_HU_during_active_call
+Mobile_Device_transfer_call_to_HU_in_new_Lifecycle
 Contact_picture
 Special_characters
 Blanks_in_contact_details
@@ -41,6 +55,7 @@ Multiparty_call_switching
 Conference_call
 Signal_strength_indicator
 Internal_memory
+Shuffle_on_Mobile_Device
 Reconnect_as_active_source
 Reconnect_as_inactive_audio_source
 Start_player_during_active_call
@@ -57,23 +72,6 @@ Artist
 Cover_Art
 Total_Elapsed_time
 Resume_during_after_call
-<<<<<<< HEAD
-Shuffle_on_Mobile_Device
-=======
->>>>>>> c7b9ab8dca9a31785c50811df21198c35bdccac7
 Music_search
-A2DP_conn
-HFP_conn
-On_Tap_MD_connect_disconnect
-Mobile_Device_Reconnect_after_Power_Off
-Mobile_Device_Reconnect_after_Bluetooth_Off
-HU_reconnect_after_Power_Off
-HU_reconnect_after_Bluetooth_Off
-Mobile_Device_out_of_range
-Power_off_HU_during_outgoing_call
-Power_on_HU_during_outgoing_call
-Power_off_HU_during_incoming_call
-Power_on_HU_during_incoming_call
-Power_off_HU_during_active_call
-Mobile_Device_transfer_call_to_HU_in_new_Lifecycle
+Connect_Android_Auto_device_from_Device_Menu
 Delete_Mobile_Device_on_HU

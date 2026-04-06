@@ -96,9 +96,16 @@ def main():
         save_to_notepad(f"Activated shuffle mode on Mobile Device 1\n")
         time.sleep(2)
 
-        # Skip to next track on Mobile Device 1
-        phone.skip_forward_audio_command()
-        save_to_notepad(f"Skipped to next track on Mobile Device 1\n")
+        # Skip audio playback forward on HU
+        command = f"shell input tap 1520 1030"
+        stdout, stderr, rc = run_adb(command, HU)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({command}:)")  
+        save_to_notepad(f"Result: {stdout}\n") 
+        assert rc == 0, f"Command {command} failed: {rc}\n"
+        save_to_notepad(f"Skipped audio playback forward on HU\n")
         time.sleep(3)
 
         # Check test result
@@ -137,10 +144,16 @@ def main():
         assert rc == 0, f"Command {command} failed: {rc}\n"
         save_to_notepad(f"Device screenshot saved successfully.\n")
 
-        # Skip to next track on Mobile Device 1
-        phone.skip_backward_audio_command()
-        save_to_notepad(f"Skipped to next track on Mobile Device 1\n")
-        time.sleep(3)  
+        # Skip audio playback backwards on HU
+        command = f"shell input tap 1120 1030"
+        stdout, stderr, rc = run_adb(command, HU)
+        if stderr:
+            save_to_notepad(f"[Command failed:] ({command}:)")
+            save_to_notepad(f"Error text: {stderr}\n")
+        save_to_notepad(f"[Executed command:] ({command}:)")  
+        save_to_notepad(f"Result: {stdout}\n") 
+        save_to_notepad(f"Skipped audio playback backwards on HU\n")
+        time.sleep(3)
 
         # Deactivate shuffle mode on Mobile Device 1
         phone.deactivate_shuffle_mode_command()
