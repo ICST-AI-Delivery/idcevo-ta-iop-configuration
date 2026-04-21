@@ -1,4 +1,102 @@
 Test Case Description,Test Case Expected Result,Test Case ID,Test Case Precondition,Test Name,Test Script Description
+1. Perform a LC on bench/vehicle,"1. Reconnection is happening for AndroidAuto device, with previous configuration",173123,"1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto",Automatic_Reconnection_for_Android_Auto_device_after_LC,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+click Bluetooth icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth_2.png"").
+click Manage Devices Button from HU display with found = click_on_device(HU,""Manage devices"").
+click Smartphones Button from HU display with found = click_on_device(HU,""Smartphones"").
+click Android Auto icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto_2.png""). Use the following input tap command to click the icon correctly: adb shell input tap {x+20} {y+20}.
+check if x and y coordinates from Android Auto icon searching are different from 0 with x==0 and y==0. If they are 0 then the Mobile device doesn't support Android Auto and the test is skipped.
+click Start button on HU with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Start""). Use the following input tap command to click the button correctly: adb shell input tap {x} {y+400}.
+run the following adb command on HU: adb shell input keyevent 3 to go to HU home screen.
+run the following adb commands on HU: adb root; adb pull /data/misc/bluetooth/logs/btsnoop_hci.log btsnoop_hci_before_LC.log; adb pull /data/misc/bluetooth/logs/btsnoop_hci.log.last btsnoop_hci_before_LC.log.last; move btsnoop_hci_before_LC.log {base_dir}/Test_results; move btsnoop_hci_before_LC.log.last {base_dir}/Test_results in order to extract BTsnoop logs from HU before lifecycle.run the following function: power_off_HU() on HU to power off HU. Wait 10 seconds for HU to completely power off.
+run the following function to power on HU: power_on_HU() to perform lifecycle. Wait 60 seconds for HU to boot up and establish Bluetooth connection.
+run the following command in Windows cmd to resume DLT logs after reboot: ssh -i id_ed25519_idcevo -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@160.48.249.99 ""nohup dlt-receive -a localhost -o /var/data/{mobile_name_without_space}.dlt >/dev/null 2>&1 &"".
+click Retry icon button from PC display with click_on_Retry(). Wait 30 seconds for HU to initialize properly.
+click X icon from HU display 2 times with x, y = find_icon_in_screenshot(f""{path}/screenshot.png"", f""{path}/helpers/X.png"") or x, y = find_icon_in_screenshot(f""{path}/screenshot.png"", f""{path}/helpers/X_2.png"").
+click X_black icon from HU display 4 times with x, y = find_icon_in_screenshot(f""{path}/screenshot.png"", f""{path}/helpers/X_black.png"").
+run the following adb commands on HU: adb shell device_config put bluetooth INIT_default_log_level_str LOG_VERBOSE to restart BTsnoop logging after power on.
+run the following adb command on HU: adb shell input keyevent 3 to go to HU home screen.
+run the following 2 adb commands on HU: adb shell am start -a android.settings.LOCALE_SETTINGS; adb shell input swipe 1200 500 2000 200 to Navigate on Language Menu.
+click English Button from HU display with regex with found = click_on_device_regex(HU, ""English""). If found == False run the following adb commands on HU: adb shell input tap 200 700; adb shell input swipe 1200 500 2000 200 then click English button again with found = click_on_device_regex(HU, ""English"").
+click Bluetooth icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth_2.png"").
+click Manage Devices Button from HU display with found = click_on_device(HU,""Manage devices"").
+click Smartphones Button from HU display with found = click_on_device(HU,""Smartphones"").
+check if Android Auto icon can be found on HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto_2.png""). If it was found then reconnection is happening for AndroidAuto device with previous configuration and the test is Passed. If not then AndroidAuto reconnection failed after lifecycle and the test is failed.
+please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+click Android Auto disconnect icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto_disconnect.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto_disconnect_2.png""). Use the following input tap command to click the icon correctly: adb shell input tap {x+20} {y+20}.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
+1. Disconnect Android auto device,"1. The system disconnects Android auto device from HU
+2. Reconnection is happening for a paired MD only if an empty slot is free, for the same profile.",173122,"1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto
+4. Other MDs are paired to the system",Disconnect_Android_Auto_device_while_multiple_MDs_are_connected,"
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+click Bluetooth icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth_2.png"").
+click Manage Devices Button from HU display with found = click_on_device(HU,""Manage devices"").
+click Smartphones Button from HU display with found = click_on_device(HU,""Smartphones"").
+click Android Auto icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto_2.png""). Use the following input tap command to click the icon correctly: adb shell input tap {x+20} {y+20}.
+check if x and y coordinates from Android Auto icon searching are different from 0 with x==0 and y==0. If they are 0 then the Mobile device doesn't support Android Auto and the test is skipped.
+click Start button on HU with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Start""). Use the following input tap command to click the button correctly: adb shell input tap {x} {y+400}.
+run the following adb command on HU: adb shell input keyevent 3 to go to HU home screen.
+check USB Matrix status with status = USB_Matrix_Status(). If USB Matrix is connected to port 1 then change it to port 2 and if is connected to any other port except port1 change the connection to port 1.
+get serial numbers for them with HU, Mobile2 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU and for Mobile Device with start_screen_recording(f""-s {HU}"", test_name, ""HU"")(example for HU).
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device2 object with phone2 = create_device(Mobile2,mobile_name2).
+run the following function on Mobile device2: phone2 .click_close_button_popup() to click Close button for pop ups that may appear on screen.
+run the following function on Mobile device2: rc = phone2 .run_turn_screen_on_command() to turn Mobile screen on.
+run the following function on Mobile device2: rc = phone2 .run_unlock_screen_command() to unlock Mobile screen.
+run the following function on Mobile device2: phone2.run_settings_menu_command() go to Mobile Settings menu.
+run the following function on Mobile device2: rc = phone2.run_bluetooth_menu_command() go to Mobile Bluetooth menu.
+click Bluetooth icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth_2.png"")
+click Manage Devices Button from HU display with found = click_on_device(HU,""Manage devices"").
+click Smartphones Button on from HU display with found = click_on_device(HU,""Smartphones"").
+click Connect New Device Button on from HU display with found = click_on_device(HU,""Connect new device"").
+run the following function on Mobile device2: phone2.click_close_button_popup() to click Close button for pop ups that may appear on screen.
+run the following function on Mobile device2: phone2.enable_bluetooth() to enable Bluetooth for Mobile.
+run the following function on Mobile device2: phone2.click_close_button_popup() to click Close button for pop ups that may appear on screen.
+extract bluetooth_device_name for HU in a variable using the following adb command: adb shell dumpsys bluetooth_manager | findstr -i ""Name:"".
+click bluetooth_device_name button with regex from Mobile device2 display with found = phone2.click_HU_bluetooth_name_button(bluetooth_device_name). This is the name of HU device we have to connect with Mobile.
+click Connect Button on from HU display with found = click_on_device(HU, ""Connect"").
+click Pair button from Mobile device2 display with found = phone2.click_pair_with_HU_button().
+run the following function on Mobile Device2: phone2.click_allow_button_popup() in order to click Allow button for pop ups that may appear on screen.
+click Not now button from HU display two times with found = click_on_device(HU, ""Not now""). It may not appear everytime so we don't have an assert check for it.
+click Mobile device name Button from HU display with found = click_on_device(HU,mobile_name).
+check if Mobile Device was successfully disconnected from HU while Android Auto was enabled and another Mobile device is paired with HU with found = True. If is True then Android Auto was disconnected successfully while another mobile device is paired with HU and the test is Passed. If not then Android Auto disconnection failed and test is Failed.please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+save in Excel the status of the test (passed or failed) with the corresponding message.
+click Mobile device name Button from HU display with verivication found = click_on_device_with_verification(HU,mobile_name).
+run the following adb command on HU: adb shell input keyevent 3 to go to HU home screen.
+click Bluetooth icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth_2.png"")
+click Manage Devices Button from HU display with found = click_on_device(HU,""Manage devices"").
+click Smartphones Button on from HU display with found = click_on_device(HU,""Smartphones"").
+click Android Auto disconnect icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto_disconnect.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto_disconnect_2.png""). Use the following input tap command to click the icon correctly: adb shell input tap {x+20} {y+20}.
+click Mobile Menu Button icon from HU display for Mobile device2 with x, y = find_word_on_device_via_regex_with_coordinates(HU,mobile_name2) for second Mobile device. Use the following input tap command to click the icon correctly: adb shell input tap {x+1160} {y+60}.
+click Remove device Button with regex on from HU display with found = click_on_device_regex(HU,""Remove device"") two times.
+run the following function on Mobile device2: rc = phone2.run_turn_screen_on_command() to turn Mobile screen on.
+run the following function on Mobile device2: rc = phone2.run_unlock_screen_command() to unlock Mobile screen.
+run the following function on Mobile device2: phone2.run_settings_menu_command() go to Mobile Settings menu.
+run the following function on Mobile device2: rc = phone2.run_bluetooth_menu_command() go to Mobile Bluetooth menu.
+run the following function on Mobile device2: phone2.click_settings_icon() to click on Settings icon for connected Bluetooth device.
+run the following function on Mobile device2: phone2.click_unpair_button() to unpair Mobile device with connected Bluetooth device.
+run the following function on Mobile device2: phone2.disable_bluetooth() to disable Bluetooth of Mobile device.
+run the following function on Mobile device2: phone2.run_home_command() to go to Home menu.
+switch USB Matrix back to the port from the beginning with select_mobile_device(1, status).
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+"
 "1. Open HU pairing menu and add new device
 2. Connect AndroidPhone as AndroidAuto source on target
 3. Accept Android Auto disclaimer in the HMI and on the MD",1. Android auto activated and interface is shown,173121,"1. BT, Wifi active on HU

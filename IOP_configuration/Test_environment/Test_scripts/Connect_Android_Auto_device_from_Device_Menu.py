@@ -267,7 +267,7 @@ def main():
             assert rc == 0, f"Command {cmd} failed: {rc}\n"
             
             if i == 2:  # After icon tap
-                if x ==0 and y==0:
+                if x==0 and y==0:
                     skip_message = f"{mobile_name} doesn't support Android Auto."
                     save_to_notepad(f"TEST SKIPPED: {skip_message}\n")
                     save_to_notepad(header="TEST SKIPPED", color="orange")
