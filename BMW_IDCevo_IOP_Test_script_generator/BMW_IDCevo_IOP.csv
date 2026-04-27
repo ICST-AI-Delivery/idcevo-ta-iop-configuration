@@ -1,4 +1,38 @@
 Test Case Description,Test Case Expected Result,Test Case ID,Test Case Precondition,Test Name,Test Script Description
+"1. Activate in GoogleMaps guidance
+2. Attempt quiIDCEvo turn-by-turn instructions successions by pressing Google Maps UI",1. HU plays audio on AAP navigation source.,173126,"1. BT, Wifi active on HU
+2. Android auto functionality is enabled
+3. MD already connected to AndroidAuto",AAP_guidance_alone,"
+
+check USB Matrix status with status = USB_Matrix_Status().
+get serial numbers for them with HU, Mobile1 = get_serial_number().
+create recordings folder with create_recordings_folder() and start screen recording for HU with start_screen_recording(f""-s {HU}"", test_name, ""HU"").
+get Mobile device bluetooth name with adb shell settings get secure bluetooth_name.
+create Mobile device object with phone = create_device(Mobile1,mobile_name).
+click Bluetooth icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth_2.png"").
+click Manage Devices Button from HU display with found = click_on_device(HU,""Manage devices"").
+click Smartphones Button from HU display with found = click_on_device(HU,""Smartphones"").
+click Android Auto icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto_2.png""). Use the following input tap command to click the icon correctly: adb shell input tap {x+20} {y+20}.
+check if x and y coordinates from Android Auto icon searching are different from 0 with x==0 and y==0. If they are 0 then the Mobile device doesn't support Android Auto and the test is skipped.
+click Start button on HU with regex and coordinates with x, y = find_word_on_device_via_regex_with_coordinates(HU,""Start""). Use the following input tap command to click the button correctly: adb shell input tap {x} {y+400}.
+run the following adb command on HU: adb shell input tap 1050 125 to click Search button on Android Auto to search for a destination.
+run the following adb command on HU: adb shell input tap 1100 230 to click Android Auto navigation interface to select a destination.
+run the following adb command on HU: adb shell input tap 900 230 to attempt quick turn-by-turn instructions successions by pressing Google Maps UI.
+run the following adb command on HU: adb shell input tap 1000 550 to click Start button on Android Auto to start guidance for the selected destination.
+run the following adb command on HU: adb shell input tap 900 175 press Google Maps UI again for navigation guidance.
+run the following adb command on HU: adb logcat | findstr /I ""AudioFocus AudioManager"" to extract the logs for audio playing during Android Auto navigation guidance. 
+check if HU plays audio on AAP navigation source by verifying navigation audio pattern ""Audio session started, type: GUIDANCE"" from logcat output with audio_focus_started == True. If it is True, then HU plays audio on AAP navigation source and the test is Passed. If not then AAP navigation audio routing failed and the test is failed.please make a screenshot on HU screen and save it on the path D:\traget\IDCevo\IOP_configuration\Test_results\Screenshots.
+save in Excel the status of the test (passed, failed or skipped) with the corresponding message.
+run the following adb command on HU: adb shell input tap 850 1100 press Google Maps UI for closing navigation guidance.
+run the following adb command on HU: adb shell input keyevent 3 to go to HU home screen.
+click Bluetooth icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Bluetooth_2.png"").
+click Manage Devices Button from HU display with found = click_on_device(HU,""Manage devices"").
+click Smartphones Button from HU display with found = click_on_device(HU,""Smartphones"").
+click Android Auto disconnect icon from HU display with x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto_disconnect.png"") or x,y = find_icon_in_screenshot(f""{path}/screenshot.png"",f""{path}/helpers/Android_Auto_disconnect_2.png""). Use the following input tap command to click the icon correctly: adb shell input tap {x+20} {y+20}.
+run the following commands after test is done in order to return to home menu: HU commands: adb shell input keyevent 3 one time; adb shell rm /sdcard/*.png; Mobile device commands: rc = phone.run_home_command().
+stop screen recordings on HU after test is done with stop_screen_recording(""HU"") and keep them if test is failed or delete them if test is passed.
+
+"
 1. Navigate through AndroidAuto interface,"1. Navigation through menus is possible, smooth and no crashes are observed.",173125,"1. BT, Wifi active on HU
 2. Android auto functionality is enabled
 3. MD already connected to AndroidAuto",AndroidAuto_navigation_through_menus,"
